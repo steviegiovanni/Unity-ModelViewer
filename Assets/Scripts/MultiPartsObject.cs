@@ -154,25 +154,46 @@ public class MultiPartsObject : MonoBehaviour {
     }
 
     /// <summary>
+    /// the virtual size of the object
+    /// </summary>
+    [Range(0.0f,10.0f)]
+    [SerializeField]
+    private float _virtualScale = 1.0f;
+    public float VirtualScale
+    {
+        get { return _virtualScale; }
+        set { _virtualScale = value; }
+    }
+
+    /// <summary>
     /// setup root and dictionary
     /// </summary>
     public void Setup()
     {
-        // initialize root if it's null
-        if (Root == null)
-            Root = new Node(this.gameObject, null);
-
-        // setup dictionary
-        Dict.Clear();
-        List<Node> curNodes = new List<Node>();
-        curNodes.Add(Root);
-        while(curNodes.Count > 0)
+        // if there's no child object, clear dictionary and null root
+        if (this.gameObject.transform.childCount == 0)
         {
-            Node curNode = curNodes[0];
-            Dict.Add(curNode.GameObject, curNode);
-            foreach (var child in curNode.Childs)
-                curNodes.Add(child);
-            curNodes.RemoveAt(0);
+            Dict.Clear();
+            Root = null;
+            return;
+        }
+        else // construct internal data structure and dictionary if there's a loaded object
+        {
+            // initialize root
+            Root = new Node(this.transform.GetChild(0).gameObject, null);
+
+            // setup dictionary
+            Dict.Clear();
+            List<Node> curNodes = new List<Node>();
+            curNodes.Add(Root);
+            while (curNodes.Count > 0)
+            {
+                Node curNode = curNodes[0];
+                Dict.Add(curNode.GameObject, curNode);
+                foreach (var child in curNode.Childs)
+                    curNodes.Add(child);
+                curNodes.RemoveAt(0);
+            }
         }
     }
 
@@ -180,20 +201,27 @@ public class MultiPartsObject : MonoBehaviour {
 	void Start () {
         Setup();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    private void OnTransformChildrenChanged()
+    {
+        Setup();
+    }
+
+    public void FitToScale()
+    {
+    }
 
     public void OnDrawGizmos()
     {
-        // construct hierarchy
-        if (Root == null)
-            Setup();
-
         // draw gizmos for each node in the hierarchy
-        DrawNode(Root);
+        if(Root != null)
+            DrawNode(Root);
     }
 
     public void DrawNode(Node node)
