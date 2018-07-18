@@ -5,15 +5,25 @@ using UnityEditor;
 
 [CustomEditor(typeof(MultiPartsObject))]
 public class MultiPartsObjectInspector : UnityEditor.Editor {
+    MultiPartsObject obj;
+
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
 
-        var obj = (MultiPartsObject)target;
+        obj = (MultiPartsObject)target;
 
         if (GUILayout.Button("Setup"))
             obj.Setup();
 
+        if (GUILayout.Button("Fit"))
+            obj.FitToScale(obj.Root,obj.VirtualScale);
+
+        if (GUILayout.Button("Reset"))
+            obj.ResetTransform(obj.Root);
+
+        GUILayout.Space(10);
+        GUILayout.Label("Tree");
         GUILayout.BeginVertical();
         DisplayNodeInfo(obj.Root);
         GUILayout.EndVertical();
@@ -23,11 +33,18 @@ public class MultiPartsObjectInspector : UnityEditor.Editor {
     {
         if (node != null)
         {
-            EditorGUILayout.LabelField(node.GameObject.name, EditorStyles.helpBox);
+            //node.Selected = GUILayout.Toggle(node.Selected,node.GameObject.name, "Button");
+            bool selected = GUILayout.Toggle(node.Selected, node.GameObject.name, "Button");
+            if (selected)
+                obj.Select(node.GameObject);
+            else
+                obj.Deselect(node.GameObject);
+
             foreach (var child in node.Childs) {
-                EditorGUI.indentLevel++;
+                GUILayout.BeginHorizontal();
+                GUILayout.Space(20);
                 DisplayNodeInfo(child);
-                EditorGUI.indentLevel--;
+                GUILayout.EndHorizontal();
             }
         }
     }

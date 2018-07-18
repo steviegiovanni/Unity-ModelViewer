@@ -85,6 +85,21 @@ public class Node
     }
 
     /// <summary>
+    /// the starting bounds of the mesh on the node
+    /// </summary>
+    private Bounds _bounds;
+    public Bounds Bounds
+    {
+        get { return _bounds; }
+        set { _bounds = value; }
+    }
+
+    /// <summary>
+    /// whether the node is selected or not
+    /// </summary>
+    public bool Selected { get; set; }
+
+    /// <summary>
     /// default constructor
     /// </summary>
     public Node()
@@ -117,10 +132,32 @@ public class Node
         // check whether game object has a mesh
         HasMesh = go.GetComponent<MeshFilter>() != null;
 
+        // get starting bounds
+        if (HasMesh)
+            Bounds = go.GetComponent<Renderer>().bounds;
+        else
+            Bounds = new Bounds(go.transform.position, Vector3.zero);
+
         // check childs
         foreach (Transform child in go.transform)
         {
             Childs.Add(new Node(child.gameObject,this));
+        }
+    }
+
+    /// <summary>
+    /// return the cumulative bounds of a node and its childs
+    /// </summary>
+    public Bounds GetCumulativeBounds()
+    {
+        if (Childs.Count == 0)
+            return Bounds;
+        else
+        {
+            Bounds b = Bounds;
+            foreach (var child in Childs)
+                b.Encapsulate(child.GetCumulativeBounds());
+            return b;
         }
     }
 }
@@ -166,10 +203,88 @@ public class MultiPartsObject : MonoBehaviour {
     }
 
     /// <summary>
+    /// output current scale of object to fit the virtual scale
+    /// </summary>
+    [SerializeField]
+    private float _currentScale;
+    public float CurrentScale
+    {
+        get { return _currentScale; }
+        private set { _currentScale = value; }
+    }
+
+    private List<Node> _selectedNodes;
+    public List<Node> SelectedNodes
+    {
+        get {
+            if (_selectedNodes == null)
+                _selectedNodes = new List<Node>();
+            return _selectedNodes;
+        }
+    }
+
+	// Use this for initialization
+	void Start () {
+        Setup();
+	}
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+            GameObject mover = GameObject.Find("Mover");
+            foreach (var obj in SelectedNodes)
+            {
+                if(obj.Childs.Count > 0)
+                {
+                    foreach (var child in obj.Childs)
+                        if (child.GameObject.transform.parent.gameObject == child.Parent.GameObject)
+                            child.GameObject.transform.SetParent(this.transform);
+                }
+                obj.GameObject.transform.SetParent(mover.transform);
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            foreach (var obj in SelectedNodes)
+            {
+                if (obj.Childs.Count > 0)
+                {
+                    foreach(var child in obj.Childs)
+                    {
+                        child.GameObject.transform.SetParent(obj.GameObject.transform);
+                    }
+                }
+
+                if (obj.Parent == null)
+                    obj.GameObject.transform.SetParent(this.transform);
+                else
+                    obj.GameObject.transform.SetParent(obj.Parent.GameObject.transform);
+            }
+        }
+    }
+
+    private void OnValidate()
+    {
+        if (Root != null)
+            FitToScale(Root,VirtualScale);
+    }
+
+    /*private void OnTransformChildrenChanged()
+    {
+        Setup();
+    }*/
+
+    /// <summary>
     /// setup root and dictionary
     /// </summary>
     public void Setup()
     {
+        CurrentScale = 1.0f;
+        SelectedNodes.Clear();
+
         // if there's no child object, clear dictionary and null root
         if (this.gameObject.transform.childCount == 0)
         {
@@ -197,31 +312,73 @@ public class MultiPartsObject : MonoBehaviour {
         }
     }
 
-	// Use this for initialization
-	void Start () {
-        Setup();
-	}
-
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// resize a node go and its childs to fit a scale
+    /// </summary>
+    public void FitToScale(Node node, float scale)
     {
-
+        if (node != null)
+        {
+            Bounds b = node.GetCumulativeBounds();
+            float scaleFactor = scale / b.size.magnitude;
+            CurrentScale = scaleFactor;
+            node.GameObject.transform.localScale = node.S0 * scaleFactor;
+            node.GameObject.transform.position = node.P0 - b.center * scaleFactor;
+        }
     }
 
-    private void OnTransformChildrenChanged()
+    /// <summary>
+    /// reset transform of game object to its original transform
+    /// </summary>
+    public void ResetTransform(Node node)
     {
-        Setup();
+        CurrentScale = 1.0f;
+        if (node != null)
+        {
+            node.GameObject.transform.SetPositionAndRotation(node.P0, node.R0);
+            node.GameObject.transform.localScale = node.S0;
+            foreach(var child in node.Childs)
+                ResetTransform(child);
+        }
     }
 
-    public void FitToScale()
+    public void Select(GameObject go)
     {
+        Node selectedNode = null;
+        if(Dict.TryGetValue(go,out selectedNode))
+        {
+            selectedNode.Selected = true;
+            if (!SelectedNodes.Contains(selectedNode))
+                SelectedNodes.Add(selectedNode);
+        }
     }
 
+    public void Deselect(GameObject go)
+    {
+        Node deselectedNode = null;
+        if (Dict.TryGetValue(go, out deselectedNode))
+        {
+            deselectedNode.Selected = false;
+            SelectedNodes.Remove(deselectedNode);
+        }
+    }
+
+    /// ==================================================
+    /// Gizmo stuff
+    /// ==================================================
     public void OnDrawGizmos()
     {
-        // draw gizmos for each node in the hierarchy
-        if(Root != null)
+        if (Root != null) {
+            // draw gizmos for each node in the hierarchy
             DrawNode(Root);
+
+            // draw root cumulative bounding box
+            /*Bounds b = Root.GetCumulativeBounds();
+
+            // draw bounding sphere
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(Vector3.zero,b.extents.magnitude * CurrentScale);*/
+        }     
     }
 
     public void DrawNode(Node node)
@@ -230,10 +387,10 @@ public class MultiPartsObject : MonoBehaviour {
         {
             // draw origin
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(node.GameObject.transform.position,0.1f);
+            Gizmos.DrawSphere(node.GameObject.transform.position,0.01f);
 
             // draw bounding box if any
-            if (node.HasMesh) {
+            if (node.HasMesh && node.Selected) {
                 Gizmos.color = Color.green;
                 Renderer rend = node.GameObject.GetComponent<Renderer>();
                 Mesh mesh = node.GameObject.GetComponent<MeshFilter>().sharedMesh;
