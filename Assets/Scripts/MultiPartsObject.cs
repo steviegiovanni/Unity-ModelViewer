@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿/// author: Stevie Giovanni
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +9,9 @@ using UnityEngine;
 /// </summary>
 public class Node
 {
+    /// <summary>
+    /// the game object associated with this node
+    /// </summary>
     private GameObject _gameObject;
     public GameObject GameObject
     {
@@ -14,6 +19,9 @@ public class Node
         set { _gameObject = value; }
     }
 
+    /// <summary>
+    /// whether this node has a mesh or only a placeholder transform
+    /// </summary>
     private bool _hasMesh = false;
     public bool HasMesh
     {
@@ -21,6 +29,19 @@ public class Node
         set { _hasMesh = value; }
     }
 
+    /// <summary>
+    /// the parent node of the node
+    /// </summary>
+    private Node _parent;
+    public Node Parent
+    {
+        get { return _parent; }
+        set { _parent = value; }
+    }
+
+    /// <summary>
+    /// childs of the node
+    /// </summary>
     private List<Node> _childs;
     public List<Node> Childs
     {
@@ -33,29 +54,85 @@ public class Node
         set { _childs = value; }
     }
 
+    /// <summary>
+    /// the original position of the node
+    /// </summary>
+    private Vector3 _p0;
+    public Vector3 P0
+    {
+        get { return _p0; }
+        set { _p0 = value; }
+    }
+
+    /// <summary>
+    /// the original rotation of the node
+    /// </summary>
+    private Quaternion _r0;
+    public Quaternion R0
+    {
+        get { return _r0; }
+        set { _r0 = value; }
+    }
+
+    /// <summary>
+    /// the original scale of the node
+    /// </summary>
+    private Vector3 _s0;
+    public Vector3 S0
+    {
+        get { return _s0; }
+        set { _s0 = value; }
+    }
+
+    /// <summary>
+    /// default constructor
+    /// </summary>
     public Node()
     {
         GameObject = null;
         HasMesh = false;
+        P0 = Vector3.zero;
+        R0 = Quaternion.identity;
+        S0 = Vector3.one;
+
         Childs = new List<Node>();
     }
 
-    public Node(GameObject go)
+    /// <summary>
+    /// constructor that takes a go and a parent node
+    /// </summary>
+    public Node(GameObject go, Node parent)
     {
+        // assign parent
+        Parent = parent;
+
         // assign game object
         GameObject = go;
+
+        // get the original transforms
+        P0 = go.transform.position;
+        R0 = go.transform.rotation;
+        S0 = go.transform.localScale;
 
         // check whether game object has a mesh
         HasMesh = go.GetComponent<MeshFilter>() != null;
 
         // check childs
-        foreach(Transform child in go.transform){
-            Childs.Add(new Node(child.gameObject));
+        foreach (Transform child in go.transform)
+        {
+            Childs.Add(new Node(child.gameObject,this));
         }
     }
 }
 
+/// <summary>
+/// a multi parts object is an object that consists of several different parts
+/// that can be detached and assembled back again
+/// </summary>
 public class MultiPartsObject : MonoBehaviour {
+    /// <summary>
+    /// the root node
+    /// </summary>
     private Node _root = null;
     public Node Root
     {
@@ -63,8 +140,45 @@ public class MultiPartsObject : MonoBehaviour {
         set { _root = value; }
     }
 
+    /// <summary>
+    /// mapping between a game object and a node
+    /// </summary>
+    private Dictionary<GameObject, Node> _dict;
+    public Dictionary<GameObject, Node> Dict
+    {
+        get {
+            if (_dict == null)
+                _dict = new Dictionary<GameObject, Node>();
+            return _dict;
+        }
+    }
+
+    /// <summary>
+    /// setup root and dictionary
+    /// </summary>
+    public void Setup()
+    {
+        // initialize root if it's null
+        if (Root == null)
+            Root = new Node(this.gameObject, null);
+
+        // setup dictionary
+        Dict.Clear();
+        List<Node> curNodes = new List<Node>();
+        curNodes.Add(Root);
+        while(curNodes.Count > 0)
+        {
+            Node curNode = curNodes[0];
+            Dict.Add(curNode.GameObject, curNode);
+            foreach (var child in curNode.Childs)
+                curNodes.Add(child);
+            curNodes.RemoveAt(0);
+        }
+    }
+
 	// Use this for initialization
 	void Start () {
+        Setup();
 	}
 	
 	// Update is called once per frame
@@ -75,8 +189,8 @@ public class MultiPartsObject : MonoBehaviour {
     public void OnDrawGizmos()
     {
         // construct hierarchy
-        if(Root == null)
-            Root = new Node(this.gameObject);
+        if (Root == null)
+            Setup();
 
         // draw gizmos for each node in the hierarchy
         DrawNode(Root);
@@ -101,6 +215,7 @@ public class MultiPartsObject : MonoBehaviour {
                 //Gizmos.DrawWireSphere(rend.bounds.center,rend.bounds.extents.magnitude);
             }
 
+            // call draw for each child
             foreach(var child in node.Childs)
             {
                 DrawNode(child);

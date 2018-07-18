@@ -1,0 +1,302 @@
+fileFormatVersion: 2
+guid: 61fe6604e08470f4da8d1a3c275e28fb
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: BottomPlate01
+    100002: BottomPlate02
+    100004: BottomPlate03
+    100006: BottomPlate04
+    100008: ChamferBox85
+    100010: Common Rafters 47
+    100012: CommonRafters01
+    100014: CommonRafters02
+    100016: CommonRafters03
+    100018: CornerStuds01
+    100020: CornerStuds02
+    100022: CornerStuds03
+    100024: CornerStuds04
+    100026: DoorAssembly
+    100028: DoubleTopPlate01
+    100030: DoubleTopPlate02
+    100032: DoubleTopPlate03
+    100034: DoubleTopPlate04
+    100036: GableEndRafters
+    100038: GableStuds
+    100040: Hip Jack Rafters 120
+    100042: HipRafter01
+    100044: HipRafters02
+    100046: JackRafters01
+    100048: JackRafters02
+    100050: RidgeMember
+    100052: //RootNode
+    100054: Top Plate 29
+    100056: Top Plate 30
+    100058: Traingle 02
+    100060: Traingle 03
+    100062: Traingle 03 1
+    100064: Traingle 04
+    100066: Traingle 05
+    100068: Traingle 06
+    100070: Traingle 07
+    100072: Traingle 09
+    100074: Traingle 10
+    100076: Traingle 11
+    100078: WallStuds01
+    100080: WallStuds02
+    100082: WallStuds03
+    100084: WallStuds04
+    100086: WindowsAssembly01
+    100088: WindowsAssembly02
+    400000: BottomPlate01
+    400002: BottomPlate02
+    400004: BottomPlate03
+    400006: BottomPlate04
+    400008: ChamferBox85
+    400010: Common Rafters 47
+    400012: CommonRafters01
+    400014: CommonRafters02
+    400016: CommonRafters03
+    400018: CornerStuds01
+    400020: CornerStuds02
+    400022: CornerStuds03
+    400024: CornerStuds04
+    400026: DoorAssembly
+    400028: DoubleTopPlate01
+    400030: DoubleTopPlate02
+    400032: DoubleTopPlate03
+    400034: DoubleTopPlate04
+    400036: GableEndRafters
+    400038: GableStuds
+    400040: Hip Jack Rafters 120
+    400042: HipRafter01
+    400044: HipRafters02
+    400046: JackRafters01
+    400048: JackRafters02
+    400050: RidgeMember
+    400052: //RootNode
+    400054: Top Plate 29
+    400056: Top Plate 30
+    400058: Traingle 02
+    400060: Traingle 03
+    400062: Traingle 03 1
+    400064: Traingle 04
+    400066: Traingle 05
+    400068: Traingle 06
+    400070: Traingle 07
+    400072: Traingle 09
+    400074: Traingle 10
+    400076: Traingle 11
+    400078: WallStuds01
+    400080: WallStuds02
+    400082: WallStuds03
+    400084: WallStuds04
+    400086: WindowsAssembly01
+    400088: WindowsAssembly02
+    2100000: Triangle 1
+    2100002: Triangle 2
+    2100004: Triangle 5
+    2100006: 02 - Default
+    2300000: BottomPlate01
+    2300002: BottomPlate02
+    2300004: BottomPlate03
+    2300006: BottomPlate04
+    2300008: CommonRafters01
+    2300010: CommonRafters02
+    2300012: CommonRafters03
+    2300014: CornerStuds01
+    2300016: CornerStuds02
+    2300018: CornerStuds03
+    2300020: CornerStuds04
+    2300022: DoorAssembly
+    2300024: DoubleTopPlate01
+    2300026: DoubleTopPlate02
+    2300028: DoubleTopPlate03
+    2300030: DoubleTopPlate04
+    2300032: GableEndRafters
+    2300034: GableStuds
+    2300036: HipRafter01
+    2300038: HipRafters02
+    2300040: JackRafters01
+    2300042: JackRafters02
+    2300044: RidgeMember
+    2300046: Top Plate 29
+    2300048: Top Plate 30
+    2300050: Traingle 02
+    2300052: Traingle 03
+    2300054: Traingle 03 1
+    2300056: Traingle 04
+    2300058: Traingle 05
+    2300060: Traingle 06
+    2300062: Traingle 07
+    2300064: Traingle 09
+    2300066: Traingle 10
+    2300068: Traingle 11
+    2300070: WallStuds01
+    2300072: WallStuds02
+    2300074: WallStuds03
+    2300076: WallStuds04
+    2300078: WindowsAssembly01
+    2300080: WindowsAssembly02
+    3300000: BottomPlate01
+    3300002: BottomPlate02
+    3300004: BottomPlate03
+    3300006: BottomPlate04
+    3300008: CommonRafters01
+    3300010: CommonRafters02
+    3300012: CommonRafters03
+    3300014: CornerStuds01
+    3300016: CornerStuds02
+    3300018: CornerStuds03
+    3300020: CornerStuds04
+    3300022: DoorAssembly
+    3300024: DoubleTopPlate01
+    3300026: DoubleTopPlate02
+    3300028: DoubleTopPlate03
+    3300030: DoubleTopPlate04
+    3300032: GableEndRafters
+    3300034: GableStuds
+    3300036: HipRafter01
+    3300038: HipRafters02
+    3300040: JackRafters01
+    3300042: JackRafters02
+    3300044: RidgeMember
+    3300046: Top Plate 29
+    3300048: Top Plate 30
+    3300050: Traingle 02
+    3300052: Traingle 03
+    3300054: Traingle 03 1
+    3300056: Traingle 04
+    3300058: Traingle 05
+    3300060: Traingle 06
+    3300062: Traingle 07
+    3300064: Traingle 09
+    3300066: Traingle 10
+    3300068: Traingle 11
+    3300070: WallStuds01
+    3300072: WallStuds02
+    3300074: WallStuds03
+    3300076: WallStuds04
+    3300078: WindowsAssembly01
+    3300080: WindowsAssembly02
+    4300000: Traingle 03
+    4300002: Traingle 03
+    4300004: Traingle 02
+    4300006: Traingle 04
+    4300008: Traingle 05
+    4300010: Traingle 06
+    4300012: Traingle 07
+    4300014: Traingle 09
+    4300016: Traingle 10
+    4300018: Traingle 11
+    4300020: CommonRafters01
+    4300022: CommonRafters03
+    4300024: CommonRafters02
+    4300026: GableEndRafters
+    4300028: HipRafter01
+    4300030: Top Plate 30
+    4300032: Top Plate 29
+    4300034: HipRafters02
+    4300036: RidgeMember
+    4300038: GableStuds
+    4300040: BottomPlate04
+    4300042: BottomPlate03
+    4300044: DoubleTopPlate01
+    4300046: BottomPlate01
+    4300048: BottomPlate02
+    4300050: DoubleTopPlate04
+    4300052: DoubleTopPlate02
+    4300054: DoubleTopPlate03
+    4300056: WindowsAssembly01
+    4300058: CornerStuds04
+    4300060: CornerStuds01
+    4300062: CornerStuds02
+    4300064: CornerStuds03
+    4300066: WallStuds01
+    4300068: WallStuds04
+    4300070: WallStuds02
+    4300072: DoorAssembly
+    4300074: WindowsAssembly02
+    4300076: WallStuds03
+    4300078: JackRafters01
+    4300080: JackRafters02
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
