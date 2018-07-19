@@ -99,6 +99,13 @@ public class Node
     /// </summary>
     public bool Selected { get; set; }
 
+    private Material _material;
+    public Material Material
+    {
+        get { return _material; }
+        set { _material = value; }
+    }
+
     /// <summary>
     /// default constructor
     /// </summary>
@@ -109,6 +116,7 @@ public class Node
         P0 = Vector3.zero;
         R0 = Quaternion.identity;
         S0 = Vector3.one;
+        Material = null;
 
         Childs = new List<Node>();
     }
@@ -137,6 +145,16 @@ public class Node
             Bounds = go.GetComponent<Renderer>().bounds;
         else
             Bounds = new Bounds(go.transform.position, Vector3.zero);
+
+        // get original material
+        if (HasMesh)
+            Material = go.GetComponent<Renderer>().material;
+        else
+            Material = null;
+
+        // add collider if doesn't exist
+        if (HasMesh && go.GetComponent<Collider>() == null)
+            go.AddComponent<MeshCollider>();
 
         // check childs
         foreach (Transform child in go.transform)
@@ -193,7 +211,7 @@ public class MultiPartsObject : MonoBehaviour {
     /// <summary>
     /// the virtual size of the object
     /// </summary>
-    [Range(0.0f,10.0f)]
+    [Range(0.0f, 10.0f)]
     [SerializeField]
     private float _virtualScale = 1.0f;
     public float VirtualScale
@@ -213,6 +231,9 @@ public class MultiPartsObject : MonoBehaviour {
         private set { _currentScale = value; }
     }
 
+    /// <summary>
+    /// list of currently selected nodes
+    /// </summary>
     private List<Node> _selectedNodes;
     public List<Node> SelectedNodes
     {
@@ -223,9 +244,31 @@ public class MultiPartsObject : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// highlight material for selected nodes
+    /// </summary>
+    [SerializeField]
+    private Material _highlightMaterial;
+    public Material HighlightMaterial
+    {
+        get { return _highlightMaterial; }
+        set { _highlightMaterial = value; }
+    }
+
+    /// <summary>
+    /// the frame attached to the controller frame (could be the head for gazing)
+    /// </summary>
+    [SerializeField]
+    private GameObject _movableFrame;
+    public GameObject MovableFrame
+    {
+        get { return _movableFrame; }
+    }
+
 	// Use this for initialization
 	void Start () {
         Setup();
+        //FitToScale(Root, VirtualScale);
 	}
 
     // Update is called once per frame
@@ -233,36 +276,22 @@ public class MultiPartsObject : MonoBehaviour {
     {
         if (Input.GetKeyUp(KeyCode.Q))
         {
-            GameObject mover = GameObject.Find("Mover");
-            foreach (var obj in SelectedNodes)
-            {
-                if(obj.Childs.Count > 0)
-                {
-                    foreach (var child in obj.Childs)
-                        if (child.GameObject.transform.parent.gameObject == child.Parent.GameObject)
-                            child.GameObject.transform.SetParent(this.transform);
-                }
-                obj.GameObject.transform.SetParent(mover.transform);
-            }
+            Grab();
         }
 
         if (Input.GetKeyUp(KeyCode.W))
         {
-            foreach (var obj in SelectedNodes)
-            {
-                if (obj.Childs.Count > 0)
-                {
-                    foreach(var child in obj.Childs)
-                    {
-                        child.GameObject.transform.SetParent(obj.GameObject.transform);
-                    }
-                }
+            Release();
+        }
 
-                if (obj.Parent == null)
-                    obj.GameObject.transform.SetParent(this.transform);
-                else
-                    obj.GameObject.transform.SetParent(obj.Parent.GameObject.transform);
-            }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            Select();
+        }
+
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            Deselect();
         }
     }
 
@@ -271,11 +300,6 @@ public class MultiPartsObject : MonoBehaviour {
         if (Root != null)
             FitToScale(Root,VirtualScale);
     }
-
-    /*private void OnTransformChildrenChanged()
-    {
-        Setup();
-    }*/
 
     /// <summary>
     /// setup root and dictionary
@@ -342,24 +366,111 @@ public class MultiPartsObject : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// select a node that contains the game object pointed by the objectpointer
+    /// </summary>
+    public void Select()
+    {
+        if (ObjectPointer.Instance.HitInfo.collider != null)
+            Select(ObjectPointer.Instance.HitInfo.collider.gameObject);
+    }
+
+    /// <summary>
+    /// select a node that contains the specified game object
+    /// </summary>
     public void Select(GameObject go)
     {
         Node selectedNode = null;
         if(Dict.TryGetValue(go,out selectedNode))
         {
             selectedNode.Selected = true;
+            if (selectedNode.HasMesh)
+                selectedNode.GameObject.GetComponent<Renderer>().material = new Material(HighlightMaterial);
             if (!SelectedNodes.Contains(selectedNode))
                 SelectedNodes.Add(selectedNode);
         }
     }
 
+    /// <summary>
+    /// deselect a node that contains the game object pointed by the objectpointer
+    /// </summary>
+    public void Deselect()
+    {
+        if (ObjectPointer.Instance.HitInfo.collider != null)
+            Deselect(ObjectPointer.Instance.HitInfo.collider.gameObject);
+    }
+
+    /// <summary>
+    /// deselect a node that contains the specified game object
+    /// </summary>
     public void Deselect(GameObject go)
     {
         Node deselectedNode = null;
         if (Dict.TryGetValue(go, out deselectedNode))
         {
             deselectedNode.Selected = false;
+            if (deselectedNode.HasMesh)
+                deselectedNode.GameObject.GetComponent<Renderer>().material = deselectedNode.Material;
             SelectedNodes.Remove(deselectedNode);
+        }
+    }
+
+    /// <summary>
+    /// grab all selected object and put them under movable frame
+    /// </summary>
+    public void Grab()
+    {
+        if (MovableFrame != null)
+        {
+            foreach (var obj in SelectedNodes)
+            {
+                if (obj.Childs.Count > 0)
+                {
+                    foreach (var child in obj.Childs)
+                        if (child.GameObject.transform.parent.gameObject == child.Parent.GameObject)
+                            child.GameObject.transform.SetParent(this.transform);
+                }
+                obj.GameObject.transform.SetParent(MovableFrame.transform);
+            }
+        }
+    }
+
+    /// <summary>
+    /// call grab if pointer is pointing at a gameobject that is one of the selected node
+    /// </summary>
+    public void GrabIfPointingAt()
+    {
+        if(ObjectPointer.Instance.HitInfo.collider != null)
+        {
+            GameObject hitObject = ObjectPointer.Instance.HitInfo.collider.gameObject;
+            Node hitNode = null;
+            if(Dict.TryGetValue(hitObject,out hitNode))
+            {
+                if (SelectedNodes.Contains(hitNode))
+                    Grab();
+            }
+        }
+    }
+
+    /// <summary>
+    /// release all selected object and put them back to their original structure
+    /// </summary>
+    public void Release()
+    {
+        foreach (var obj in SelectedNodes)
+        {
+            if (obj.Childs.Count > 0)
+            {
+                foreach (var child in obj.Childs)
+                {
+                    child.GameObject.transform.SetParent(obj.GameObject.transform);
+                }
+            }
+
+            if (obj.Parent == null)
+                obj.GameObject.transform.SetParent(this.transform);
+            else
+                obj.GameObject.transform.SetParent(obj.Parent.GameObject.transform);
         }
     }
 
