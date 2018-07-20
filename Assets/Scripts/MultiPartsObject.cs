@@ -99,6 +99,9 @@ public class Node
     /// </summary>
     public bool Selected { get; set; }
 
+	/// <summary>
+	/// original material of the geometry in the node
+	/// </summary>
     private Material _material;
     public Material Material
     {
@@ -267,6 +270,9 @@ public class MultiPartsObject : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if (MovableFrame == null)
+			Debug.LogWarning ("no movable frame assigned. will not be able to move objects around.");
+
         Setup();
         //FitToScale(Root, VirtualScale);
 	}
@@ -274,6 +280,7 @@ public class MultiPartsObject : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+		// test input without AR/VR setup
         if (Input.GetKeyUp(KeyCode.Q))
         {
             Grab();
@@ -382,14 +389,19 @@ public class MultiPartsObject : MonoBehaviour {
     {
         Node selectedNode = null;
         if(Dict.TryGetValue(go,out selectedNode))
-        {
-            selectedNode.Selected = true;
-            if (selectedNode.HasMesh)
-                selectedNode.GameObject.GetComponent<Renderer>().material = new Material(HighlightMaterial);
-            if (!SelectedNodes.Contains(selectedNode))
-                SelectedNodes.Add(selectedNode);
-        }
+			Select (selectedNode);
     }
+
+	/// <summary>
+	/// select the specified node
+	/// </summary>
+	public void Select(Node node){
+		node.Selected = true;
+		if (node.HasMesh)
+			node.GameObject.GetComponent<Renderer>().material = new Material(HighlightMaterial);
+		if (!SelectedNodes.Contains(node))
+			SelectedNodes.Add(node);
+	}
 
     /// <summary>
     /// deselect a node that contains the game object pointed by the objectpointer
@@ -407,13 +419,45 @@ public class MultiPartsObject : MonoBehaviour {
     {
         Node deselectedNode = null;
         if (Dict.TryGetValue(go, out deselectedNode))
-        {
-            deselectedNode.Selected = false;
-            if (deselectedNode.HasMesh)
-                deselectedNode.GameObject.GetComponent<Renderer>().material = deselectedNode.Material;
-            SelectedNodes.Remove(deselectedNode);
-        }
+			Deselect (deselectedNode);
     }
+
+	/// <summary>
+	/// Deselect the specified node.
+	/// </summary>
+	public void Deselect(Node node){
+		node.Selected = false;
+		if (node.HasMesh)
+			node.GameObject.GetComponent<Renderer>().material = node.Material;
+		SelectedNodes.Remove(node);
+	}
+
+	/// <summary>
+	/// toggle select a node that contains the game object pointed by the objectpointer
+	/// </summary>
+	public void ToggleSelect(){
+		if (ObjectPointer.Instance.HitInfo.collider != null)
+			ToggleSelect (ObjectPointer.Instance.HitInfo.collider.gameObject);
+	}
+
+	/// <summary>
+	/// Toggle select a node that contains this game object
+	/// </summary>
+	public void ToggleSelect(GameObject go){
+		Node node = null;
+		if (Dict.TryGetValue (go, out node))
+			ToggleSelect (node);
+	}
+
+	/// <summary>
+	/// Toggles select the specified node
+	/// </summary>
+	public void ToggleSelect(Node node){
+		if (node.Selected)
+			Deselect (node);
+		else
+			Select (node);
+	}
 
     /// <summary>
     /// grab all selected object and put them under movable frame
