@@ -30,7 +30,7 @@ public class SteamInterface : MonoBehaviour {
 		if (device.GetPressUp (SteamVR_Controller.ButtonMask.Touchpad)) {
 			mpo.ToggleSelect ();
 		} else if (device.GetPressDown (SteamVR_Controller.ButtonMask.Trigger)) {
-			mpo.Grab ();
+			mpo.GrabIfPointingAt ();
 		} else if (device.GetPressUp (SteamVR_Controller.ButtonMask.Trigger)) {
 			mpo.Release ();
 		} else if (device.GetPressDown (SteamVR_Controller.ButtonMask.Grip)) {
