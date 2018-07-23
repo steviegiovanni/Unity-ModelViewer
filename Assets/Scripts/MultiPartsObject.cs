@@ -280,7 +280,7 @@ namespace ModelViewer
                 Debug.LogWarning("no movable frame assigned. will not be able to move objects around.");
 
             Setup();
-            //FitToScale(Root, VirtualScale);
+            FitToScale(Root, VirtualScale);
         }
 
         // Update is called once per frame
@@ -512,6 +512,7 @@ namespace ModelViewer
         /// </summary>
         public void Release()
         {
+            Debug.Log("lalalala");
             foreach (var obj in SelectedNodes)
             {
                 if (obj.Childs.Count > 0)

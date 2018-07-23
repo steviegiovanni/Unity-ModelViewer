@@ -93,6 +93,8 @@ public class ObjectPointer : Singleton<ObjectPointer> {
 
         // raycast to get hitInfo
         if (Physics.Raycast(ray, out _hitInfo, 20.0f, Physics.DefaultRaycastLayers))
-            Debug.Log(_hitInfo.collider.gameObject.name);
+        {
+
+        }
 	}
 }
