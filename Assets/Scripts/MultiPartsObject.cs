@@ -288,15 +288,7 @@ public class MultiPartsObject : MonoBehaviour {
 
         if (Input.GetKeyUp(KeyCode.W))
         {
-<<<<<<< HEAD
             Release();
-=======
-            if (MovableFrame == null)
-                Debug.LogWarning("no movable frame assigned. will not be able to move objects around.");
-
-            Setup();
-            FitToScale(Root, VirtualScale);
->>>>>>> 0af70ac... added hololens interface and interaction
         }
 
         if (Input.GetKeyUp(KeyCode.A))
@@ -511,12 +503,7 @@ public class MultiPartsObject : MonoBehaviour {
     {
         foreach (var obj in SelectedNodes)
         {
-<<<<<<< HEAD
             if (obj.Childs.Count > 0)
-=======
-            Debug.Log("lalalala");
-            foreach (var obj in SelectedNodes)
->>>>>>> 0af70ac... added hololens interface and interaction
             {
                 foreach (var child in obj.Childs)
                 {
