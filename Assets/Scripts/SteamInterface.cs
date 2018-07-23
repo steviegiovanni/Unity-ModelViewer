@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ModelViewer;
 
 /// <summary>
 /// interfaces Steam input with MultiPartsObject's interaction
@@ -38,6 +39,7 @@ public class SteamInterface : MonoBehaviour {
 		} else if (device.GetPressUp (SteamVR_Controller.ButtonMask.Grip)) {
 			//mpo.Release();
 			mpo.ResetTransform (mpo.Root);
+			mpo.FitToScale (mpo.Root, mpo.VirtualScale);
 		}
 	}
 }
