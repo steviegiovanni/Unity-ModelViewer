@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utilities;
 
 /// <summary>
 /// interface for everything that uses a ray
@@ -91,7 +92,7 @@ public class ObjectPointer : Singleton<ObjectPointer> {
 		}
 
         // raycast to get hitInfo
-        if (Physics.Raycast(ray, out _hitInfo, 20.0f, Physics.DefaultRaycastLayers))
-            Debug.Log(_hitInfo.collider.gameObject.name);
+        if (Physics.Raycast(ray, out _hitInfo, 20.0f, Physics.DefaultRaycastLayers)) { }
+            //Debug.Log(_hitInfo.collider.gameObject.name);
 	}
 }
