@@ -111,6 +111,15 @@ namespace ModelViewer
             set { _material = value; }
         }
 
+		/// <summary>
+		/// flag whether this node has been grouped
+		/// </summary>
+		private bool _grouped = true;
+		public bool Grouped{
+			get{ return _grouped;}
+			set{ _grouped = value;}
+		}
+
         /// <summary>
         /// default constructor
         /// </summary>
@@ -406,7 +415,7 @@ namespace ModelViewer
             node.Selected = true;
             if (node.HasMesh)
                 node.GameObject.GetComponent<Renderer>().material = new Material(HighlightMaterial);
-            if (!SelectedNodes.Contains(node))
+            //if (!SelectedNodes.Contains(node))
                 SelectedNodes.Add(node);
         }
 
@@ -528,6 +537,77 @@ namespace ModelViewer
                     obj.GameObject.transform.SetParent(obj.Parent.GameObject.transform);
             }
         }
+
+		/// <summary>
+		/// ungroup a node and all it's children
+		/// </summary>
+		public void Ungroup(Node node){
+			if (node != null) {
+				node.Grouped = false;
+
+				foreach (var child in node.Childs)
+					Ungroup (child);
+			}
+		}
+
+		/// <summary>
+		/// select the group of nodes that contains the game object pointed by the objectpointer
+		/// </summary>
+		public void SelectGroup(){
+			if (ObjectPointer.Instance.HitInfo.collider != null)
+				SelectGroup(ObjectPointer.Instance.HitInfo.collider.gameObject);
+		}
+
+		/// <summary>
+		/// Selects the group containing this go
+		/// </summary>
+		public void SelectGroup(GameObject go){
+			Debug.Log ("shalala reached");
+			Node selectedNode = null;
+			if (Dict.TryGetValue(go, out selectedNode))
+				SelectGroup(selectedNode);
+		}
+
+		/// <summary>
+		/// select a node and all it's surrounding nodes in the same group
+		/// </summary>
+		public void SelectGroup(Node node){
+			Debug.Log ("hmmmmmm...");
+			Select (node);
+			if (node.Grouped) { // if this node is grouped, check surroundings
+				HashSet<Node> passed = new HashSet<Node>();
+				passed.Add (node);
+
+				// check parent
+				SelectGroupRecursive(node.Parent,passed);
+
+				// check child
+				foreach (var child in node.Childs)
+					SelectGroupRecursive (child, passed);
+			}
+		}
+
+		/// <summary>
+		/// recurssive part of select group
+		/// </summary>
+		public void SelectGroupRecursive(Node node, HashSet<Node> passed){
+			if (node == null)
+				return;
+
+			if (passed.Contains (node))
+				return;
+
+			passed.Add (node);
+			Debug.Log (passed.Count);
+
+			if (!node.HasMesh || (node.HasMesh && node.Grouped)) {
+				Select (node);
+				SelectGroupRecursive (node.Parent,passed);
+				foreach (var child in node.Childs) {
+					SelectGroupRecursive (child, passed);
+				}
+			}
+		}
 
         /// ==================================================
         /// Gizmo stuff

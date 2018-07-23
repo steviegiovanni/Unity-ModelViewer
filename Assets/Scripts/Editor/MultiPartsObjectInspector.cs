@@ -38,17 +38,19 @@ namespace ModelViewer
         {
             if (node != null)
             {
-                //node.Selected = GUILayout.Toggle(node.Selected,node.GameObject.name, "Button");
-                bool selected = GUILayout.Toggle(node.Selected, node.GameObject.name, "Button");
-                if (selected)
-                    obj.Select(node.GameObject);
-                else
-                    obj.Deselect(node.GameObject);
+				GUILayout.BeginHorizontal();
+				if (GUILayout.Button (node.GameObject.name, "Button")) {
+					obj.SelectGroup(node.GameObject);
+				}
+				if (GUILayout.Button (node.Selected ? "*" : " ", "Button",GUILayout.Width(20))) {
+					obj.ToggleSelect(node.GameObject);
+				}
+				GUILayout.EndHorizontal();
 
                 foreach (var child in node.Childs)
                 {
                     GUILayout.BeginHorizontal();
-                    GUILayout.Space(20);
+					GUILayout.Space(20);
                     DisplayNodeInfo(child);
                     GUILayout.EndHorizontal();
                 }
