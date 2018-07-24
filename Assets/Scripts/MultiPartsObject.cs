@@ -609,8 +609,10 @@ namespace ModelViewer
                 Node hitNode = null;
                 if (Dict.TryGetValue(hitObject, out hitNode))
                 {
-                    if (SelectedNodes.Contains(hitNode))
-                        Grab();
+					if (SelectedNodes.Contains (hitNode)) {
+						MovableFrame.transform.position = ObjectPointer.Instance.HitInfo.point;
+						Grab ();
+					}
                 }
             }
         }
