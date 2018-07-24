@@ -81,18 +81,21 @@ public class ObjectPointer : Singleton<ObjectPointer> {
         else
             ray = Ray.GetRay();
 
+        // raycast to get hitInfo
+		if (Physics.Raycast(ray, out _hitInfo, Mathf.Infinity, Physics.DefaultRaycastLayers)) { }
+            //Debug.Log(_hitInfo.collider.gameObject.name);
+
 		// draw ray if there's a line renderer and ray is visible
 		if (LR != null) {
 			if (RayVisible) {
 				LR.SetPosition (0, ray.origin);
-				LR.SetPosition (1, ray.origin + ray.direction * 10);
+				if(HitInfo.collider != null)
+					LR.SetPosition (1, HitInfo.point);
+				else
+					LR.SetPosition (1, ray.origin + ray.direction * 100f);
 			} else {
 				LR.enabled = false;
 			}
 		}
-
-        // raycast to get hitInfo
-        if (Physics.Raycast(ray, out _hitInfo, 20.0f, Physics.DefaultRaycastLayers)) { }
-            //Debug.Log(_hitInfo.collider.gameObject.name);
 	}
 }

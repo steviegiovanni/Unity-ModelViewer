@@ -111,15 +111,6 @@ namespace ModelViewer
             set { _material = value; }
         }
 
-		/// <summary>
-		/// flag whether this node has been grouped
-		/// </summary>
-		private bool _grouped = true;
-		public bool Grouped{
-			get{ return _grouped;}
-			set{ _grouped = value;}
-		}
-
         /// <summary>
         /// default constructor
         /// </summary>
@@ -147,8 +138,8 @@ namespace ModelViewer
             GameObject = go;
 
             // get the original transforms
-            P0 = go.transform.position;
-            R0 = go.transform.rotation;
+			P0 = go.transform.position;
+			R0 = go.transform.rotation;
             S0 = go.transform.localScale;
 
             // check whether game object has a mesh
@@ -177,6 +168,48 @@ namespace ModelViewer
             }
         }
 
+		/// <summary>
+		/// constructor that takes a go and a parent node as well as the cage transform
+		/// </summary>
+		public Node(GameObject go, Node parent, Transform cage)
+		{
+			// assign parent
+			Parent = parent;
+
+			// assign game object
+			GameObject = go;
+
+			// get the original transforms
+			P0 = cage.InverseTransformPoint(go.transform.position);
+			R0 = go.transform.rotation;
+			S0 = go.transform.localScale;
+
+			// check whether game object has a mesh
+			HasMesh = go.GetComponent<MeshFilter>() != null;
+
+			// get starting bounds
+			if (HasMesh)
+				Bounds = go.GetComponent<Renderer>().bounds;
+			else
+				Bounds = new Bounds(go.transform.position, Vector3.zero);
+
+			// get original material
+			if (HasMesh)
+				Material = go.GetComponent<Renderer>().material;
+			else
+				Material = null;
+
+			// add collider if doesn't exist
+			if (HasMesh && go.GetComponent<Collider>() == null)
+				go.AddComponent<MeshCollider>();
+
+			// check childs
+			foreach (Transform child in go.transform)
+			{
+				Childs.Add(new Node(child.gameObject, this,cage));
+			}
+		}
+
         /// <summary>
         /// return the cumulative bounds of a node and its childs
         /// </summary>
@@ -200,6 +233,15 @@ namespace ModelViewer
     /// </summary>
     public class MultiPartsObject : MonoBehaviour
     {
+		/// <summary>
+		/// original position of the cage
+		/// </summary>
+		private Vector3 _cagePos;
+		public Vector3 CagePos{
+			get{ return _cagePos;}
+			set{ _cagePos = value;}
+		}
+
         /// <summary>
         /// the root node
         /// </summary>
@@ -272,6 +314,17 @@ namespace ModelViewer
             set { _highlightMaterial = value; }
         }
 
+		/// <summary>
+		/// highlight material for selected nodes
+		/// </summary>
+		[SerializeField]
+		private Material _silhouetteMaterial;
+		public Material SilhouetteMaterial
+		{
+			get { return _silhouetteMaterial; }
+			set { _silhouetteMaterial = value; }
+		}
+
         /// <summary>
         /// the frame attached to the controller frame (could be the head for gazing)
         /// </summary>
@@ -281,16 +334,57 @@ namespace ModelViewer
         {
             get { return _movableFrame; }
         }
+			
+
+		/// <summary>
+		/// The snap threshold
+		/// </summary>
+		[Range(0.0f, 1.0f)]
+		[SerializeField]
+		private float _snapThreshold = 0.1f;
+		public float SnapThreshold{
+			get{ return _snapThreshold;}
+			set{ _snapThreshold = value;}
+		}
+
+		private GameObject _silhouette = null;
 
         // Use this for initialization
         void Start()
         {
+			CagePos = this.transform.position;
+
             if (MovableFrame == null)
                 Debug.LogWarning("no movable frame assigned. will not be able to move objects around.");
 
             Setup();
             FitToScale(Root, VirtualScale);
+
+			_silhouette = new GameObject ("Silhouette");
+			_silhouette.transform.SetPositionAndRotation (this.transform.position, this.transform.rotation);
+			_silhouette.transform.localScale = this.transform.localScale;
+			GameObject silhouette = Instantiate (Root.GameObject, _silhouette.transform);
+			MakeSilhouette (silhouette);
+			Scatter (Root);
         }
+
+		public void MakeSilhouette (GameObject go){
+			if (go.GetComponent<Collider> () != null)
+				Destroy (go.GetComponent<Collider> ());
+			if (go.GetComponent<Renderer> () != null)
+				go.GetComponent<Renderer> ().material = SilhouetteMaterial;
+			foreach (Transform child in go.transform)
+				MakeSilhouette (child.gameObject);
+		}
+
+		public void Scatter(Node node){
+			if (node.HasMesh) {
+				node.GameObject.transform.position = Random.insideUnitSphere * 2;
+			}
+
+			foreach (var child in node.Childs)
+				Scatter (child);
+		}
 
         // Update is called once per frame
         void Update()
@@ -341,7 +435,7 @@ namespace ModelViewer
             else // construct internal data structure and dictionary if there's a loaded object
             {
                 // initialize root
-                Root = new Node(this.transform.GetChild(0).gameObject, null);
+				Root = new Node(this.transform.GetChild(0).gameObject, null,this.transform);
 
                 // setup dictionary
                 Dict.Clear();
@@ -368,8 +462,11 @@ namespace ModelViewer
                 Bounds b = node.GetCumulativeBounds();
                 float scaleFactor = scale / b.size.magnitude;
                 CurrentScale = scaleFactor;
-                node.GameObject.transform.localScale = node.S0 * scaleFactor;
-                node.GameObject.transform.position = node.P0 - b.center * scaleFactor;
+				this.transform.localScale = Vector3.one * scaleFactor;
+				//this.transform.position = this.transform.position - (b.center  - this.transform.position) * scaleFactor;
+				this.transform.position = CagePos - (b.center  - CagePos) * scaleFactor;
+                //node.GameObject.transform.localScale = node.S0 * scaleFactor;
+				//node.GameObject.transform.position = this.transform.position - (b.center - this.transform.position) * scaleFactor;
             }
         }
 
@@ -381,7 +478,9 @@ namespace ModelViewer
             CurrentScale = 1.0f;
             if (node != null)
             {
-                node.GameObject.transform.SetPositionAndRotation(node.P0, node.R0);
+				//node.GameObject.transform.localPosition = node.P0;
+				//node.GameObject.transform.localRotation = node.R0;
+				node.GameObject.transform.SetPositionAndRotation(this.transform.TransformPoint(node.P0), node.R0);
                 node.GameObject.transform.localScale = node.S0;
                 foreach (var child in node.Childs)
                     ResetTransform(child);
@@ -523,6 +622,7 @@ namespace ModelViewer
         {
             foreach (var obj in SelectedNodes)
             {
+				Snap (obj);
                 if (obj.Childs.Count > 0)
                 {
                     foreach (var child in obj.Childs)
@@ -538,76 +638,15 @@ namespace ModelViewer
             }
         }
 
-		/// <summary>
-		/// ungroup a node and all it's children
-		/// </summary>
-		public void Ungroup(Node node){
-			if (node != null) {
-				node.Grouped = false;
-
-				foreach (var child in node.Childs)
-					Ungroup (child);
+		public void Snap(Node node){
+			//Vector3 oriPosRelativeToCage = node.P0 - CagePos;
+			Vector3 oriPosAfterSetup = this.transform.TransformPoint(node.P0);
+			if (Vector3.Distance (node.GameObject.transform.position,oriPosAfterSetup) < SnapThreshold) {
+				node.GameObject.transform.position = oriPosAfterSetup;
+				node.GameObject.transform.rotation = node.R0;
 			}
 		}
 
-		/// <summary>
-		/// select the group of nodes that contains the game object pointed by the objectpointer
-		/// </summary>
-		public void SelectGroup(){
-			if (ObjectPointer.Instance.HitInfo.collider != null)
-				SelectGroup(ObjectPointer.Instance.HitInfo.collider.gameObject);
-		}
-
-		/// <summary>
-		/// Selects the group containing this go
-		/// </summary>
-		public void SelectGroup(GameObject go){
-			Debug.Log ("shalala reached");
-			Node selectedNode = null;
-			if (Dict.TryGetValue(go, out selectedNode))
-				SelectGroup(selectedNode);
-		}
-
-		/// <summary>
-		/// select a node and all it's surrounding nodes in the same group
-		/// </summary>
-		public void SelectGroup(Node node){
-			Debug.Log ("hmmmmmm...");
-			Select (node);
-			if (node.Grouped) { // if this node is grouped, check surroundings
-				HashSet<Node> passed = new HashSet<Node>();
-				passed.Add (node);
-
-				// check parent
-				SelectGroupRecursive(node.Parent,passed);
-
-				// check child
-				foreach (var child in node.Childs)
-					SelectGroupRecursive (child, passed);
-			}
-		}
-
-		/// <summary>
-		/// recurssive part of select group
-		/// </summary>
-		public void SelectGroupRecursive(Node node, HashSet<Node> passed){
-			if (node == null)
-				return;
-
-			if (passed.Contains (node))
-				return;
-
-			passed.Add (node);
-			Debug.Log (passed.Count);
-
-			if (!node.HasMesh || (node.HasMesh && node.Grouped)) {
-				Select (node);
-				SelectGroupRecursive (node.Parent,passed);
-				foreach (var child in node.Childs) {
-					SelectGroupRecursive (child, passed);
-				}
-			}
-		}
 
         /// ==================================================
         /// Gizmo stuff

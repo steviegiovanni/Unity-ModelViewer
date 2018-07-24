@@ -39,7 +39,7 @@ public class SteamInterface : MonoBehaviour {
 		} else if (device.GetPressUp (SteamVR_Controller.ButtonMask.Grip)) {
 			//mpo.Release();
 			mpo.ResetTransform (mpo.Root);
-			mpo.FitToScale (mpo.Root, mpo.VirtualScale);
+			//mpo.FitToScale (mpo.Root, mpo.VirtualScale);
 		}
 	}
 }

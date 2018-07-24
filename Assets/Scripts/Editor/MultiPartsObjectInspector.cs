@@ -40,7 +40,7 @@ namespace ModelViewer
             {
 				GUILayout.BeginHorizontal();
 				if (GUILayout.Button (node.GameObject.name, "Button")) {
-					obj.SelectGroup(node.GameObject);
+					obj.ToggleSelect(node.GameObject);
 				}
 				if (GUILayout.Button (node.Selected ? "*" : " ", "Button",GUILayout.Width(20))) {
 					obj.ToggleSelect(node.GameObject);
