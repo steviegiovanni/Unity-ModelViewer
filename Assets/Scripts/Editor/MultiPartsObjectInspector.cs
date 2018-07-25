@@ -42,9 +42,9 @@ namespace ModelViewer
 				if (GUILayout.Button (node.GameObject.name, "Button")) {
 					obj.ToggleSelect(node.GameObject);
 				}
-				if (GUILayout.Button (node.Selected ? "*" : " ", "Button",GUILayout.Width(20))) {
+				/*if (GUILayout.Button (node.Selected ? "*" : " ", "Button",GUILayout.Width(20))) {
 					obj.ToggleSelect(node.GameObject);
-				}
+				}*/
 				GUILayout.EndHorizontal();
 
                 foreach (var child in node.Childs)

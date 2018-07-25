@@ -179,7 +179,7 @@ namespace ModelViewer
 			// assign game object
 			GameObject = go;
 
-			// get the original transforms
+			// get the original transforms, position relative to the cage
 			P0 = cage.InverseTransformPoint(go.transform.position);
 			R0 = go.transform.rotation;
 			S0 = go.transform.localScale;
@@ -327,6 +327,7 @@ namespace ModelViewer
 
         /// <summary>
         /// the frame attached to the controller frame (could be the head for gazing)
+		/// this frame will be used to contain all the selected nodes when grabbed
         /// </summary>
         [SerializeField]
         private GameObject _movableFrame;
@@ -347,27 +348,62 @@ namespace ModelViewer
 			set{ _snapThreshold = value;}
 		}
 
+		/// <summary>
+		/// indicate whether to deselect selected node if they snap
+		/// </summary>
+		[SerializeField]
+		private bool _deselectOnSnapped = true;
+		public bool DeselectOnSnapped{
+			get{ return _deselectOnSnapped;}
+			set{ _deselectOnSnapped = value;}
+		}
+
+		/// <summary>
+		/// container for temporary runtime instantiated silhouette object
+		/// </summary>
 		private GameObject _silhouette = null;
 
         // Use this for initialization
         void Start()
         {
+			// get the initial position of the cage. on runtime the cage will be moved around to make the focused object centered
 			CagePos = this.transform.position;
 
+			// check movable frame exists
             if (MovableFrame == null)
                 Debug.LogWarning("no movable frame assigned. will not be able to move objects around.");
 
             Setup();
             FitToScale(Root, VirtualScale);
-
-			_silhouette = new GameObject ("Silhouette");
-			_silhouette.transform.SetPositionAndRotation (this.transform.position, this.transform.rotation);
-			_silhouette.transform.localScale = this.transform.localScale;
-			GameObject silhouette = Instantiate (Root.GameObject, _silhouette.transform);
-			MakeSilhouette (silhouette);
+			SetupSilhouette ();
 			Scatter (Root);
         }
 
+		/// <summary>
+		/// Setups the silhouette (hints for where all the parts should be placed)
+		/// </summary>
+		public void SetupSilhouette(){
+			// destry previous silhouette
+			if (_silhouette != null)
+				Destroy (_silhouette);
+
+			// create temporary go
+			_silhouette = new GameObject ("Silhouette");
+
+			// sync transform with cage's transform
+			_silhouette.transform.SetPositionAndRotation (this.transform.position, this.transform.rotation);
+			_silhouette.transform.localScale = this.transform.localScale;
+
+			// if setup (root is not null), copy the model
+			if (Root != null) {
+				GameObject silhouette = Instantiate (Root.GameObject, _silhouette.transform);
+				MakeSilhouette (silhouette); // call makesilhouette recursive
+			}
+		}
+
+		/// <summary>
+		/// recursive function to create a silhouette of the viewed model
+		/// </summary>
 		public void MakeSilhouette (GameObject go){
 			if (go.GetComponent<Collider> () != null)
 				Destroy (go.GetComponent<Collider> ());
@@ -377,6 +413,9 @@ namespace ModelViewer
 				MakeSilhouette (child.gameObject);
 		}
 
+		/// <summary>
+		/// recursive function to scatter components of viewed model around the area
+		/// </summary>
 		public void Scatter(Node node){
 			if (node.HasMesh) {
 				node.GameObject.transform.position = Random.insideUnitSphere * 2;
@@ -411,18 +450,12 @@ namespace ModelViewer
             }
         }
 
-        private void OnValidate()
-        {
-            if (Root != null)
-                FitToScale(Root, VirtualScale);
-        }
-
         /// <summary>
         /// setup root and dictionary
         /// </summary>
         public void Setup()
         {
-            CurrentScale = 1.0f;
+			// clear selected nodes
             SelectedNodes.Clear();
 
             // if there's no child object, clear dictionary and null root
@@ -453,7 +486,7 @@ namespace ModelViewer
         }
 
         /// <summary>
-        /// resize a node go and its childs to fit a scale
+        /// resize the cage to fit the focused node to a scale
         /// </summary>
         public void FitToScale(Node node, float scale)
         {
@@ -471,7 +504,7 @@ namespace ModelViewer
         }
 
         /// <summary>
-        /// reset transform of game object to its original transform
+        /// reset transform of a node and its children recursively
         /// </summary>
         public void ResetTransform(Node node)
         {
@@ -622,7 +655,22 @@ namespace ModelViewer
         /// </summary>
         public void Release()
         {
-            foreach (var obj in SelectedNodes)
+			Node[] selectedArray = SelectedNodes.ToArray ();
+			for (int i = 0; i < selectedArray.Length; i++) {
+				if (selectedArray [i].Childs.Count > 0) {
+					foreach (var child in selectedArray[i].Childs)
+						child.GameObject.transform.SetParent (selectedArray [i].GameObject.transform);
+				}
+
+				if (selectedArray [i].Parent == null)
+					selectedArray [i].GameObject.transform.SetParent (this.transform);
+				else
+					selectedArray [i].GameObject.transform.SetParent (selectedArray [i].Parent.GameObject.transform);
+
+				Snap (selectedArray [i]);
+			}
+
+            /*foreach (var obj in SelectedNodes)
             {
 				Snap (obj);
                 if (obj.Childs.Count > 0)
@@ -637,15 +685,21 @@ namespace ModelViewer
                     obj.GameObject.transform.SetParent(this.transform);
                 else
                     obj.GameObject.transform.SetParent(obj.Parent.GameObject.transform);
-            }
+            }*/
         }
 
+		/// <summary>
+		/// Snap the specified node to its original position in the cage if it's close enough
+		/// </summary>
 		public void Snap(Node node){
 			//Vector3 oriPosRelativeToCage = node.P0 - CagePos;
 			Vector3 oriPosAfterSetup = this.transform.TransformPoint(node.P0);
 			if (Vector3.Distance (node.GameObject.transform.position,oriPosAfterSetup) < SnapThreshold) {
 				node.GameObject.transform.position = oriPosAfterSetup;
 				node.GameObject.transform.rotation = node.R0;
+
+				if (DeselectOnSnapped)
+					Deselect (node);
 			}
 		}
 
