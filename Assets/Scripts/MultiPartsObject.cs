@@ -138,8 +138,8 @@ namespace ModelViewer
             GameObject = go;
 
             // get the original transforms
-            P0 = go.transform.position;
-            R0 = go.transform.rotation;
+			P0 = go.transform.position;
+			R0 = go.transform.rotation;
             S0 = go.transform.localScale;
 
             // check whether game object has a mesh
@@ -168,6 +168,48 @@ namespace ModelViewer
             }
         }
 
+		/// <summary>
+		/// constructor that takes a go and a parent node as well as the cage transform
+		/// </summary>
+		public Node(GameObject go, Node parent, Transform cage)
+		{
+			// assign parent
+			Parent = parent;
+
+			// assign game object
+			GameObject = go;
+
+			// get the original transforms, position relative to the cage
+			P0 = cage.InverseTransformPoint(go.transform.position);
+			R0 = go.transform.rotation;
+			S0 = go.transform.localScale;
+
+			// check whether game object has a mesh
+			HasMesh = go.GetComponent<MeshFilter>() != null;
+
+			// get starting bounds
+			if (HasMesh)
+				Bounds = go.GetComponent<Renderer>().bounds;
+			else
+				Bounds = new Bounds(go.transform.position, Vector3.zero);
+
+			// get original material
+			if (HasMesh)
+				Material = go.GetComponent<Renderer>().material;
+			else
+				Material = null;
+
+			// add collider if doesn't exist
+			if (HasMesh && go.GetComponent<Collider>() == null)
+				go.AddComponent<MeshCollider>();
+
+			// check childs
+			foreach (Transform child in go.transform)
+			{
+				Childs.Add(new Node(child.gameObject, this,cage));
+			}
+		}
+
         /// <summary>
         /// return the cumulative bounds of a node and its childs
         /// </summary>
@@ -191,6 +233,15 @@ namespace ModelViewer
     /// </summary>
     public class MultiPartsObject : MonoBehaviour
     {
+		/// <summary>
+		/// original position of the cage
+		/// </summary>
+		private Vector3 _cagePos;
+		public Vector3 CagePos{
+			get{ return _cagePos;}
+			set{ _cagePos = value;}
+		}
+
         /// <summary>
         /// the root node
         /// </summary>
@@ -263,8 +314,20 @@ namespace ModelViewer
             set { _highlightMaterial = value; }
         }
 
+		/// <summary>
+		/// highlight material for selected nodes
+		/// </summary>
+		[SerializeField]
+		private Material _silhouetteMaterial;
+		public Material SilhouetteMaterial
+		{
+			get { return _silhouetteMaterial; }
+			set { _silhouetteMaterial = value; }
+		}
+
         /// <summary>
         /// the frame attached to the controller frame (could be the head for gazing)
+		/// this frame will be used to contain all the selected nodes when grabbed
         /// </summary>
         [SerializeField]
         private GameObject _movableFrame;
@@ -272,16 +335,95 @@ namespace ModelViewer
         {
             get { return _movableFrame; }
         }
+			
+
+		/// <summary>
+		/// The snap threshold
+		/// </summary>
+		[Range(0.0f, 1.0f)]
+		[SerializeField]
+		private float _snapThreshold = 0.1f;
+		public float SnapThreshold{
+			get{ return _snapThreshold;}
+			set{ _snapThreshold = value;}
+		}
+
+		/// <summary>
+		/// indicate whether to deselect selected node if they snap
+		/// </summary>
+		[SerializeField]
+		private bool _deselectOnSnapped = true;
+		public bool DeselectOnSnapped{
+			get{ return _deselectOnSnapped;}
+			set{ _deselectOnSnapped = value;}
+		}
+
+		/// <summary>
+		/// container for temporary runtime instantiated silhouette object
+		/// </summary>
+		private GameObject _silhouette = null;
 
         // Use this for initialization
         void Start()
         {
+			// get the initial position of the cage. on runtime the cage will be moved around to make the focused object centered
+			CagePos = this.transform.position;
+
+			// check movable frame exists
             if (MovableFrame == null)
                 Debug.LogWarning("no movable frame assigned. will not be able to move objects around.");
 
             Setup();
             FitToScale(Root, VirtualScale);
+			SetupSilhouette ();
+			Scatter (Root);
         }
+
+		/// <summary>
+		/// Setups the silhouette (hints for where all the parts should be placed)
+		/// </summary>
+		public void SetupSilhouette(){
+			// destry previous silhouette
+			if (_silhouette != null)
+				Destroy (_silhouette);
+
+			// create temporary go
+			_silhouette = new GameObject ("Silhouette");
+
+			// sync transform with cage's transform
+			_silhouette.transform.SetPositionAndRotation (this.transform.position, this.transform.rotation);
+			_silhouette.transform.localScale = this.transform.localScale;
+
+			// if setup (root is not null), copy the model
+			if (Root != null) {
+				GameObject silhouette = Instantiate (Root.GameObject, _silhouette.transform);
+				MakeSilhouette (silhouette); // call makesilhouette recursive
+			}
+		}
+
+		/// <summary>
+		/// recursive function to create a silhouette of the viewed model
+		/// </summary>
+		public void MakeSilhouette (GameObject go){
+			if (go.GetComponent<Collider> () != null)
+				Destroy (go.GetComponent<Collider> ());
+			if (go.GetComponent<Renderer> () != null)
+				go.GetComponent<Renderer> ().material = SilhouetteMaterial;
+			foreach (Transform child in go.transform)
+				MakeSilhouette (child.gameObject);
+		}
+
+		/// <summary>
+		/// recursive function to scatter components of viewed model around the area
+		/// </summary>
+		public void Scatter(Node node){
+			if (node.HasMesh) {
+				node.GameObject.transform.position = Random.insideUnitSphere * 2;
+			}
+
+			foreach (var child in node.Childs)
+				Scatter (child);
+		}
 
         // Update is called once per frame
         void Update()
@@ -308,18 +450,12 @@ namespace ModelViewer
             }
         }
 
-        private void OnValidate()
-        {
-            if (Root != null)
-                FitToScale(Root, VirtualScale);
-        }
-
         /// <summary>
         /// setup root and dictionary
         /// </summary>
         public void Setup()
         {
-            CurrentScale = 1.0f;
+			// clear selected nodes
             SelectedNodes.Clear();
 
             // if there's no child object, clear dictionary and null root
@@ -332,7 +468,7 @@ namespace ModelViewer
             else // construct internal data structure and dictionary if there's a loaded object
             {
                 // initialize root
-                Root = new Node(this.transform.GetChild(0).gameObject, null);
+				Root = new Node(this.transform.GetChild(0).gameObject, null,this.transform);
 
                 // setup dictionary
                 Dict.Clear();
@@ -350,7 +486,7 @@ namespace ModelViewer
         }
 
         /// <summary>
-        /// resize a node go and its childs to fit a scale
+        /// resize the cage to fit the focused node to a scale
         /// </summary>
         public void FitToScale(Node node, float scale)
         {
@@ -359,20 +495,25 @@ namespace ModelViewer
                 Bounds b = node.GetCumulativeBounds();
                 float scaleFactor = scale / b.size.magnitude;
                 CurrentScale = scaleFactor;
-                node.GameObject.transform.localScale = node.S0 * scaleFactor;
-                node.GameObject.transform.position = node.P0 - b.center * scaleFactor;
+				this.transform.localScale = Vector3.one * scaleFactor;
+				//this.transform.position = this.transform.position - (b.center  - this.transform.position) * scaleFactor;
+				this.transform.position = CagePos - (b.center  - CagePos) * scaleFactor;
+                //node.GameObject.transform.localScale = node.S0 * scaleFactor;
+				//node.GameObject.transform.position = this.transform.position - (b.center - this.transform.position) * scaleFactor;
             }
         }
 
         /// <summary>
-        /// reset transform of game object to its original transform
+        /// reset transform of a node and its children recursively
         /// </summary>
         public void ResetTransform(Node node)
         {
             CurrentScale = 1.0f;
             if (node != null)
             {
-                node.GameObject.transform.SetPositionAndRotation(node.P0, node.R0);
+				//node.GameObject.transform.localPosition = node.P0;
+				//node.GameObject.transform.localRotation = node.R0;
+				node.GameObject.transform.SetPositionAndRotation(this.transform.TransformPoint(node.P0), node.R0);
                 node.GameObject.transform.localScale = node.S0;
                 foreach (var child in node.Childs)
                     ResetTransform(child);
@@ -406,7 +547,7 @@ namespace ModelViewer
             node.Selected = true;
             if (node.HasMesh)
                 node.GameObject.GetComponent<Renderer>().material = new Material(HighlightMaterial);
-            if (!SelectedNodes.Contains(node))
+            //if (!SelectedNodes.Contains(node))
                 SelectedNodes.Add(node);
         }
 
@@ -501,8 +642,10 @@ namespace ModelViewer
                 Node hitNode = null;
                 if (Dict.TryGetValue(hitObject, out hitNode))
                 {
-                    if (SelectedNodes.Contains(hitNode))
-                        Grab();
+					if (SelectedNodes.Contains (hitNode)) {
+						MovableFrame.transform.position = ObjectPointer.Instance.HitInfo.point;
+						Grab ();
+					}
                 }
             }
         }
@@ -512,9 +655,24 @@ namespace ModelViewer
         /// </summary>
         public void Release()
         {
-            Debug.Log("lalalala");
-            foreach (var obj in SelectedNodes)
+			Node[] selectedArray = SelectedNodes.ToArray ();
+			for (int i = 0; i < selectedArray.Length; i++) {
+				if (selectedArray [i].Childs.Count > 0) {
+					foreach (var child in selectedArray[i].Childs)
+						child.GameObject.transform.SetParent (selectedArray [i].GameObject.transform);
+				}
+
+				if (selectedArray [i].Parent == null)
+					selectedArray [i].GameObject.transform.SetParent (this.transform);
+				else
+					selectedArray [i].GameObject.transform.SetParent (selectedArray [i].Parent.GameObject.transform);
+
+				Snap (selectedArray [i]);
+			}
+
+            /*foreach (var obj in SelectedNodes)
             {
+				Snap (obj);
                 if (obj.Childs.Count > 0)
                 {
                     foreach (var child in obj.Childs)
@@ -527,8 +685,24 @@ namespace ModelViewer
                     obj.GameObject.transform.SetParent(this.transform);
                 else
                     obj.GameObject.transform.SetParent(obj.Parent.GameObject.transform);
-            }
+            }*/
         }
+
+		/// <summary>
+		/// Snap the specified node to its original position in the cage if it's close enough
+		/// </summary>
+		public void Snap(Node node){
+			//Vector3 oriPosRelativeToCage = node.P0 - CagePos;
+			Vector3 oriPosAfterSetup = this.transform.TransformPoint(node.P0);
+			if (Vector3.Distance (node.GameObject.transform.position,oriPosAfterSetup) < SnapThreshold) {
+				node.GameObject.transform.position = oriPosAfterSetup;
+				node.GameObject.transform.rotation = node.R0;
+
+				if (DeselectOnSnapped)
+					Deselect (node);
+			}
+		}
+
 
         /// ==================================================
         /// Gizmo stuff
