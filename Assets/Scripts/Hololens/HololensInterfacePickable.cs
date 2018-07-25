@@ -14,6 +14,7 @@ public class HololensInterfacePickable : MonoBehaviour, IInputClickHandler,IInpu
     {
         if (hi.mode == 1)
         {
+            //mpo.ToggleSelect(eventData.selectedObject);
             mpo.ToggleSelect(eventData.selectedObject);
         }/*else if(hi.mode == 2)
         {
