@@ -6,5 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/test-hololens.unity
-    guid: 3d3ca1bed6083604b806b828e87d7cfd
+    path: Assets/Scenes/test-hololens 1.unity
+    guid: eb871eabb0fe8b3458eeb72cfb943a8d
