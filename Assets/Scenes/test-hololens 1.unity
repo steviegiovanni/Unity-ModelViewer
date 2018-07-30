@@ -643,10 +643,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4ad17878621ed42b30916e35fb58f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mpo: {fileID: 516467244}
-  cooldown: 5
-  elapsed: 0
-  signal: {fileID: 1595508904612996, guid: d9fb2a73184f1294faf468e2b0fd7a16, type: 2}
+  _mpo: {fileID: 516467244}
+  _cooldown: 5
+  _signal: {fileID: 1595508904612996, guid: d9fb2a73184f1294faf468e2b0fd7a16, type: 2}
 --- !u!114 &516467250
 MonoBehaviour:
   m_ObjectHideFlags: 0

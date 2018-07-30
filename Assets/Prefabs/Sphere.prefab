@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4782512982089044}
   - component: {fileID: 33340312790317550}
   - component: {fileID: 23703314635853350}
-  - component: {fileID: 114305646502614130}
   - component: {fileID: 82280106435363074}
+  - component: {fileID: 114474873135055500}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -164,7 +164,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114305646502614130
+--- !u!114 &114474873135055500
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -175,4 +175,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a5e9377da610b46ac3d3c2bcb81476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 0
+  _lifetime: 3
