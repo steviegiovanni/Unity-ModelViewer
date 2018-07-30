@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 616a212c482a60e4d935558f9888ed91, type: 2}
+  - {fileID: 2100000, guid: 9fd9b1ad5116e914aad59c161f616f9c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,7 +93,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 284ab3df119a5e74f90a25a1d9518068, type: 3}
+  m_audioClip: {fileID: 8300000, guid: eaa8f325cc8c0c74aaa1d690cf6aa488, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

@@ -385,7 +385,10 @@ MonoBehaviour:
   _virtualScale: 2.89
   _currentScale: 1
   _highlightMaterial: {fileID: 2100000, guid: 5d432c3c745f06446acd106dce5da234, type: 2}
+  _silhouetteMaterial: {fileID: 0}
   _movableFrame: {fileID: 1207693975}
+  _snapThreshold: 0.1
+  _deselectOnSnapped: 1
 --- !u!23 &516467245
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2413,4 +2416,7 @@ MonoBehaviour:
   _virtualScale: 1
   _currentScale: 0
   _highlightMaterial: {fileID: 0}
+  _silhouetteMaterial: {fileID: 0}
   _movableFrame: {fileID: 0}
+  _snapThreshold: 0.1
+  _deselectOnSnapped: 1
