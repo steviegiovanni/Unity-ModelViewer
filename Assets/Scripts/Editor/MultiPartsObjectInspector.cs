@@ -25,7 +25,10 @@ namespace ModelViewer
                 obj.FitToScale(obj.Root, obj.VirtualScale);
 
             if (GUILayout.Button("Reset"))
+            {
                 obj.ResetAll(obj.Root);
+                obj.transform.localScale = Vector3.one;
+            }
 
             GUILayout.Space(10);
             GUILayout.Label("Tree");
@@ -39,9 +42,12 @@ namespace ModelViewer
             if (node != null)
             {
 				GUILayout.BeginHorizontal();
-				if (GUILayout.Button (node.GameObject.name + (node.Selected?"*":""), "Button")) {
+                GUILayout.BeginVertical();
+                GUILayout.BeginHorizontal();
+				if (GUILayout.Button (node.Name + " ("+(node.GameObject==null?"Missing!": node.GameObject.name)+")" + (node.Selected?"*":""), "Button")) {
 					obj.ToggleSelect(node);
 				}
+
                 if (GUILayout.Button((node.Locked ? "X" : " "), "Button",GUILayout.Width(20)))
                 {
                     if (node.Locked)
@@ -51,9 +57,26 @@ namespace ModelViewer
                         obj.Release();
                         obj.Deselect(node);
                         node.Locked = true;
-                    }
-                        
+                    }    
                 }
+
+                if (GUILayout.Button("Add Task", "Button", GUILayout.Width(100)))
+                {
+                    TaskList tl = obj.TaskList;
+                    tl.Tasks.Add(new Task(node.GameObject,node.P0));
+                }
+                GUILayout.EndHorizontal();
+
+                if (node.Selected)
+                {
+                    GUILayout.BeginVertical(EditorStyles.helpBox);
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Label("Name", GUILayout.Width(100));
+                    node.Name = GUILayout.TextField(node.Name);
+                    GUILayout.EndHorizontal();
+                    GUILayout.EndVertical();
+                }
+                GUILayout.EndVertical();
                 GUILayout.EndHorizontal();
 
                 foreach (var child in node.Childs)

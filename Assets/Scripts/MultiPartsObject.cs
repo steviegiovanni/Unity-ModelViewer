@@ -122,6 +122,16 @@ namespace ModelViewer
         }
 
         /// <summary>
+        /// given name of the node (default to gameobject's name)
+        /// </summary>
+        private string _name;
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+
+        /// <summary>
         /// default constructor
         /// </summary>
         public Node()
@@ -168,6 +178,7 @@ namespace ModelViewer
                 Material = null;
 
             Locked = true;
+            Name = go.name;
 
             // add collider if doesn't exist
             if (HasMesh && go.GetComponent<Collider>() == null)
@@ -212,6 +223,7 @@ namespace ModelViewer
 				Material = null;
 
             Locked = true;
+            Name = go.name;
 
 			// add collider if doesn't exist
 			if (HasMesh && go.GetComponent<Collider>() == null)
@@ -236,6 +248,7 @@ namespace ModelViewer
             Bounds = sn.Bounds;
             Material = sn.Material;
             Locked = sn.Locked;
+            Name = sn.Name;
         }
 
         /// <summary>
@@ -272,6 +285,7 @@ namespace ModelViewer
         public Bounds Bounds;
         public Material Material;
         public bool Locked;
+        public string Name;
     }
 
     /// <summary>
@@ -308,7 +322,10 @@ namespace ModelViewer
             get
             {
                 if (_dict == null)
+                {
                     _dict = new Dictionary<GameObject, Node>();
+                    ConstructDictionary();
+                }
                 return _dict;
             }
         }
@@ -383,7 +400,6 @@ namespace ModelViewer
             get { return _movableFrame; }
         }
 			
-
 		/// <summary>
 		/// The snap threshold
 		/// </summary>
@@ -409,6 +425,21 @@ namespace ModelViewer
 		/// container for temporary runtime instantiated silhouette object
 		/// </summary>
 		private GameObject _silhouette = null;
+
+        /// <summary>
+        /// the task list component
+        /// </summary>
+        [SerializeField]
+        private TaskList _taskList;
+        public TaskList TaskList
+        {
+            get {
+                _taskList = GetComponent<TaskList>();
+                if (_taskList == null)
+                    _taskList = this.gameObject.AddComponent<TaskList>();
+                return _taskList;
+            }
+        }
 
         // Use this for initialization
         void Start()
@@ -556,9 +587,7 @@ namespace ModelViewer
                 CurrentScale = scaleFactor;
 				this.transform.localScale = Vector3.one * scaleFactor;
 				//this.transform.position = this.transform.position - (b.center  - this.transform.position) * scaleFactor;
-				this.transform.position = CagePos - (b.center  - CagePos) * scaleFactor;
-                //node.GameObject.transform.localScale = node.S0 * scaleFactor;
-				//node.GameObject.transform.position = this.transform.position - (b.center - this.transform.position) * scaleFactor;
+				//this.transform.position = CagePos - (b.center  - CagePos) * scaleFactor;
             }
         }
 
@@ -771,20 +800,31 @@ namespace ModelViewer
         {
             if (node != null)
             {
-                // draw origin
-                Gizmos.color = Color.red;
-                Gizmos.DrawSphere(node.GameObject.transform.position, 0.01f);
-
-                // draw bounding box if any
-                if (node.HasMesh && node.Selected)
+                if (node.GameObject != null)
                 {
-                    Gizmos.color = Color.green;
-                    Renderer rend = node.GameObject.GetComponent<Renderer>();
-                    Mesh mesh = node.GameObject.GetComponent<MeshFilter>().sharedMesh;
-                    Bounds bounds = rend.bounds;
-                    //Bounds bounds = mesh.bounds;
-                    Gizmos.DrawWireCube(bounds.center, bounds.extents * 2);
-                    //Gizmos.DrawWireSphere(rend.bounds.center,rend.bounds.extents.magnitude);
+                    // draw origin
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawSphere(node.GameObject.transform.position, 0.01f);
+
+                    // draw bounding box if any
+                    if (node.HasMesh && node.Selected)
+                    {
+                        Gizmos.color = Color.green;
+                        Renderer rend = node.GameObject.GetComponent<Renderer>();
+                        Mesh mesh = node.GameObject.GetComponent<MeshFilter>().sharedMesh;
+                        Bounds bounds = rend.bounds;
+                        //Bounds bounds = mesh.bounds;
+                        Gizmos.DrawWireCube(bounds.center, bounds.extents * 2);
+                        //Gizmos.DrawWireSphere(rend.bounds.center,rend.bounds.extents.magnitude);
+                    }
+
+                    if (node.HasMesh)
+                    {
+                        Color col = Color.cyan;
+                        col.a = 0.25f;
+                        Gizmos.color = col;
+                        Gizmos.DrawMesh(node.GameObject.GetComponent<MeshFilter>().sharedMesh, this.transform.TransformPoint(node.P0), node.R0, node.GameObject.transform.lossyScale);
+                    }
                 }
 
                 // call draw for each child
@@ -823,7 +863,8 @@ namespace ModelViewer
                 S0 = n.S0,
                 Bounds = n.Bounds,
                 Material = n.Material,
-                Locked = n.Locked
+                Locked = n.Locked,
+                Name = n.Name
             };
 
             serializedNodes.Add(serializedNode);
