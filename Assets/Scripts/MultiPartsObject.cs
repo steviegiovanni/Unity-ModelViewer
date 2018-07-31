@@ -112,6 +112,16 @@ namespace ModelViewer
         }
 
         /// <summary>
+        /// whether the object is interactable or not
+        /// </summary>
+        private bool _locked;
+        public bool Locked
+        {
+            get { return _locked; }
+            set { _locked = value; }
+        }
+
+        /// <summary>
         /// default constructor
         /// </summary>
         public Node()
@@ -122,7 +132,7 @@ namespace ModelViewer
             R0 = Quaternion.identity;
             S0 = Vector3.one;
             Material = null;
-
+            Locked = true;
             Childs = new List<Node>();
         }
 
@@ -156,6 +166,8 @@ namespace ModelViewer
                 Material = go.GetComponent<Renderer>().sharedMaterial;
             else
                 Material = null;
+
+            Locked = true;
 
             // add collider if doesn't exist
             if (HasMesh && go.GetComponent<Collider>() == null)
@@ -199,6 +211,8 @@ namespace ModelViewer
 			else
 				Material = null;
 
+            Locked = true;
+
 			// add collider if doesn't exist
 			if (HasMesh && go.GetComponent<Collider>() == null)
 				go.AddComponent<MeshCollider>();
@@ -221,6 +235,7 @@ namespace ModelViewer
             S0 = sn.S0;
             Bounds = sn.Bounds;
             Material = sn.Material;
+            Locked = sn.Locked;
         }
 
         /// <summary>
@@ -256,6 +271,7 @@ namespace ModelViewer
         public Vector3 S0;
         public Bounds Bounds;
         public Material Material;
+        public bool Locked;
     }
 
     /// <summary>
@@ -506,19 +522,25 @@ namespace ModelViewer
             {
                 // initialize root
 				Root = new Node(this.transform.GetChild(0).gameObject, null,this.transform);
+            }
+        }
 
-                // setup dictionary
-                Dict.Clear();
-                List<Node> curNodes = new List<Node>();
-                curNodes.Add(Root);
-                while (curNodes.Count > 0)
-                {
-                    Node curNode = curNodes[0];
-                    Dict.Add(curNode.GameObject, curNode);
-                    foreach (var child in curNode.Childs)
-                        curNodes.Add(child);
-                    curNodes.RemoveAt(0);
-                }
+        /// <summary>
+        /// construct dictionary for easy mapping between a gameobject and a node
+        /// </summary>
+        public void ConstructDictionary()
+        {
+            Dict.Clear();
+            if (Root == null) return;
+            List<Node> curNodes = new List<Node>();
+            curNodes.Add(Root);
+            while (curNodes.Count > 0)
+            {
+                Node curNode = curNodes[0];
+                Dict.Add(curNode.GameObject, curNode);
+                foreach (var child in curNode.Childs)
+                    curNodes.Add(child);
+                curNodes.RemoveAt(0);
             }
         }
 
@@ -543,17 +565,15 @@ namespace ModelViewer
         /// <summary>
         /// reset transform of a node and its children recursively
         /// </summary>
-        public void ResetTransform(Node node)
+        public void ResetAll(Node node)
         {
             CurrentScale = 1.0f;
             if (node != null)
             {
-				//node.GameObject.transform.localPosition = node.P0;
-				//node.GameObject.transform.localRotation = node.R0;
 				node.GameObject.transform.SetPositionAndRotation(this.transform.TransformPoint(node.P0), node.R0);
                 node.GameObject.transform.localScale = node.S0;
                 foreach (var child in node.Childs)
-                    ResetTransform(child);
+                    ResetAll(child);
             }
         }
 
@@ -581,6 +601,7 @@ namespace ModelViewer
         /// </summary>
         public void Select(Node node)
         {
+            if (node.Locked) return;
             node.Selected = true;
             if (node.HasMesh)
                 node.GameObject.GetComponent<Renderer>().material = new Material(HighlightMaterial);
@@ -612,6 +633,7 @@ namespace ModelViewer
         /// </summary>
         public void Deselect(Node node)
         {
+            if (node.Locked) return;
             node.Selected = false;
             if (node.HasMesh)
             {
@@ -800,7 +822,8 @@ namespace ModelViewer
                 R0 = n.R0,
                 S0 = n.S0,
                 Bounds = n.Bounds,
-                Material = n.Material
+                Material = n.Material,
+                Locked = n.Locked
             };
 
             serializedNodes.Add(serializedNode);
@@ -841,7 +864,10 @@ namespace ModelViewer
         public void OnAfterDeserialize()
         {
             if (serializedNodes.Count > 0)
-                Root = ReadNodeFromSerializedNodes(0,null);
+            {
+                Root = ReadNodeFromSerializedNodes(0, null);
+                ConstructDictionary();
+            }
             else
                 Root = null;
         }

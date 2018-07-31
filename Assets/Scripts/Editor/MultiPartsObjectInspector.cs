@@ -25,7 +25,7 @@ namespace ModelViewer
                 obj.FitToScale(obj.Root, obj.VirtualScale);
 
             if (GUILayout.Button("Reset"))
-                obj.ResetTransform(obj.Root);
+                obj.ResetAll(obj.Root);
 
             GUILayout.Space(10);
             GUILayout.Label("Tree");
@@ -42,8 +42,19 @@ namespace ModelViewer
 				if (GUILayout.Button (node.GameObject.name + (node.Selected?"*":""), "Button")) {
 					obj.ToggleSelect(node);
 				}
-
-				GUILayout.EndHorizontal();
+                if (GUILayout.Button((node.Locked ? "X" : " "), "Button",GUILayout.Width(20)))
+                {
+                    if (node.Locked)
+                        node.Locked = false;
+                    else
+                    {
+                        obj.Release();
+                        obj.Deselect(node);
+                        node.Locked = true;
+                    }
+                        
+                }
+                GUILayout.EndHorizontal();
 
                 foreach (var child in node.Childs)
                 {
