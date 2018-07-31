@@ -153,7 +153,7 @@ namespace ModelViewer
 
             // get original material
             if (HasMesh)
-                Material = go.GetComponent<Renderer>().material;
+                Material = go.GetComponent<Renderer>().sharedMaterial;
             else
                 Material = null;
 
@@ -195,7 +195,7 @@ namespace ModelViewer
 
 			// get original material
 			if (HasMesh)
-				Material = go.GetComponent<Renderer>().material;
+				Material = go.GetComponent<Renderer>().sharedMaterial;
 			else
 				Material = null;
 
@@ -209,6 +209,19 @@ namespace ModelViewer
 				Childs.Add(new Node(child.gameObject, this,cage));
 			}
 		}
+
+        public Node(SerializableNode sn)
+        {
+            //Childs = children,
+            GameObject = sn.GameObject;
+            HasMesh = sn.HasMesh;
+            //Parent = null,
+            P0 = sn.P0;
+            R0 = sn.R0;
+            S0 = sn.S0;
+            Bounds = sn.Bounds;
+            Material = sn.Material;
+        }
 
         /// <summary>
         /// return the cumulative bounds of a node and its childs
@@ -228,10 +241,28 @@ namespace ModelViewer
     }
 
     /// <summary>
+    /// structure used to store node data after serialization
+    /// </summary>
+    [System.Serializable]
+    public struct SerializableNode
+    {
+        public int ChildCount;
+        public int IndexOfFirstChild;
+        public GameObject GameObject;
+        public bool HasMesh;
+        public int indexOfParent;
+        public Vector3 P0;
+        public Quaternion R0;
+        public Vector3 S0;
+        public Bounds Bounds;
+        public Material Material;
+    }
+
+    /// <summary>
     /// a multi parts object is an object that consists of several different parts
     /// that can be detached and assembled back again
     /// </summary>
-    public class MultiPartsObject : MonoBehaviour
+    public class MultiPartsObject : MonoBehaviour, ISerializationCallbackReceiver
     {
 		/// <summary>
 		/// original position of the cage
@@ -245,7 +276,7 @@ namespace ModelViewer
         /// <summary>
         /// the root node
         /// </summary>
-        private Node _root = null;
+        private Node _root;
         public Node Root
         {
             get { return _root; }
@@ -373,10 +404,10 @@ namespace ModelViewer
             if (MovableFrame == null)
                 Debug.LogWarning("no movable frame assigned. will not be able to move objects around.");
 
-            Setup();
+            /*Setup();
             FitToScale(Root, VirtualScale);
 			SetupSilhouette ();
-			Scatter (Root);
+			Scatter (Root);*/
         }
 
 		/// <summary>
@@ -447,6 +478,12 @@ namespace ModelViewer
             if (Input.GetKeyUp(KeyCode.S))
             {
                 Deselect();
+            }
+
+            if (Input.GetKeyUp(KeyCode.Z))
+            {
+                if (Root != null)
+                    Debug.Log(Root.GameObject.name);
             }
         }
 
@@ -548,7 +585,7 @@ namespace ModelViewer
             if (node.HasMesh)
                 node.GameObject.GetComponent<Renderer>().material = new Material(HighlightMaterial);
             //if (!SelectedNodes.Contains(node))
-                SelectedNodes.Add(node);
+            SelectedNodes.Add(node);
         }
 
         /// <summary>
@@ -577,7 +614,9 @@ namespace ModelViewer
         {
             node.Selected = false;
             if (node.HasMesh)
+            {
                 node.GameObject.GetComponent<Renderer>().material = node.Material;
+            }
             SelectedNodes.Remove(node);
         }
 
@@ -669,23 +708,6 @@ namespace ModelViewer
 
 				Snap (selectedArray [i]);
 			}
-
-            /*foreach (var obj in SelectedNodes)
-            {
-				Snap (obj);
-                if (obj.Childs.Count > 0)
-                {
-                    foreach (var child in obj.Childs)
-                    {
-                        child.GameObject.transform.SetParent(obj.GameObject.transform);
-                    }
-                }
-
-                if (obj.Parent == null)
-                    obj.GameObject.transform.SetParent(this.transform);
-                else
-                    obj.GameObject.transform.SetParent(obj.Parent.GameObject.transform);
-            }*/
         }
 
 		/// <summary>
@@ -749,6 +771,79 @@ namespace ModelViewer
                     DrawNode(child);
                 }
             }
+        }
+
+        /// ==================================================
+        /// Serializing the node structure
+        /// ==================================================
+
+        /// <summary>
+        /// the serialized node structure
+        /// </summary>
+        public List<SerializableNode> serializedNodes;
+
+        /// <summary>
+        /// add a serialized node into the list of serialized nodes
+        /// </summary>
+        void AddNodeToSerializedNodes(Node n, int parentId)
+        {
+            if (n == null) return;
+
+            var serializedNode = new SerializableNode()
+            {
+                ChildCount = n.Childs.Count,
+                IndexOfFirstChild = serializedNodes.Count + 1,
+                GameObject = n.GameObject,
+                HasMesh = n.HasMesh,
+                indexOfParent = parentId,
+                P0 = n.P0,
+                R0 = n.R0,
+                S0 = n.S0,
+                Bounds = n.Bounds,
+                Material = n.Material
+            };
+
+            serializedNodes.Add(serializedNode);
+            foreach (var child in n.Childs)
+                AddNodeToSerializedNodes(child,serializedNode.IndexOfFirstChild - 1);
+        }
+
+        /// <summary>
+        /// serialization interface implementation
+        /// </summary>
+        public void OnBeforeSerialize()
+        {
+            serializedNodes.Clear();
+            AddNodeToSerializedNodes(Root,-1);
+        }
+
+        /// <summary>
+        /// create a new node from a serialized node index
+        /// </summary>
+        Node ReadNodeFromSerializedNodes(int index, Node parent)
+        {
+            if (index < 0)
+                return null;
+
+            var serializedNode = serializedNodes[index];
+            Node node = new Node(serializedNode);
+            node.Parent = parent;
+            var children = new List<Node>();
+            for (int i = 0; i != serializedNode.ChildCount; i++)
+                children.Add(ReadNodeFromSerializedNodes(serializedNode.IndexOfFirstChild + i,node));
+            node.Childs = children;
+            return node;
+        }
+
+        /// <summary>
+        /// deserialization interface implementation
+        /// </summary>
+        public void OnAfterDeserialize()
+        {
+            if (serializedNodes.Count > 0)
+                Root = ReadNodeFromSerializedNodes(0,null);
+            else
+                Root = null;
         }
     }
 }
