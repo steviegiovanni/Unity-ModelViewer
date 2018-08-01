@@ -6,80 +6,15 @@ using UnityEngine;
 
 namespace ModelViewer
 {
-    /// <summary>
-    /// represents a task that requires the user to bring an object to a specific position
-    /// </summary>
-    public class Task
+    public class TaskList : MonoBehaviour, ISerializationCallbackReceiver
     {
-        /// <summary>
-        /// the end position to which the object must be brought to
-        /// </summary>
-        private Vector3 _position;
-        public Vector3 Position
+        private int _currentTaskId = 0;
+        public int CurrentTaskId
         {
-            get { return _position; }
-            set { _position = value; }
+            get { return _currentTaskId; }
+            set { _currentTaskId = value; }
         }
 
-        /// <summary>
-        /// the threshold in which the object will snap to the position
-        /// </summary>
-        private float _snapThreshold;
-        public float SnapThreshold
-        {
-            get { return _snapThreshold; }
-            set { _snapThreshold = value; }
-        }
-        
-        /// <summary>
-        /// whether the task is finished of not
-        /// </summary>
-        private bool _finished = false;
-        public bool Finished
-        {
-            get { return _finished; }
-            set { _finished = value; }
-        }
-
-        /// <summary>
-        /// the game object users need to interact with to complete the task
-        /// </summary>
-        private GameObject _go;
-        public GameObject GameObject
-        {
-            get { return _go; }
-            set { _go = value; }
-        }
-
-        /// <summary>
-        /// whether this task is active or not
-        /// </summary>
-        private bool _active = false;
-        public bool Active
-        {
-            get { return _active; }
-            set { _active = value; }
-        }
-
-        /// <summary>
-        /// check task is finished
-        /// </summary>
-        public void CheckTask()
-        {
-            Finished = Vector3.Distance(GameObject.transform.position, Position) <= SnapThreshold;
-        }
-
-        public Task() { }
-
-        public Task(GameObject go, Vector3 position)
-        {
-            GameObject = go;
-            Position = position;
-        }
-    }
-
-    public class TaskList : MonoBehaviour
-    {
         private List<Task> _tasks;
         public List<Task> Tasks
         {
@@ -90,15 +25,53 @@ namespace ModelViewer
             }
         }
 
-        private MultiPartsObject _mpo;
-        public MultiPartsObject MPO
+        /// <summary>
+        /// the serialized node structure
+        /// </summary>
+        public List<SerializableTask> serializedTasks;
+
+        public void OnBeforeSerialize()
         {
-            get {
-                if (_mpo == null)
-                    _mpo = GetComponent<MultiPartsObject>();
-                if (_mpo == null)
-                    Debug.LogError("No MPO attached");
-                return _mpo;
+            serializedTasks.Clear();
+            foreach (var task in Tasks)
+                serializedTasks.Add(new SerializableTask(task));
+        }
+
+        public Task ReadTaskFromSerializedTask(SerializableTask st)
+        {
+            switch (st.TypeName)
+            {
+                case "MovingTask":
+                    {
+                        return new MovingTask(st);
+                    }break;
+            }
+            return new Task(st);
+        }
+
+        public void OnAfterDeserialize()
+        {
+            Tasks.Clear();
+            foreach (var serializedTask in serializedTasks)
+                Tasks.Add(ReadTaskFromSerializedTask(serializedTask));
+        }
+
+        public void Awake()
+        {
+            MultiPartsObject mpo = GetComponent<MultiPartsObject>();
+            if (mpo == null)
+                Debug.LogError("No multiparts object attached");
+
+            CurrentTaskId = 0;
+
+            foreach(var task in Tasks)
+            {
+                task.TaskList = this;
+                Node node = null;
+                if(mpo.Dict.TryGetValue(task.GameObject,out node))
+                {
+                    node.OnReleaseEvent.AddListener(task.CheckTask);
+                }
             }
         }
     }

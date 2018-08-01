@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ModelViewer
 {
@@ -129,6 +130,17 @@ namespace ModelViewer
         {
             get { return _name; }
             set { _name = value; }
+        }
+
+        private UnityEvent _onReleaseEvent;
+        public UnityEvent OnReleaseEvent
+        {
+            get
+            {
+                if (_onReleaseEvent == null)
+                    _onReleaseEvent = new UnityEvent();
+                return _onReleaseEvent;
+            }
         }
 
         /// <summary>
@@ -324,7 +336,6 @@ namespace ModelViewer
                 if (_dict == null)
                 {
                     _dict = new Dictionary<GameObject, Node>();
-                    ConstructDictionary();
                 }
                 return _dict;
             }
@@ -439,6 +450,12 @@ namespace ModelViewer
                     _taskList = this.gameObject.AddComponent<TaskList>();
                 return _taskList;
             }
+        }
+
+        void Awake()
+        {
+            ConstructDictionary();
+            SetupSilhouette();
         }
 
         // Use this for initialization
@@ -747,6 +764,11 @@ namespace ModelViewer
         {
 			Node[] selectedArray = SelectedNodes.ToArray ();
 			for (int i = 0; i < selectedArray.Length; i++) {
+                if (selectedArray[i].OnReleaseEvent != null)
+                {
+                    SelectedNodes[i].OnReleaseEvent.Invoke();
+                }
+
 				if (selectedArray [i].Childs.Count > 0) {
 					foreach (var child in selectedArray[i].Childs)
 						child.GameObject.transform.SetParent (selectedArray [i].GameObject.transform);
@@ -907,7 +929,6 @@ namespace ModelViewer
             if (serializedNodes.Count > 0)
             {
                 Root = ReadNodeFromSerializedNodes(0, null);
-                ConstructDictionary();
             }
             else
                 Root = null;
