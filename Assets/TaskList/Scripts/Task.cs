@@ -11,6 +11,9 @@ namespace ModelViewer
     /// </summary>
     public class Task
     {
+        /// <summary>
+        /// the owner tasklist
+        /// </summary>
         private TaskList _taskList;
         public TaskList TaskList
         {
@@ -49,26 +52,41 @@ namespace ModelViewer
         }
 
         /// <summary>
-        /// check task is finished
+        /// check task is finished, override for different task behavior
         /// </summary>
         public virtual void CheckTask()
         {
             if (!IsCurrentTask()) return;
             Debug.Log("Base check task");
+            if (Finished)
+                TaskList.NextTask();
         }
 
-        public Task() { }
+        /// <summary>
+        /// what kind of hint should be drawn? override for different task behaviour
+        /// </summary>
+        public virtual void DrawTaskHint()
+        {}
 
+        /// <summary>
+        /// base constructor taking a game object
+        /// </summary>
         public Task(GameObject go)
         {
             GameObject = go;
         }
 
+        /// <summary>
+        /// constructor taking a serializable task
+        /// </summary>
         public Task(SerializableTask task)
         {
             GameObject = task.GameObject;
         }
 
+        /// <summary>
+        /// simple check whether this task is the currently active task
+        /// </summary>
         public bool IsCurrentTask()
         {
             if(TaskList != null)

@@ -31,22 +31,45 @@ namespace ModelViewer
             set { _snapThreshold = value; }
         }
 
+        /// <summary>
+        /// constructor taking a go and position
+        /// </summary>
         public MovingTask(GameObject go, Vector3 position) :base(go)
         {
             Position = position;
         }
 
+        /// <summary>
+        /// constructor taking a serializable task
+        /// </summary>
         public MovingTask(SerializableTask task) : base(task)
         {
             Position = task.Position;
             SnapThreshold = task.SnapThreshold;
         }
 
+        /// <summary>
+        /// reimplementation of checktask. simply checks whether the position of the go is close to the goal position
+        /// </summary>
         public override void CheckTask()
         {
             if (!IsCurrentTask()) return;
             Debug.Log("Moving check task");
             Finished = Vector3.Distance(GameObject.transform.position, Position) <= SnapThreshold;
+            if (Finished)
+                TaskList.NextTask();
+        }
+
+        /// <summary>
+        /// reimplemntation of draw task hint. draw the silhouette of the game object at the goal pos
+        /// </summary>
+        public override void DrawTaskHint()
+        {
+            TaskList.Hint = GameObject.Instantiate(GameObject,Position,GameObject.transform.rotation);
+            if (TaskList.Hint.GetComponent<Collider>() != null)
+                GameObject.Destroy(TaskList.Hint.GetComponent<Collider>());
+            if (TaskList.Hint.GetComponent<Renderer>() != null)
+                TaskList.Hint.GetComponent<Renderer>().material = TaskList.SilhouetteMaterial;
         }
     }
 }

@@ -132,6 +132,10 @@ namespace ModelViewer
             set { _name = value; }
         }
 
+        /// <summary>
+        /// registered events to be called when the node is released
+        /// (will probably add a lot more like this for click etc.)
+        /// </summary>
         private UnityEvent _onReleaseEvent;
         public UnityEvent OnReleaseEvent
         {
@@ -248,6 +252,9 @@ namespace ModelViewer
 			}
 		}
 
+        /// <summary>
+        /// constructor taking a serializable node
+        /// </summary>
         public Node(SerializableNode sn)
         {
             //Childs = children,
@@ -454,8 +461,11 @@ namespace ModelViewer
 
         void Awake()
         {
+            // construct dictionary on awake as we're not serializing the dictionary
             ConstructDictionary();
-            SetupSilhouette();
+
+            // setup default silhouette if we don't have a task list
+            //SetupSilhouette();
         }
 
         // Use this for initialization
@@ -552,7 +562,7 @@ namespace ModelViewer
         }
 
         /// <summary>
-        /// setup root and dictionary
+        /// setup internal node structure
         /// </summary>
         public void Setup()
         {
@@ -562,7 +572,6 @@ namespace ModelViewer
             // if there's no child object, clear dictionary and null root
             if (this.gameObject.transform.childCount == 0)
             {
-                Dict.Clear();
                 Root = null;
                 return;
             }
@@ -624,6 +633,39 @@ namespace ModelViewer
         }
 
         /// <summary>
+        /// reset transform of specific node only
+        /// </summary>
+        public void Reset(Node node)
+        {
+           if(node != null)
+            {
+                // store all children position, rotations and scales
+                List<Vector3> childrenPositions = new List<Vector3>();
+                List<Quaternion> childrenRotations = new List<Quaternion>();
+                List<Vector3> childrenScales = new List<Vector3>();
+                foreach(var child in node.Childs)
+                {
+                    childrenPositions.Add(child.GameObject.transform.position);
+                    childrenRotations.Add(child.GameObject.transform.rotation);
+                    childrenScales.Add(child.GameObject.transform.lossyScale);
+                }
+
+                // reset current node transform
+                node.GameObject.transform.SetPositionAndRotation(this.transform.TransformPoint(node.P0), node.R0);
+                node.GameObject.transform.localScale = node.S0;
+
+                // restore all children positions, rotations, and scales
+                int i = 0;
+                foreach (var child in node.Childs)
+                {
+                    child.GameObject.transform.SetPositionAndRotation(childrenPositions[i], childrenRotations[i]);
+                    child.GameObject.transform.localScale = childrenScales[i];
+                    i++;
+                }
+            }
+        }
+
+        /// <summary>
         /// select a node that contains the game object pointed by the objectpointer
         /// </summary>
         public void Select()
@@ -679,7 +721,8 @@ namespace ModelViewer
         /// </summary>
         public void Deselect(Node node)
         {
-            if (node.Locked) return;
+            //if (node.Locked) return;
+            Debug.Log("deselect reached");
             node.Selected = false;
             if (node.HasMesh)
             {
@@ -793,8 +836,11 @@ namespace ModelViewer
 				node.GameObject.transform.position = oriPosAfterSetup;
 				node.GameObject.transform.rotation = node.R0;
 
-				if (DeselectOnSnapped)
-					Deselect (node);
+                if (DeselectOnSnapped)
+                {
+                    Debug.Log("snap deselecting");
+                    Deselect(node);
+                }
 			}
 		}
 
@@ -864,6 +910,7 @@ namespace ModelViewer
         /// <summary>
         /// the serialized node structure
         /// </summary>
+        [HideInInspector]
         public List<SerializableNode> serializedNodes;
 
         /// <summary>

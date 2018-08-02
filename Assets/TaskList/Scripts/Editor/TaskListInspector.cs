@@ -1,10 +1,15 @@
-﻿using System.Collections;
+﻿/// author: Stevie Giovanni 
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 namespace ModelViewer
 {
+    /// <summary>
+    /// custom editor for TaskList showing all the tasks
+    /// </summary>
     [CustomEditor(typeof(TaskList))]
     public class TaskListInspector : UnityEditor.Editor
     {
@@ -24,6 +29,9 @@ namespace ModelViewer
             }
         }
 
+        /// <summary>
+        /// display a particular task detail. case by case depending on the task type
+        /// </summary>
         public void DisplayTaskDetail(Task t) 
         {
             GUILayout.BeginVertical(EditorStyles.helpBox);
@@ -32,6 +40,8 @@ namespace ModelViewer
                 case "MovingTask":
                     {
                         MovingTask castedt = (MovingTask)t;
+
+                        // to modify snap threshold
                         GUILayout.Label("Snap Threshold");
                         GUILayout.BeginHorizontal();
                         GUILayout.Space(20);
@@ -39,7 +49,7 @@ namespace ModelViewer
                         GUILayout.Label(castedt.SnapThreshold.ToString(),GUILayout.Width(30));
                         GUILayout.EndHorizontal();
 
-                        
+                        // to modify goal position
                         GUILayout.Label("Goal");
                         GUILayout.BeginHorizontal();
                         GUILayout.Space(20);
@@ -52,6 +62,8 @@ namespace ModelViewer
                         castedt.Position = new Vector3(x, y, z);
                         GUILayout.Space(20);
                         GUILayout.EndHorizontal();
+
+                        // easily get the go current position as the goal pos
                         if (GUILayout.Button("Use Current GO Position"))
                         {
                             if (castedt.GameObject != null)
@@ -65,6 +77,7 @@ namespace ModelViewer
 
         public override void OnInspectorGUI()
         {
+            // draw base inspector gui
             base.OnInspectorGUI();
 
             obj = (TaskList)target;
@@ -72,6 +85,7 @@ namespace ModelViewer
             for(int i=0; i < obj.Tasks.Count; i++) {
                 GUILayout.BeginHorizontal();
 
+                // toggle show task detail on and off
                 string taskName = "Missing!";
                 if(obj.Tasks[i].GameObject != null) {
                     taskName = " (" + obj.Tasks[i].GameObject.name + ")";
@@ -96,6 +110,8 @@ namespace ModelViewer
                         SelectedTaskId = -1;
                     }
                 }
+
+                // to easily reorder tasks up and down
                 if (i <= 0)
                     GUI.enabled = false;
                 if (GUILayout.Button(i>0?"^":" ", EditorStyles.toolbarButton, GUILayout.Width(30)))
@@ -106,6 +122,7 @@ namespace ModelViewer
                 }
                 GUI.enabled = true;
 
+                // to easily reorder tasks up and down
                 if (i >= obj.Tasks.Count - 1)
                     GUI.enabled = false;
                 if (GUILayout.Button(i<obj.Tasks.Count - 1?"v":" ", EditorStyles.toolbarButton, GUILayout.Width(30)))
@@ -116,6 +133,7 @@ namespace ModelViewer
                 }
                 GUI.enabled = true;
 
+                // remove task from task list
                 if (GUILayout.Button("-", EditorStyles.toolbarButton, GUILayout.Width(30)))
                 {
                     if (SelectedTaskId != -1)
@@ -125,6 +143,7 @@ namespace ModelViewer
 
                 GUILayout.EndHorizontal();
 
+                // display task detail if task is selected
                 if(i == SelectedTaskId)
                 {
                     DisplayTaskDetail(obj.Tasks[i]);
