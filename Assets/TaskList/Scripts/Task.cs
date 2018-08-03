@@ -22,6 +22,26 @@ namespace ModelViewer
         }
 
         /// <summary>
+        /// name of the task
+        /// </summary>
+        private string _taskName;
+        public string TaskName
+        {
+            get { return _taskName; }
+            set { _taskName = value; }
+        }
+
+        /// <summary>
+        /// description of the task
+        /// </summary>
+        private string _description;
+        public string Description
+        {
+            get { return _description; }
+            set { _description = value; }
+        }
+
+        /// <summary>
         /// whether the task is finished of not
         /// </summary>
         private bool _finished = false;
@@ -73,6 +93,7 @@ namespace ModelViewer
         /// </summary>
         public Task(GameObject go)
         {
+            TaskName = "New Task";
             GameObject = go;
         }
 
@@ -82,6 +103,8 @@ namespace ModelViewer
         public Task(SerializableTask task)
         {
             GameObject = task.GameObject;
+            TaskName = task.TaskName;
+            Description = task.Description;
         }
 
         /// <summary>

@@ -13,11 +13,15 @@ namespace ModelViewer
         public GameObject GameObject;
         public Vector3 Position;
         public float SnapThreshold;
+        public string TaskName;
+        public string Description;
         
         public SerializableTask(Task t)
         {
             TypeName = t.GetType().Name;
             GameObject = t.GameObject;
+            TaskName = t.TaskName;
+            Description = t.Description;
             switch (TypeName)
             {
                 case "MovingTask":
