@@ -883,8 +883,8 @@ namespace ModelViewer
                 if (node.GameObject != null)
                 {
                     // draw origin
-                    Gizmos.color = Color.red;
-                    Gizmos.DrawSphere(node.GameObject.transform.position, 0.01f);
+                    //Gizmos.color = Color.red;
+                    //Gizmos.DrawSphere(node.GameObject.transform.position, 0.01f);
 
                     // draw bounding box if any
                     if (node.HasMesh && node.Selected)

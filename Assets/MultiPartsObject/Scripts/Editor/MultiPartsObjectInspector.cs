@@ -54,7 +54,8 @@ namespace ModelViewer
                 GUILayout.BeginVertical();
                 GUILayout.BeginHorizontal();
 				if (GUILayout.Button (node.Name + " ("+(node.GameObject==null?"Missing!": node.GameObject.name)+")" + (node.Selected?"*":""), "Button")) {
-					obj.ToggleSelect(node);
+                    EditorGUIUtility.PingObject(node.GameObject);
+                    obj.ToggleSelect(node);
 				}
 
                 // to lock or unlock node for interaction

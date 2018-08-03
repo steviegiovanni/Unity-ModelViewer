@@ -82,5 +82,21 @@ namespace ModelViewer
             if (TaskList.Hint.GetComponent<Renderer>() != null)
                 TaskList.Hint.GetComponent<Renderer>().material = TaskList.SilhouetteMaterial;
         }
+
+        /// <summary>
+        /// draw hint gizmos on editor mode
+        /// </summary>
+        public override void DrawEditorTaskHint()
+        {
+            if(GameObject != null && GameObject.GetComponent<MeshFilter>() != null)
+            {
+                Color shadowColor = Color.magenta;
+                Gizmos.color = shadowColor;
+                Gizmos.DrawMesh(GameObject.GetComponent<MeshFilter>().sharedMesh,Position,GameObject.transform.rotation,GameObject.transform.lossyScale);
+                Color selectedColor = Color.yellow;
+                Gizmos.color = selectedColor;
+                Gizmos.DrawMesh(GameObject.GetComponent<MeshFilter>().sharedMesh, GameObject.transform.position, GameObject.transform.rotation, GameObject.transform.lossyScale);
+            }
+        }
     }
 }
