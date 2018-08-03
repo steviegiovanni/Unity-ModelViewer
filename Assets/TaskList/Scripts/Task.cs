@@ -89,6 +89,12 @@ namespace ModelViewer
         {}
 
         /// <summary>
+        /// draw hint gizmos on editor mode
+        /// </summary>
+        public virtual void DrawEditorTaskHint()
+        { }
+
+        /// <summary>
         /// base constructor taking a game object
         /// </summary>
         public Task(GameObject go)

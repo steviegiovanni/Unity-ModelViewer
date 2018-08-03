@@ -117,11 +117,14 @@ namespace ModelViewer
                 {
                     if (clicked)
                     {
+                        EditorGUIUtility.PingObject(obj.Tasks[i].GameObject);
+                        obj.CurrentTaskId = i;
                         SelectedTaskId = i;
                         GUI.FocusControl(null);
                     }
                     else
                     {
+                        obj.CurrentTaskId = -1;
                         SelectedTaskId = -1;
                     }
                 }

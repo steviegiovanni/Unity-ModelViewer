@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ModelViewer
 {
@@ -60,6 +61,20 @@ namespace ModelViewer
         /// </summary>
         [HideInInspector]
         public List<SerializableTask> serializedTasks;
+
+        /// <summary>
+        /// listeners notified when a new task starts, useful for UI
+        /// </summary>
+        public class TaskStartEvent : UnityEvent<Task> { }
+        private TaskStartEvent _taskStartListeners;
+        public TaskStartEvent TaskStartListeners
+        {
+            get {
+                if (_taskStartListeners == null)
+                    _taskStartListeners = new TaskStartEvent();
+                return _taskStartListeners;
+            }
+        }
 
         /// <summary>
         /// serialization interface implementation
@@ -152,8 +167,20 @@ namespace ModelViewer
                     node.Locked = false;
                 }
 
+                // fire task start event
+                if (TaskStartListeners != null)
+                    TaskStartListeners.Invoke(Tasks[CurrentTaskId]);
+
                 // leave the task to draw the next hint to each task
                 Tasks[CurrentTaskId].DrawTaskHint();
+            }
+        }
+
+        void OnDrawGizmosSelected()
+        {
+            if (Tasks.Count > CurrentTaskId && CurrentTaskId >= 0)
+            {
+                Tasks[CurrentTaskId].DrawEditorTaskHint();
             }
         }
     }
