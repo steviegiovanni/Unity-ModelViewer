@@ -140,6 +140,9 @@ namespace ModelViewer
 
             // increment current task id
             CurrentTaskId++;
+            // destroy previous hint if any
+            if (Hint != null)
+                Destroy(Hint);
 
             // if not exceeding tasks count, there's a new task, set it up. unlock the node, setup hint etc.
             if (CurrentTaskId < Tasks.Count)
@@ -147,12 +150,6 @@ namespace ModelViewer
                 Node node = null;
                 if (mpo.Dict.TryGetValue(Tasks[CurrentTaskId].GameObject, out node)) {
                     node.Locked = false;
-                }
-
-                // destroy previous hint if any
-                if(Hint != null)
-                {
-                    Destroy(Hint);
                 }
 
                 // leave the task to draw the next hint to each task

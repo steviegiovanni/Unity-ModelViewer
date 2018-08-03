@@ -35,6 +35,20 @@ namespace ModelViewer
         public void DisplayTaskDetail(Task t) 
         {
             GUILayout.BeginVertical(EditorStyles.helpBox);
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Name", GUILayout.Width(50));
+            t.TaskName = GUILayout.TextField(t.TaskName);
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Description");
+            GUILayout.EndHorizontal();
+            GUILayout.BeginHorizontal();
+            GUILayout.Space(20);
+            t.Description = GUILayout.TextArea(t.Description, GUILayout.Height(100));
+            GUILayout.EndHorizontal();
+
             switch (t.GetType().Name)
             {
                 case "MovingTask":
@@ -81,6 +95,7 @@ namespace ModelViewer
             base.OnInspectorGUI();
 
             obj = (TaskList)target;
+
             GUILayout.BeginVertical();
             for(int i=0; i < obj.Tasks.Count; i++) {
                 GUILayout.BeginHorizontal();
@@ -88,7 +103,7 @@ namespace ModelViewer
                 // toggle show task detail on and off
                 string taskName = "Missing!";
                 if(obj.Tasks[i].GameObject != null) {
-                    taskName = " (" + obj.Tasks[i].GameObject.name + ")";
+                    taskName = obj.Tasks[i].TaskName + " (" + obj.Tasks[i].GameObject.name + ")";
                     /*Node node = null;
                     if (obj.MPO.Dict.TryGetValue(obj.Tasks[i].GameObject,out node)){
                         taskName = node.Name + " ("+node.GameObject.name+")";
