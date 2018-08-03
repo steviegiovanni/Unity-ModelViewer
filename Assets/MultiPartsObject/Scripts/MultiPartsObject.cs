@@ -417,6 +417,17 @@ namespace ModelViewer
         {
             get { return _movableFrame; }
         }
+
+        /// <summary>
+        /// whether we should snap or not
+        /// </summary>
+        [SerializeField]
+        private bool _snap = true;
+        public bool SnapParts
+        {
+            get { return _snap; }
+            set { _snap = value; }
+        }
 			
 		/// <summary>
 		/// The snap threshold
@@ -822,7 +833,8 @@ namespace ModelViewer
 				else
 					selectedArray [i].GameObject.transform.SetParent (selectedArray [i].Parent.GameObject.transform);
 
-				Snap (selectedArray [i]);
+                if(SnapParts)
+				    Snap (selectedArray [i]);
 			}
         }
 

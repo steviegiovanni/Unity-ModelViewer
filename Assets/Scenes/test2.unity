@@ -2706,6 +2706,7 @@ MonoBehaviour:
   _highlightMaterial: {fileID: 2100000, guid: 5d432c3c745f06446acd106dce5da234, type: 2}
   _silhouetteMaterial: {fileID: 0}
   _movableFrame: {fileID: 1207693975}
+  _snap: 0
   _snapThreshold: 0.1
   _deselectOnSnapped: 1
   _taskList: {fileID: 516467245}

@@ -57,7 +57,17 @@ namespace ModelViewer
             Debug.Log("Moving check task");
             Finished = Vector3.Distance(GameObject.transform.position, Position) <= SnapThreshold;
             if (Finished)
+            {
+                // snap to position
+                GameObject.transform.position = Position;
+
+                MultiPartsObject mpo = TaskList.GetComponent<MultiPartsObject>();
+                if (mpo != null)
+                    mpo.Deselect(GameObject);
+
+                // increment next task
                 TaskList.NextTask();
+            }
         }
 
         /// <summary>
