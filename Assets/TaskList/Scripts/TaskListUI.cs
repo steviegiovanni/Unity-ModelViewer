@@ -6,8 +6,14 @@ using UnityEngine;
 
 namespace ModelViewer
 {
+    /// <summary>
+    /// simple UI, listens to on task start event and shows the task name in front of the user for each task 
+    /// </summary>
     public class TaskListUI : MonoBehaviour
     {
+        /// <summary>
+        /// the task list to listen to
+        /// </summary>
         [SerializeField]
         private TaskList _taskList;
         public TaskList TaskList
@@ -16,6 +22,9 @@ namespace ModelViewer
             set { _taskList = value; }
         }
 
+        /// <summary>
+        /// the task name will only be shown for this short duration of time
+        /// </summary>
         [SerializeField]
         private float _hintDuration = 3.0f;
         public float HintDuration
@@ -24,24 +33,39 @@ namespace ModelViewer
             set { _hintDuration = value; }
         }
 
+        /// <summary>
+        /// the text mesh prefab to be used to show the task name
+        /// </summary>
         [SerializeField]
         private GameObject _hintPrefab;
 
+        /// <summary>
+        /// current elapsed time of the hint
+        /// </summary>
         private float elapsedTime = 0.0f;
+
+        /// <summary>
+        /// the currently instantiated hint
+        /// </summary>
         private GameObject hintObject;
 
         private void Awake()
         {
+            // listen to task list start task event
             TaskList.TaskStartListeners.AddListener(ShowNextTask);
         }
 
         private void Update()
         {
+            // update elapsed time, if it's more than duration, destroys the hint
             elapsedTime += Time.deltaTime;
             if (HintDuration <= elapsedTime && hintObject != null)
                 Destroy(hintObject);
         }
 
+        /// <summary>
+        /// the function to be called when this object receives the start task event
+        /// </summary>
         public void ShowNextTask(Task task)
         {
             elapsedTime = 0.0f;
