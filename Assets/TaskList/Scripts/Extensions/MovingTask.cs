@@ -76,7 +76,6 @@ namespace ModelViewer
         public override void DrawTaskHint()
         {
             TaskList.Hint = GameObject.Instantiate(GameObject,Position,GameObject.transform.rotation);
-            TaskList.Hint.transform.localScale = GameObject.transform.lossyScale;
             if (TaskList.Hint.GetComponent<Collider>() != null)
                 GameObject.Destroy(TaskList.Hint.GetComponent<Collider>());
             if (TaskList.Hint.GetComponent<Renderer>() != null)
