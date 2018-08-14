@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Utilities;
 
 /// <summary>
@@ -33,26 +34,26 @@ public class ObjectPointer : Singleton<ObjectPointer> {
         set { _iray = value; }
     }
 
-	/// <summary>
-	/// line renderer to show ray
-	/// </summary>
-	private LineRenderer _lr;
-	public LineRenderer LR{
-		get{
-			if (_lr == null)
-				_lr = GetComponent<LineRenderer> ();
-			return _lr;
-		}
-	}
+    /// <summary>
+    /// line renderer to show ray
+    /// </summary>
+    private LineRenderer _lr;
+    public LineRenderer LR {
+        get {
+            if (_lr == null)
+                _lr = GetComponent<LineRenderer>();
+            return _lr;
+        }
+    }
 
-	/// <summary>
-	/// show the ray or not
-	/// </summary>
-	[SerializeField]
-	private bool _rayVisible;
-	public bool RayVisible{
-		get{ return _rayVisible; }set{ _rayVisible = value;}
-	}
+    /// <summary>
+    /// show the ray or not
+    /// </summary>
+    [SerializeField]
+    private bool _rayVisible;
+    public bool RayVisible {
+        get { return _rayVisible; } set { _rayVisible = value; }
+    }
 
     void OnValidate()
     {
@@ -72,6 +73,20 @@ public class ObjectPointer : Singleton<ObjectPointer> {
         get { return _hitInfo; }
     }
 
+    /// <summary>
+    /// events fired when object pointer is gazing 
+    /// </summary>
+    public class GazeEvent : UnityEvent<GameObject>{}
+    private GazeEvent _onHoverEvent;
+    public GazeEvent OnHoverEvent
+    {
+        get {
+            if (_onHoverEvent == null)
+                _onHoverEvent = new GazeEvent();
+            return _onHoverEvent;
+        }
+    }
+
     // Update is called once per frame
     void Update () {
         // use default ray with no dir if there's no HasRay object
@@ -82,8 +97,15 @@ public class ObjectPointer : Singleton<ObjectPointer> {
             ray = Ray.GetRay();
 
         // raycast to get hitInfo
-		if (Physics.Raycast(ray, out _hitInfo, Mathf.Infinity, Physics.DefaultRaycastLayers)) { }
-            //Debug.Log(_hitInfo.collider.gameObject.name);
+		if (Physics.Raycast(ray, out _hitInfo, Mathf.Infinity, Physics.DefaultRaycastLayers)) {
+            if (OnHoverEvent != null)
+                OnHoverEvent.Invoke(_hitInfo.collider.gameObject);
+        }
+        else
+        {
+            if (OnHoverEvent != null)
+                OnHoverEvent.Invoke(null);
+        }
 
 		// draw ray if there's a line renderer and ray is visible
 		if (LR != null) {
