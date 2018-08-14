@@ -56,11 +56,17 @@ namespace ModelViewer
                         MovingTask castedt = (MovingTask)t;
 
                         // to modify snap threshold
-                        GUILayout.Label("Snap Threshold");
+                        GUILayout.Label("Distance");
                         GUILayout.BeginHorizontal();
                         GUILayout.Space(20);
                         castedt.SnapThreshold = GUILayout.HorizontalSlider(castedt.SnapThreshold, 0.1f, 1f);
                         GUILayout.Label(castedt.SnapThreshold.ToString(),GUILayout.Width(30));
+                        GUILayout.EndHorizontal();
+
+                        // move type
+                        GUILayout.BeginHorizontal();
+                        GUILayout.Label("Type", GUILayout.Width(30));
+                        castedt.MoveType = (MovingTaskType)EditorGUILayout.EnumPopup(castedt.MoveType);
                         GUILayout.EndHorizontal();
 
                         // to modify goal position
@@ -76,12 +82,28 @@ namespace ModelViewer
                         castedt.Position = new Vector3(x, y, z);
                         GUILayout.Space(20);
                         GUILayout.EndHorizontal();
+                        GUILayout.BeginHorizontal();
+                        GUILayout.Space(20);
+                        GUILayout.Label("i: ");
+                        float i = EditorGUILayout.FloatField(castedt.Rotation.x);
+                        GUILayout.Label("j: ");
+                        float j = EditorGUILayout.FloatField(castedt.Rotation.y);
+                        GUILayout.Label("k: ");
+                        float k = EditorGUILayout.FloatField(castedt.Rotation.z);
+                        GUILayout.Label("w: ");
+                        float w = EditorGUILayout.FloatField(castedt.Rotation.w);
+                        castedt.Rotation = new Quaternion(i, j, k, w);
+                        GUILayout.Space(20);
+                        GUILayout.EndHorizontal();
 
                         // easily get the go current position as the goal pos
-                        if (GUILayout.Button("Use Current GO Position"))
+                        if (GUILayout.Button("Use Current GO Position and rotation"))
                         {
                             if (castedt.GameObject != null)
+                            {
                                 castedt.Position = castedt.GameObject.transform.position;
+                                castedt.Rotation = castedt.GameObject.transform.rotation;
+                            }
                         }
                     }
                     break;
