@@ -81,7 +81,7 @@ namespace ModelViewer
                 if (GUILayout.Button("Add Task", "Button", GUILayout.Width(100)))
                 {
                     TaskList tl = obj.TaskList;
-                    tl.Tasks.Add(new MovingTask(node.GameObject,obj.transform.TransformPoint(node.P0),obj.transform.rotation));
+                    tl.Tasks.Add(new MovingTask(node.GameObject,obj.transform.TransformPoint(node.P0),node.R0));
                 }
                 GUILayout.EndHorizontal();
 
