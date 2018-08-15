@@ -84,7 +84,7 @@ namespace ModelViewer
                         GUILayout.EndHorizontal();
                         GUILayout.BeginHorizontal();
                         GUILayout.Space(20);
-                        /*GUILayout.Label("i: ");
+                        GUILayout.Label("i: ");
                         float i = EditorGUILayout.FloatField(castedt.Rotation.x);
                         GUILayout.Label("j: ");
                         float j = EditorGUILayout.FloatField(castedt.Rotation.y);
@@ -92,7 +92,7 @@ namespace ModelViewer
                         float k = EditorGUILayout.FloatField(castedt.Rotation.z);
                         GUILayout.Label("w: ");
                         float w = EditorGUILayout.FloatField(castedt.Rotation.w);
-                        castedt.Rotation = new Quaternion(i, j, k, w);*/
+                        castedt.Rotation = new Quaternion(i, j, k, w);
                         GUILayout.Space(20);
                         GUILayout.EndHorizontal();
 

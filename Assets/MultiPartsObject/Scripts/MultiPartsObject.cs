@@ -733,7 +733,6 @@ namespace ModelViewer
         public void Deselect(Node node)
         {
             //if (node.Locked) return;
-            Debug.Log("deselect reached");
             node.Selected = false;
             if (node.HasMesh)
             {
@@ -922,7 +921,6 @@ namespace ModelViewer
         /// <summary>
         /// the serialized node structure
         /// </summary>
-        [HideInInspector]
         public List<SerializableNode> serializedNodes;
 
         /// <summary>
@@ -953,13 +951,73 @@ namespace ModelViewer
                 AddNodeToSerializedNodes(child,serializedNode.IndexOfFirstChild - 1);
         }
 
+        void AddNodeToSerializedNodesBFS()
+        {
+            if (Root == null) return;
+
+
+            List<Node> toProcess = new List<Node>();
+            toProcess.Add(Root);
+
+            var serializedRoot = new SerializableNode()
+            {
+                ChildCount = Root.Childs.Count,
+                IndexOfFirstChild = 1,
+                GameObject = Root.GameObject,
+                HasMesh = Root.HasMesh,
+                indexOfParent = -1,
+                P0 = Root.P0,
+                R0 = Root.R0,
+                S0 = Root.S0,
+                Bounds = Root.Bounds,
+                Material = Root.Material,
+                Locked = Root.Locked,
+                Name = Root.Name
+            };
+            serializedNodes.Add(serializedRoot);
+
+            int parentId = 0;
+            while(toProcess.Count > 0)
+            {
+                Node n = toProcess[0];
+                int nCousins = 0;
+                int childid = 0;
+                foreach(var child in n.Childs)
+                {
+                    var serializedNode = new SerializableNode()
+                    {
+                        ChildCount = child.Childs.Count,
+                        IndexOfFirstChild = serializedNodes.Count + n.Childs.Count - childid + nCousins,
+                        GameObject = child.GameObject,
+                        HasMesh = child.HasMesh,
+                        indexOfParent = parentId,
+                        P0 = child.P0,
+                        R0 = child.R0,
+                        S0 = child.S0,
+                        Bounds = child.Bounds,
+                        Material = child.Material,
+                        Locked = child.Locked,
+                        Name = child.Name
+                    };
+                    serializedNodes.Add(serializedNode);
+                    nCousins += child.Childs.Count;
+                    childid++;
+                    toProcess.Add(child);
+                }
+
+                toProcess.RemoveAt(0);
+                parentId++;
+            }
+        }
+
         /// <summary>
         /// serialization interface implementation
         /// </summary>
         public void OnBeforeSerialize()
         {
             serializedNodes.Clear();
-            AddNodeToSerializedNodes(Root,-1);
+            //AddNodeToSerializedNodes(Root,-1);
+            AddNodeToSerializedNodesBFS();
         }
 
         /// <summary>
