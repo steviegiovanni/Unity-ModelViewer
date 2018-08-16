@@ -97,8 +97,15 @@ namespace ModelViewer
                     {
                         return new MovingTask(st);
                     }break;
+                case "GenericTask":
+                    {
+                        return new GenericTask(st);
+                    }break;
+                default:
+                    {
+                        return new Task(st);
+                    }
             }
-            return new Task(st);
         }
 
         /// <summary>

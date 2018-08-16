@@ -17,6 +17,7 @@ namespace ModelViewer
         public string TaskName;
         public string Description;
         public MovingTaskType MoveType;
+        public SerializableTaskEvent TaskEvent;
         
         public SerializableTask(Task t)
         {
@@ -28,11 +29,16 @@ namespace ModelViewer
             {
                 case "MovingTask":
                     {
-                        MovingTask castedTask = (MovingTask)t;
+                        MovingTask castedTask = t as MovingTask;
                         Position = castedTask.Position;
                         Rotation = castedTask.Rotation;
                         SnapThreshold = castedTask.SnapThreshold;
                         MoveType = castedTask.MoveType;
+                    }break;
+                case "GenericTask":
+                    {
+                        GenericTask castedTask = t as GenericTask;
+                        TaskEvent = new SerializableTaskEvent(castedTask.TaskEvent);
                     }break;
             }
         }
