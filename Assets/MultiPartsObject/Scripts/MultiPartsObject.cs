@@ -924,37 +924,11 @@ namespace ModelViewer
         public List<SerializableNode> serializedNodes;
 
         /// <summary>
-        /// add a serialized node into the list of serialized nodes
+        /// add serialized nodes into the list of serialized nodes
         /// </summary>
-        void AddNodeToSerializedNodes(Node n, int parentId)
-        {
-            if (n == null) return;
-
-            var serializedNode = new SerializableNode()
-            {
-                ChildCount = n.Childs.Count,
-                IndexOfFirstChild = serializedNodes.Count + 1,
-                GameObject = n.GameObject,
-                HasMesh = n.HasMesh,
-                indexOfParent = parentId,
-                P0 = n.P0,
-                R0 = n.R0,
-                S0 = n.S0,
-                Bounds = n.Bounds,
-                Material = n.Material,
-                Locked = n.Locked,
-                Name = n.Name
-            };
-
-            serializedNodes.Add(serializedNode);
-            foreach (var child in n.Childs)
-                AddNodeToSerializedNodes(child,serializedNode.IndexOfFirstChild - 1);
-        }
-
-        void AddNodeToSerializedNodesBFS()
+        void AddNodesToSerializedNodesBFS()
         {
             if (Root == null) return;
-
 
             List<Node> toProcess = new List<Node>();
             toProcess.Add(Root);
@@ -1017,7 +991,7 @@ namespace ModelViewer
         {
             serializedNodes.Clear();
             //AddNodeToSerializedNodes(Root,-1);
-            AddNodeToSerializedNodesBFS();
+            AddNodesToSerializedNodesBFS();
         }
 
         /// <summary>

@@ -81,8 +81,32 @@ namespace ModelViewer
                 // to add a task related to the game object of this node
                 if (GUILayout.Button("Add Task", "Button", GUILayout.Width(100)))
                 {
-                    TaskList tl = obj.TaskList;
-                    tl.Tasks.Add(new MovingTask(node.GameObject,obj.transform.TransformPoint(node.P0),node.R0));
+                    GenericMenu genericMenu = new GenericMenu();
+                    for (int i = 0; i < MultiPartsObjectEditorUtility.TaskTypes().Length; i++)
+                    {
+                        genericMenu.AddItem(new GUIContent(MultiPartsObjectEditorUtility.TaskTypes()[i]), false,
+                            (param) =>
+                            {
+                                int index = (int)param;
+                                switch (index)
+                                {
+                                    case 0:
+                                        {
+                                            TaskList tl = obj.TaskList;
+                                            tl.Tasks.Add(new MovingTask(node.GameObject, obj.transform.TransformPoint(node.P0), node.R0));
+                                        }
+                                        break;
+                                    case 1:
+                                        {
+                                            TaskList tl = obj.TaskList;
+                                            tl.Tasks.Add(new GenericTask(node.GameObject));
+                                        }
+                                        break;
+                                }
+                            }
+                        , i);
+                    }
+                    genericMenu.ShowAsContext();
                 }
                 GUILayout.EndHorizontal();
 
