@@ -25,6 +25,8 @@ namespace ModelViewer
             GameObject = t.GameObject;
             TaskName = t.TaskName;
             Description = t.Description;
+            if(t.TaskEvent != null)
+                TaskEvent = new SerializableTaskEvent(t.TaskEvent);
             switch (TypeName)
             {
                 case "MovingTask":
@@ -37,8 +39,6 @@ namespace ModelViewer
                     }break;
                 case "GenericTask":
                     {
-                        GenericTask castedTask = t as GenericTask;
-                        TaskEvent = new SerializableTaskEvent(castedTask.TaskEvent);
                     }break;
             }
         }

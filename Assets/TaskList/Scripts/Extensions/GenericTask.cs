@@ -9,35 +9,39 @@ namespace ModelViewer
     /// </summary>
     public class GenericTask : Task
     {
-        private TaskEvent _taskEvent;
-        public TaskEvent TaskEvent
-        {
-            get { return _taskEvent; }
-            set { _taskEvent = value; }
-        }
-
         /// <summary>
         /// constructor taking a go
         /// </summary>
-        public GenericTask(GameObject go) : base(go){
-            _taskEvent = null;
-        }
+        public GenericTask(GameObject go) : base(go){}
 
         /// <summary>
         /// constructor taking a serializable task
         /// </summary>
-        public GenericTask (SerializableTask task):base(task)
+        public GenericTask (SerializableTask task):base(task){}
+
+        /// <summary>
+        /// reimplemntation of draw task hint. draw the silhouette of the game object at the goal pos
+        /// </summary>
+        public override void DrawTaskHint(TaskList taskList)
         {
-            SerializableTaskEvent ste = task.TaskEvent;
-            if (ste != null)
+            taskList.Hint = GameObject.Instantiate(GameObject, GameObject.transform.position, GameObject.transform.rotation);
+            taskList.Hint.transform.localScale = GameObject.transform.lossyScale;
+            if (taskList.Hint.GetComponent<Collider>() != null)
+                GameObject.Destroy(taskList.Hint.GetComponent<Collider>());
+            if (taskList.Hint.GetComponent<Renderer>() != null)
+                taskList.Hint.GetComponent<Renderer>().material = taskList.SilhouetteMaterial;
+        }
+
+        /// <summary>
+        /// draw hint gizmos on editor mode
+        /// </summary>
+        public override void DrawEditorTaskHint()
+        {
+            if (GameObject != null && GameObject.GetComponent<MeshFilter>() != null)
             {
-                switch (ste.TypeName)
-                {
-                    case "TransformTaskEvent":
-                        {
-                            TaskEvent = new TransformTaskEvent(ste);
-                        }break;
-                }
+                Color selectedColor = Color.yellow;
+                Gizmos.color = selectedColor;
+                Gizmos.DrawMesh(GameObject.GetComponent<MeshFilter>().sharedMesh, GameObject.transform.position, GameObject.transform.rotation, GameObject.transform.lossyScale);
             }
         }
     }
