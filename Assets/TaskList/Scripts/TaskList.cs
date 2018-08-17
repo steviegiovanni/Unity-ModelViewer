@@ -128,27 +128,50 @@ namespace ModelViewer
             if (mpo == null)
                 Debug.LogError("No multiparts object attached");
 
+            mpo.OnReleaseEvent.AddListener(CheckTaskOnRelease);
+            mpo.OnSelectEvent.AddListener(CheckTaskOnSelect);
+            // register each task "CheckTask" function to onrelease of the appropriate node
+            StartCoroutine(TaskListCoroutine());
+        }
+
+        public IEnumerator TaskListCoroutine()
+        {
             // set current task id to -1 as we're going to increment by 1 on NextTask() on start
             CurrentTaskId = -1;
 
-            // register each task "CheckTask" function to onrelease of the appropriate node
-            foreach(var task in Tasks)
+            foreach (var task in Tasks)
             {
-                // set task's owner to this tasklist
-                task.TaskList = this;
-                Node node = null;
-                if(mpo.Dict.TryGetValue(task.GameObject,out node))
-                {
-                    node.OnReleaseEvent.AddListener(task.CheckTask);
-                }
-            }
+                // destroy previous hint if any
+                if (Hint != null)
+                    Destroy(Hint);
 
-            // start next task at current id 0
-            NextTask();
+                // increment task id
+                CurrentTaskId++;
+
+                // fire task start event
+                if (TaskStartListeners != null)
+                    TaskStartListeners.Invoke(Tasks[CurrentTaskId]);
+
+                // draw current task hint
+                Tasks[CurrentTaskId].DrawTaskHint(this);
+                while (!Tasks[CurrentTaskId].Finished)
+                    yield return null;
+                MultiPartsObject mpo = GetComponent<MultiPartsObject>();
+                mpo.Deselect();
+
+                // destroy hint if any
+                if (Hint != null)
+                    Destroy(Hint);
+
+                // run task event coroutine if exists
+                if (Tasks[CurrentTaskId].TaskEvent != null)
+                    yield return StartCoroutine(Tasks[CurrentTaskId].TaskEvent.TaskEventCoroutine());
+            }
+            yield return null;
         }
 
         // next task is called by each task when it is finished
-        public void NextTask()
+        /*public void NextTask()
         {
             // if not task 0, there's a previous task, do some cleanup, locked the node etc.
             if (Tasks.Count <= 0) return;
@@ -179,15 +202,37 @@ namespace ModelViewer
                     TaskStartListeners.Invoke(Tasks[CurrentTaskId]);
 
                 // leave the task to draw the next hint to each task
-                Tasks[CurrentTaskId].DrawTaskHint();
+                Tasks[CurrentTaskId].DrawTaskHint(this);
             }
-        }
+        }*/
 
         void OnDrawGizmosSelected()
         {
             if (Tasks.Count > CurrentTaskId && CurrentTaskId >= 0)
             {
                 Tasks[CurrentTaskId].DrawEditorTaskHint();
+            }
+        }
+
+        public void CheckTaskOnRelease(Node node)
+        {
+            if(CurrentTaskId < Tasks.Count && CurrentTaskId != -1)
+            {
+                Task task = Tasks[CurrentTaskId];
+                if (task.GetType().Name != "MovingTask") return;
+                if (task.GameObject == node.GameObject)
+                    task.CheckTask();
+            }
+        }
+
+        public void CheckTaskOnSelect(Node node)
+        {
+            if (CurrentTaskId < Tasks.Count && CurrentTaskId != -1)
+            {
+                Task task = Tasks[CurrentTaskId];
+                if (task.GetType().Name != "GenericTask") return;
+                if (task.GameObject == node.GameObject)
+                    task.CheckTask();
             }
         }
     }

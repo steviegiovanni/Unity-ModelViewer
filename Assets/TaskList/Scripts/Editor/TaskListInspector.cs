@@ -36,6 +36,8 @@ namespace ModelViewer
         {
             GUILayout.BeginVertical(EditorStyles.helpBox);
 
+            GUILayout.Label(t.GetType().Name, EditorStyles.boldLabel);
+
             GUILayout.BeginHorizontal();
             GUILayout.Label("Name", GUILayout.Width(50));
             t.TaskName = GUILayout.TextField(t.TaskName);
@@ -109,113 +111,125 @@ namespace ModelViewer
                     break;
                 case "GenericTask":
                     {
-                        GenericTask castedt = t as GenericTask;
-                        if(castedt.TaskEvent != null)
-                        {
-                            TransformTaskEvent tte = castedt.TaskEvent as TransformTaskEvent;
-                            // to modify start and end position
-                            GUILayout.Label("Start");
-                            GUILayout.BeginHorizontal();
-                            GUILayout.Space(20);
-                            GUILayout.Label("x: ");
-                            float x = EditorGUILayout.FloatField(tte.StartPos.x);
-                            GUILayout.Label("y: ");
-                            float y = EditorGUILayout.FloatField(tte.StartPos.y);
-                            GUILayout.Label("z: ");
-                            float z = EditorGUILayout.FloatField(tte.StartPos.z);
-                            tte.StartPos = new Vector3(x, y, z);
-                            GUILayout.Space(20);
-                            GUILayout.EndHorizontal();
-
-                            GUILayout.BeginHorizontal();
-                            GUILayout.Space(20);
-                            GUILayout.Label("i: ");
-                            float i = EditorGUILayout.FloatField(tte.StartRotation.x);
-                            GUILayout.Label("j: ");
-                            float j = EditorGUILayout.FloatField(tte.StartRotation.y);
-                            GUILayout.Label("k: ");
-                            float k = EditorGUILayout.FloatField(tte.StartRotation.z);
-                            GUILayout.Label("w: ");
-                            float w = EditorGUILayout.FloatField(tte.StartRotation.w);
-                            tte.StartRotation = new Quaternion(i, j, k, w);
-                            GUILayout.Space(20);
-                            GUILayout.EndHorizontal();
-
-                            // easily get the go current position as the goal pos
-                            if (GUILayout.Button("Use Current GO Position and rotation"))
-                            {
-                                if (castedt.GameObject != null)
-                                {
-                                    tte.StartPos = castedt.GameObject.transform.position;
-                                    tte.StartRotation = castedt.GameObject.transform.rotation;
-                                }
-                            }
-
-
-                            GUILayout.Label("End");
-                            GUILayout.BeginHorizontal();
-                            GUILayout.Space(20);
-                            GUILayout.Label("x: ");
-                            float xend = EditorGUILayout.FloatField(tte.EndPos.x);
-                            GUILayout.Label("y: ");
-                            float yend = EditorGUILayout.FloatField(tte.EndPos.y);
-                            GUILayout.Label("z: ");
-                            float zend = EditorGUILayout.FloatField(tte.EndPos.z);
-                            tte.EndPos = new Vector3(xend, yend, zend);
-                            GUILayout.Space(20);
-                            GUILayout.EndHorizontal();
-
-                            GUILayout.BeginHorizontal();
-                            GUILayout.Space(20);
-                            GUILayout.Label("i: ");
-                            float endi = EditorGUILayout.FloatField(tte.EndRotation.x);
-                            GUILayout.Label("j: ");
-                            float endj = EditorGUILayout.FloatField(tte.EndRotation.y);
-                            GUILayout.Label("k: ");
-                            float endk = EditorGUILayout.FloatField(tte.EndRotation.z);
-                            GUILayout.Label("w: ");
-                            float endw = EditorGUILayout.FloatField(tte.EndRotation.w);
-                            tte.StartRotation = new Quaternion(endi, endj, endk, endw);
-                            GUILayout.Space(20);
-                            GUILayout.EndHorizontal();
-
-                            // easily get the go current position as the goal pos
-                            if (GUILayout.Button("Use Current GO Position and rotation"))
-                            {
-                                if (castedt.GameObject != null)
-                                {
-                                    tte.EndPos = castedt.GameObject.transform.position;
-                                    tte.EndRotation = castedt.GameObject.transform.rotation;
-                                }
-                            }
-                        }
-
-                        if (GUILayout.Button("Add Task Event"))
-                        {
-                            GenericMenu genericMenu = new GenericMenu();
-                            for (int i = 0; i < TaskListEditorUtility.EventTypes().Length; i++)
-                            {
-                                genericMenu.AddItem(new GUIContent(TaskListEditorUtility.EventTypes()[i]), false,
-                                    (param) =>
-                                    {
-                                        int index = (int)param;
-                                        switch (index)
-                                        {
-                                            case 0:
-                                                {
-                                                    castedt.TaskEvent = new TransformTaskEvent();
-                                                }
-                                                break;
-                                        }
-                                    }
-                                , i);
-                            }
-                            genericMenu.ShowAsContext();
-
-                        }
+                        
                     }
                     break;
             }
+            GUILayout.EndVertical();
+
+            // for task event
+            GUILayout.BeginVertical(EditorStyles.helpBox);
+            if (t.TaskEvent != null)
+            {
+                GUILayout.Label(t.TaskEvent.GetType().Name,EditorStyles.boldLabel);
+                TransformTaskEvent tte = t.TaskEvent as TransformTaskEvent;
+                // to modify start and end position
+                GUILayout.Label("Start");
+                GUILayout.BeginHorizontal();
+                GUILayout.Space(20);
+                GUILayout.Label("x: ");
+                float x = EditorGUILayout.FloatField(tte.StartPos.x);
+                GUILayout.Label("y: ");
+                float y = EditorGUILayout.FloatField(tte.StartPos.y);
+                GUILayout.Label("z: ");
+                float z = EditorGUILayout.FloatField(tte.StartPos.z);
+                tte.StartPos = new Vector3(x, y, z);
+                GUILayout.Space(20);
+                GUILayout.EndHorizontal();
+
+                GUILayout.BeginHorizontal();
+                GUILayout.Space(20);
+                GUILayout.Label("i: ");
+                float i = EditorGUILayout.FloatField(tte.StartRotation.x);
+                GUILayout.Label("j: ");
+                float j = EditorGUILayout.FloatField(tte.StartRotation.y);
+                GUILayout.Label("k: ");
+                float k = EditorGUILayout.FloatField(tte.StartRotation.z);
+                GUILayout.Label("w: ");
+                float w = EditorGUILayout.FloatField(tte.StartRotation.w);
+                tte.StartRotation = new Quaternion(i, j, k, w);
+                GUILayout.Space(20);
+                GUILayout.EndHorizontal();
+
+                // easily get the go current position as the goal pos
+                if (GUILayout.Button("Use Current GO Position and rotation"))
+                {
+                    if (t.GameObject != null)
+                    {
+                        tte.StartPos = t.GameObject.transform.position;
+                        tte.StartRotation = t.GameObject.transform.rotation;
+                    }
+                }
+
+
+                GUILayout.Label("End");
+                GUILayout.BeginHorizontal();
+                GUILayout.Space(20);
+                GUILayout.Label("x: ");
+                float xend = EditorGUILayout.FloatField(tte.EndPos.x);
+                GUILayout.Label("y: ");
+                float yend = EditorGUILayout.FloatField(tte.EndPos.y);
+                GUILayout.Label("z: ");
+                float zend = EditorGUILayout.FloatField(tte.EndPos.z);
+                tte.EndPos = new Vector3(xend, yend, zend);
+                GUILayout.Space(20);
+                GUILayout.EndHorizontal();
+
+                GUILayout.BeginHorizontal();
+                GUILayout.Space(20);
+                GUILayout.Label("i: ");
+                float endi = EditorGUILayout.FloatField(tte.EndRotation.x);
+                GUILayout.Label("j: ");
+                float endj = EditorGUILayout.FloatField(tte.EndRotation.y);
+                GUILayout.Label("k: ");
+                float endk = EditorGUILayout.FloatField(tte.EndRotation.z);
+                GUILayout.Label("w: ");
+                float endw = EditorGUILayout.FloatField(tte.EndRotation.w);
+                tte.EndRotation = new Quaternion(endi, endj, endk, endw);
+                GUILayout.Space(20);
+                GUILayout.EndHorizontal();
+
+                // easily get the go current position as the goal pos
+                if (GUILayout.Button("Use Current GO Position and rotation"))
+                {
+                    if (t.GameObject != null)
+                    {
+                        tte.EndPos = t.GameObject.transform.position;
+                        tte.EndRotation = t.GameObject.transform.rotation;
+                    }
+                }
+
+                if (GUILayout.Button("Remove Task Event"))
+                {
+                    t.TaskEvent = null;
+                }
+            }
+            else
+            {
+                if (GUILayout.Button("Add Task Event"))
+                {
+                    GenericMenu genericMenu = new GenericMenu();
+                    for (int eventTypeId = 0; eventTypeId < TaskListEditorUtility.EventTypes().Length; eventTypeId++)
+                    {
+                        genericMenu.AddItem(new GUIContent(TaskListEditorUtility.EventTypes()[eventTypeId]), false,
+                            (param) =>
+                            {
+                                int index = (int)param;
+                                switch (index)
+                                {
+                                    case 0:
+                                        {
+                                            t.TaskEvent = new TransformTaskEvent();
+                                        }
+                                        break;
+                                }
+                            }
+                        , eventTypeId);
+                    }
+                    genericMenu.ShowAsContext();
+                }
+            }
+
             GUILayout.EndVertical();
         }
 

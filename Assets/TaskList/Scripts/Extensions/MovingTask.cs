@@ -83,8 +83,6 @@ namespace ModelViewer
         /// </summary>
         public override void CheckTask()
         {
-            if (!IsCurrentTask()) return;
-            Debug.Log("Moving check task");
             Finished = (MoveType==MovingTaskType.MoveTo)?(Vector3.Distance(GameObject.transform.position, Position) <= SnapThreshold): (Vector3.Distance(GameObject.transform.position, Position) > SnapThreshold);
             if (Finished)
             {
@@ -94,27 +92,20 @@ namespace ModelViewer
                     GameObject.transform.position = Position;
                     GameObject.transform.rotation = Rotation;
                 }
-
-                MultiPartsObject mpo = TaskList.GetComponent<MultiPartsObject>();
-                if (mpo != null)
-                    mpo.Deselect(GameObject);
-
-                // increment next task
-                TaskList.NextTask();
             }
         }
 
         /// <summary>
         /// reimplemntation of draw task hint. draw the silhouette of the game object at the goal pos
         /// </summary>
-        public override void DrawTaskHint()
+        public override void DrawTaskHint(TaskList taskList)
         {
-            TaskList.Hint = GameObject.Instantiate(GameObject,Position,GameObject.transform.rotation);
-            TaskList.Hint.transform.localScale = GameObject.transform.lossyScale;
-            if (TaskList.Hint.GetComponent<Collider>() != null)
-                GameObject.Destroy(TaskList.Hint.GetComponent<Collider>());
-            if (TaskList.Hint.GetComponent<Renderer>() != null)
-                TaskList.Hint.GetComponent<Renderer>().material = TaskList.SilhouetteMaterial;
+            taskList.Hint = GameObject.Instantiate(GameObject,Position,GameObject.transform.rotation);
+            taskList.Hint.transform.localScale = GameObject.transform.lossyScale;
+            if (taskList.Hint.GetComponent<Collider>() != null)
+                GameObject.Destroy(taskList.Hint.GetComponent<Collider>());
+            if (taskList.Hint.GetComponent<Renderer>() != null)
+                taskList.Hint.GetComponent<Renderer>().material = taskList.SilhouetteMaterial;
         }
 
         /// <summary>

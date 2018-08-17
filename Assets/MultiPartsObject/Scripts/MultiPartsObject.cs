@@ -133,21 +133,6 @@ namespace ModelViewer
         }
 
         /// <summary>
-        /// registered events to be called when the node is released
-        /// (will probably add a lot more like this for click etc.)
-        /// </summary>
-        private UnityEvent _onReleaseEvent;
-        public UnityEvent OnReleaseEvent
-        {
-            get
-            {
-                if (_onReleaseEvent == null)
-                    _onReleaseEvent = new UnityEvent();
-                return _onReleaseEvent;
-            }
-        }
-
-        /// <summary>
         /// default constructor
         /// </summary>
         public Node()
@@ -470,6 +455,28 @@ namespace ModelViewer
             }
         }
 
+        public class MPOEvent: UnityEvent<Node> { };
+        private MPOEvent _onReleaseEvent;
+        public MPOEvent OnReleaseEvent
+        {
+            get {
+                if (_onReleaseEvent == null)
+                    _onReleaseEvent = new MPOEvent();
+                return _onReleaseEvent;
+            }
+        }
+
+        private MPOEvent _onSelectEvent;
+        public MPOEvent OnSelectEvent
+        {
+            get
+            {
+                if (_onSelectEvent == null)
+                    _onSelectEvent = new MPOEvent();
+                return _onSelectEvent;
+            }
+        }
+
         void Awake()
         {
             // construct dictionary on awake as we're not serializing the dictionary
@@ -706,6 +713,8 @@ namespace ModelViewer
                 node.GameObject.GetComponent<Renderer>().material = new Material(HighlightMaterial);
             //if (!SelectedNodes.Contains(node))
             SelectedNodes.Add(node);
+            if (OnSelectEvent != null)
+                OnSelectEvent.Invoke(node);
         }
 
         /// <summary>
@@ -817,10 +826,12 @@ namespace ModelViewer
         {
 			Node[] selectedArray = SelectedNodes.ToArray ();
 			for (int i = 0; i < selectedArray.Length; i++) {
-                if (selectedArray[i].OnReleaseEvent != null)
+                /*if (selectedArray[i].OnReleaseEvent != null)
                 {
                     SelectedNodes[i].OnReleaseEvent.Invoke();
-                }
+                }*/
+                if (OnReleaseEvent != null)
+                    OnReleaseEvent.Invoke(selectedArray[i]);
 
 				if (selectedArray [i].Childs.Count > 0) {
 					foreach (var child in selectedArray[i].Childs)

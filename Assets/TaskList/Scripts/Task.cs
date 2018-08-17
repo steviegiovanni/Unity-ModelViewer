@@ -12,16 +12,6 @@ namespace ModelViewer
     public class Task
     {
         /// <summary>
-        /// the owner tasklist
-        /// </summary>
-        private TaskList _taskList;
-        public TaskList TaskList
-        {
-            get { return _taskList; }
-            set { _taskList = value; }
-        }
-
-        /// <summary>
         /// name of the task
         /// </summary>
         private string _taskName;
@@ -71,28 +61,36 @@ namespace ModelViewer
             set { _active = value; }
         }
 
+        private TaskEvent _taskEvent;
+        public TaskEvent TaskEvent
+        {
+            get { return _taskEvent; }
+            set { _taskEvent = value; }
+        }
+
         /// <summary>
         /// check task is finished, override for different task behavior
         /// </summary>
         public virtual void CheckTask()
         {
-            if (!IsCurrentTask()) return;
+            Finished = true;
+            /*if (!IsCurrentTask()) return;
             Debug.Log("Base check task");
             if (Finished)
-                TaskList.NextTask();
+                TaskList.NextTask();*/
         }
 
         /// <summary>
         /// what kind of hint should be drawn? override for different task behaviour
         /// </summary>
-        public virtual void DrawTaskHint()
+        public virtual void DrawTaskHint(TaskList taskList)
         {}
 
         /// <summary>
         /// draw hint gizmos on editor mode
         /// </summary>
         public virtual void DrawEditorTaskHint()
-        { }
+        {}
 
         /// <summary>
         /// base constructor taking a game object
@@ -111,19 +109,22 @@ namespace ModelViewer
             GameObject = task.GameObject;
             TaskName = task.TaskName;
             Description = task.Description;
-        }
 
-        /// <summary>
-        /// simple check whether this task is the currently active task
-        /// </summary>
-        public bool IsCurrentTask()
-        {
-            if(TaskList != null)
+            SerializableTaskEvent ste = task.TaskEvent;
+            if (ste != null)
             {
-                return TaskList.Tasks.IndexOf(this) == TaskList.CurrentTaskId;
-            }
+                switch (ste.TypeName)
+                {
+                    case "TransformTaskEvent":
+                        {
+                            TaskEvent = new TransformTaskEvent(ste);
+                        }
+                        break;
+                }
 
-            return false;
+                if(TaskEvent != null)
+                    TaskEvent.Task = this;
+            }
         }
     }
 }
