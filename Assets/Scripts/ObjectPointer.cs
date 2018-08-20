@@ -55,7 +55,18 @@ public class ObjectPointer : Singleton<ObjectPointer> {
         get { return _rayVisible; } set { _rayVisible = value; }
     }
 
+    /// <summary>
+    /// check ray whenever we modify the ray field
+    /// </summary>
     void OnValidate()
+    {
+        CheckRay();
+    }
+
+    /// <summary>
+    /// check whether we have a valid ray object 
+    /// </summary>
+    void CheckRay()
     {
         if (_ray != null)
         {
@@ -87,12 +98,19 @@ public class ObjectPointer : Singleton<ObjectPointer> {
         }
     }
 
+    private void Start()
+    {
+        CheckRay();
+    }
+
     // Update is called once per frame
     void Update () {
         // use default ray with no dir if there's no HasRay object
         Ray ray;
         if (Ray == null)
+        {
             ray = new Ray(Vector3.zero, Vector3.zero);
+        }
         else
             ray = Ray.GetRay();
 
@@ -109,8 +127,8 @@ public class ObjectPointer : Singleton<ObjectPointer> {
 
 		// draw ray if there's a line renderer and ray is visible
 		if (LR != null) {
-			if (RayVisible) {
-				LR.SetPosition (0, ray.origin);
+            if (RayVisible) {
+                LR.SetPosition (0, ray.origin);
 				if(HitInfo.collider != null)
 					LR.SetPosition (1, HitInfo.point);
 				else
