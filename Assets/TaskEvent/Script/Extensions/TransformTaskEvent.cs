@@ -1,11 +1,17 @@
-﻿using System.Collections;
+﻿// author: Stevie Giovanni
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace ModelViewer
 {
+    // a task event that lets user specifies an initial and goal transform of a part in a multipartsobject
     public class TransformTaskEvent : TaskEvent
     {
+        /// <summary>
+        /// starting position
+        /// </summary>
         private Vector3 _startPos;
         public Vector3 StartPos
         {
@@ -13,6 +19,9 @@ namespace ModelViewer
             set { _startPos = value; }
         }
 
+        /// <summary>
+        /// end position to animate to
+        /// </summary>
         private Vector3 _endPos;
         public Vector3 EndPos
         {
@@ -20,6 +29,9 @@ namespace ModelViewer
             set { _endPos = value; }
         }
 
+        /// <summary>
+        /// start rotation
+        /// </summary>
         private Quaternion _startRotation;
         public Quaternion StartRotation
         {
@@ -27,6 +39,9 @@ namespace ModelViewer
             set { _startRotation = value; }
         }
 
+        /// <summary>
+        /// end rotation to animate to
+        /// </summary>
         private Quaternion _endRotation;
         public Quaternion EndRotation
         {
@@ -34,6 +49,9 @@ namespace ModelViewer
             set { _endRotation = value; }
         }
 
+        /// <summary>
+        /// duration of the animation
+        /// </summary>
         private float _duration = 3.0f;
         public float Duration
         {
@@ -41,6 +59,9 @@ namespace ModelViewer
             set { _duration = value; }
         }
 
+        /// <summary>
+        /// constructor that deserialize a serializable task event
+        /// </summary>
         public TransformTaskEvent(SerializableTaskEvent ste) : base(ste) {
             StartPos = ste.StartPos;
             EndPos = ste.EndPos;
@@ -48,12 +69,17 @@ namespace ModelViewer
             EndRotation = ste.EndRotation;
         }
 
+        /// <summary>
+        /// constructor
+        /// </summary>
         public TransformTaskEvent() : base() { }
 
+        /// <summary>
+        /// coroutine that animates the object associated from start to finish
+        /// </summary>
         public override IEnumerator TaskEventCoroutine()
         {
-            Debug.Log("Transform Event Coroutine reached");
-
+            // store all child start position and rotations because we only want to animate the associated part
             List<Vector3> childStartPositions = new List<Vector3>();
             List<Quaternion> childStartRotations = new List<Quaternion>();
 
@@ -64,6 +90,7 @@ namespace ModelViewer
                 childStartRotations.Add(child.rotation);
             }
 
+            // interpolate slowly from start to end position and rotation, remember to reset all child transform to their original transforms
             float startTime = Time.time;
             float curTime = startTime;
             while(curTime - startTime < Duration)

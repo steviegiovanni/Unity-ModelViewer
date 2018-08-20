@@ -97,9 +97,9 @@ namespace ModelViewer
                     {
                         return new MovingTask(st);
                     }break;
-                case "GenericTask":
+                case "ClickingTask":
                     {
-                        return new GenericTask(st);
+                        return new ClickingTask(st);
                     }break;
                 default:
                     {
@@ -214,6 +214,9 @@ namespace ModelViewer
             }
         }
 
+        /// <summary>
+        /// fires check task for moving task
+        /// </summary>
         public void CheckTaskOnRelease(Node node)
         {
             if(CurrentTaskId < Tasks.Count && CurrentTaskId != -1)
@@ -225,12 +228,15 @@ namespace ModelViewer
             }
         }
 
+        /// <summary>
+        /// fires check task for clicking task
+        /// </summary>
         public void CheckTaskOnSelect(Node node)
         {
             if (CurrentTaskId < Tasks.Count && CurrentTaskId != -1)
             {
                 Task task = Tasks[CurrentTaskId];
-                if (task.GetType().Name != "GenericTask") return;
+                if (task.GetType().Name != "ClickingTask") return;
                 if (task.GameObject == node.GameObject)
                     task.CheckTask();
             }

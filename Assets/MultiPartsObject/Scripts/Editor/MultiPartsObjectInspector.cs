@@ -7,6 +7,9 @@ using UnityEditor;
 
 namespace ModelViewer
 {
+    /// <summary>
+    /// custom inspector for multiparts object
+    /// </summary>
     [CustomEditor(typeof(MultiPartsObject))]
     public class MultiPartsObjectInspector : UnityEditor.Editor
     {
@@ -99,7 +102,7 @@ namespace ModelViewer
                                     case 1:
                                         {
                                             TaskList tl = obj.TaskList;
-                                            tl.Tasks.Add(new GenericTask(node.GameObject));
+                                            tl.Tasks.Add(new ClickingTask(node.GameObject));
                                         }
                                         break;
                                 }

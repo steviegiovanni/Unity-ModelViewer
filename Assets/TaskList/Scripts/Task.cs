@@ -61,6 +61,9 @@ namespace ModelViewer
             set { _active = value; }
         }
 
+        /// <summary>
+        /// a task event is an event sequence played after user completes the task (rotate, translate a part after user clicks)
+        /// </summary>
         private TaskEvent _taskEvent;
         public TaskEvent TaskEvent
         {

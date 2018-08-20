@@ -455,7 +455,14 @@ namespace ModelViewer
             }
         }
 
+        /// <summary>
+        /// events fired from MultiPartsObject when input such as select, grab, or released are received
+        /// </summary>
         public class MPOEvent: UnityEvent<Node> { };
+
+        /// <summary>
+        /// event fired when release input is received
+        /// </summary>
         private MPOEvent _onReleaseEvent;
         public MPOEvent OnReleaseEvent
         {
@@ -466,6 +473,9 @@ namespace ModelViewer
             }
         }
 
+        /// <summary>
+        /// event fired when select input is received
+        /// </summary>
         private MPOEvent _onSelectEvent;
         public MPOEvent OnSelectEvent
         {
@@ -860,7 +870,6 @@ namespace ModelViewer
 
                 if (DeselectOnSnapped)
                 {
-                    Debug.Log("snap deselecting");
                     Deselect(node);
                 }
 			}
@@ -932,6 +941,7 @@ namespace ModelViewer
         /// <summary>
         /// the serialized node structure
         /// </summary>
+        [HideInInspector]
         public List<SerializableNode> serializedNodes;
 
         /// <summary>

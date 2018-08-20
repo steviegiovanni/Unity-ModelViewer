@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿/// author: Stevie Giovanni
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +11,9 @@ namespace ModelViewer
     /// </summary>
     public class MultiPartsObjectUI : MonoBehaviour
     {
+        /// <summary>
+        /// the text mesh that will show the part's name
+        /// </summary>
         [SerializeField]
         private TextMesh _partName;
         public TextMesh PartName
@@ -17,21 +22,22 @@ namespace ModelViewer
             set { _partName = value; }
         }
 
+        /// <summary>
+        /// the multipartsobject we're going to query this object to get the node info once we get a hover event
+        /// </summary>
         [SerializeField]
         private MultiPartsObject _mpo;
 
         // Use this for initialization
         void Start()
         {
+            // listens to hover event of the object pointer
             ObjectPointer.Instance.OnHoverEvent.AddListener(OnHoverEvent);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
+        /// <summary>
+        /// when we received the on hover event we query the multiparts object for the node info
+        /// </summary>
         void OnHoverEvent(GameObject hovered)
         {
             if (hovered == null)

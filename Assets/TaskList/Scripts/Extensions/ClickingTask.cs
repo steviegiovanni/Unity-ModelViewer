@@ -7,17 +7,17 @@ namespace ModelViewer
     /// <summary>
     /// represents a generic task. can be used when user selects a component and stuff need to happen
     /// </summary>
-    public class GenericTask : Task
+    public class ClickingTask : Task
     {
         /// <summary>
         /// constructor taking a go
         /// </summary>
-        public GenericTask(GameObject go) : base(go){}
+        public ClickingTask(GameObject go) : base(go){}
 
         /// <summary>
         /// constructor taking a serializable task
         /// </summary>
-        public GenericTask (SerializableTask task):base(task){}
+        public ClickingTask (SerializableTask task):base(task){}
 
         /// <summary>
         /// reimplemntation of draw task hint. draw the silhouette of the game object at the goal pos
