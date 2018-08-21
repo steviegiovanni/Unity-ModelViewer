@@ -7,6 +7,9 @@ using UnityEditor;
 
 namespace ModelViewer
 {
+    /// <summary>
+    /// custom inspector for multiparts object
+    /// </summary>
     [CustomEditor(typeof(MultiPartsObject))]
     public class MultiPartsObjectInspector : UnityEditor.Editor
     {
@@ -38,10 +41,11 @@ namespace ModelViewer
 
             // draw the tree structure
             GUILayout.Label("Tree");
-            GUILayout.BeginVertical();
+            indentLevel = 0;
             DisplayNodeInfo(obj.Root);
-            GUILayout.EndVertical();
         }
+
+        int indentLevel;
 
         /// <summary>
         /// displaying each node info
@@ -50,9 +54,9 @@ namespace ModelViewer
         {
             if (node != null)
             {
-				GUILayout.BeginHorizontal();
-                GUILayout.BeginVertical();
+				// node name and go, lock button, reset button, add task button
                 GUILayout.BeginHorizontal();
+                GUILayout.Space(indentLevel * 10);
 				if (GUILayout.Button (node.Name + " ("+(node.GameObject==null?"Missing!": node.GameObject.name)+")" + (node.Selected?"*":""), "Button")) {
                     EditorGUIUtility.PingObject(node.GameObject);
                     obj.ToggleSelect(node);
@@ -80,14 +84,41 @@ namespace ModelViewer
                 // to add a task related to the game object of this node
                 if (GUILayout.Button("Add Task", "Button", GUILayout.Width(100)))
                 {
-                    TaskList tl = obj.TaskList;
-                    tl.Tasks.Add(new MovingTask(node.GameObject,obj.transform.TransformPoint(node.P0)));
+                    GenericMenu genericMenu = new GenericMenu();
+                    for (int i = 0; i < MultiPartsObjectEditorUtility.TaskTypes().Length; i++)
+                    {
+                        genericMenu.AddItem(new GUIContent(MultiPartsObjectEditorUtility.TaskTypes()[i]), false,
+                            (param) =>
+                            {
+                                int index = (int)param;
+                                switch (index)
+                                {
+                                    case 0:
+                                        {
+                                            TaskList tl = obj.TaskList;
+                                            tl.Tasks.Add(new MovingTask(node.GameObject, obj.transform.TransformPoint(node.P0), node.R0));
+                                        }
+                                        break;
+                                    case 1:
+                                        {
+                                            TaskList tl = obj.TaskList;
+                                            tl.Tasks.Add(new ClickingTask(node.GameObject));
+                                        }
+                                        break;
+                                }
+                            }
+                        , i);
+                    }
+                    genericMenu.ShowAsContext();
                 }
                 GUILayout.EndHorizontal();
 
-                // if the node is selected show node details
+
+                // node details
                 if (node.Selected)
                 {
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Space(indentLevel * 10);
                     GUILayout.BeginVertical(EditorStyles.helpBox);
 
                     // allows to change the name of the node
@@ -97,17 +128,23 @@ namespace ModelViewer
                     GUILayout.EndHorizontal();
 
                     GUILayout.EndVertical();
-                }
-                GUILayout.EndVertical();
-                GUILayout.EndHorizontal();
-
-                // show each child node indented
-                foreach (var child in node.Childs)
-                {
-                    GUILayout.BeginHorizontal();
-					GUILayout.Space(20);
-                    DisplayNodeInfo(child);
                     GUILayout.EndHorizontal();
+                }
+
+                // node childs
+                if (node.Childs.Count > 0)
+                {
+                    indentLevel++;
+                    GUILayout.BeginVertical();
+                    foreach (var child in node.Childs)
+                    {
+                        //GUILayout.BeginHorizontal();
+                        //GUILayout.Space(20);
+                        DisplayNodeInfo(child);
+                        //GUILayout.EndHorizontal();
+                    }
+                    GUILayout.EndVertical();
+                    indentLevel--;
                 }
             }
         }

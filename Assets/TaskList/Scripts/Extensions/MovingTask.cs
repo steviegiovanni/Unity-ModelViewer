@@ -6,6 +6,13 @@ using UnityEngine;
 
 namespace ModelViewer
 {
+    public enum MovingTaskType
+    {
+        MoveTo,
+        AwayFrom
+    }
+
+
     /// <summary>
     /// represents a task that requires the user to bring an object to a specific position
     /// </summary>
@@ -22,6 +29,16 @@ namespace ModelViewer
         }
 
         /// <summary>
+        /// the end rotation of the object
+        /// </summary>
+        private Quaternion _rotation;
+        public Quaternion Rotation
+        {
+            get { return _rotation; }
+            set { _rotation = value; }
+        }
+
+        /// <summary>
         /// the threshold in which the object will snap to the position
         /// </summary>
         private float _snapThreshold = 0.1f;
@@ -32,11 +49,22 @@ namespace ModelViewer
         }
 
         /// <summary>
+        /// whether we have to move to or away from a certain location
+        /// </summary>
+        private MovingTaskType _moveType;
+        public MovingTaskType MoveType
+        {
+            get { return _moveType; }
+            set { _moveType = value; }
+        }
+
+        /// <summary>
         /// constructor taking a go and position
         /// </summary>
-        public MovingTask(GameObject go, Vector3 position) :base(go)
+        public MovingTask(GameObject go, Vector3 position, Quaternion rotation) :base(go)
         {
             Position = position;
+            Rotation = rotation;
         }
 
         /// <summary>
@@ -45,7 +73,9 @@ namespace ModelViewer
         public MovingTask(SerializableTask task) : base(task)
         {
             Position = task.Position;
+            Rotation = task.Rotation;
             SnapThreshold = task.SnapThreshold;
+            MoveType = task.MoveType;
         }
 
         /// <summary>
@@ -53,34 +83,29 @@ namespace ModelViewer
         /// </summary>
         public override void CheckTask()
         {
-            if (!IsCurrentTask()) return;
-            Debug.Log("Moving check task");
-            Finished = Vector3.Distance(GameObject.transform.position, Position) <= SnapThreshold;
+            Finished = (MoveType==MovingTaskType.MoveTo)?(Vector3.Distance(GameObject.transform.position, Position) <= SnapThreshold): (Vector3.Distance(GameObject.transform.position, Position) > SnapThreshold);
             if (Finished)
             {
-                // snap to position
-                GameObject.transform.position = Position;
-
-                MultiPartsObject mpo = TaskList.GetComponent<MultiPartsObject>();
-                if (mpo != null)
-                    mpo.Deselect(GameObject);
-
-                // increment next task
-                TaskList.NextTask();
+                // snap to position if movetype is  moveto
+                if (MoveType == MovingTaskType.MoveTo)
+                {
+                    GameObject.transform.position = Position;
+                    GameObject.transform.rotation = Rotation;
+                }
             }
         }
 
         /// <summary>
         /// reimplemntation of draw task hint. draw the silhouette of the game object at the goal pos
         /// </summary>
-        public override void DrawTaskHint()
+        public override void DrawTaskHint(TaskList taskList)
         {
-            TaskList.Hint = GameObject.Instantiate(GameObject,Position,GameObject.transform.rotation);
-            TaskList.Hint.transform.localScale = GameObject.transform.lossyScale;
-            if (TaskList.Hint.GetComponent<Collider>() != null)
-                GameObject.Destroy(TaskList.Hint.GetComponent<Collider>());
-            if (TaskList.Hint.GetComponent<Renderer>() != null)
-                TaskList.Hint.GetComponent<Renderer>().material = TaskList.SilhouetteMaterial;
+            taskList.Hint = GameObject.Instantiate(GameObject,Position,GameObject.transform.rotation);
+            taskList.Hint.transform.localScale = GameObject.transform.lossyScale;
+            if (taskList.Hint.GetComponent<Collider>() != null)
+                GameObject.Destroy(taskList.Hint.GetComponent<Collider>());
+            if (taskList.Hint.GetComponent<Renderer>() != null)
+                taskList.Hint.GetComponent<Renderer>().material = taskList.SilhouetteMaterial;
         }
 
         /// <summary>

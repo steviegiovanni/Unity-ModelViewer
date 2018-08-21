@@ -133,21 +133,6 @@ namespace ModelViewer
         }
 
         /// <summary>
-        /// registered events to be called when the node is released
-        /// (will probably add a lot more like this for click etc.)
-        /// </summary>
-        private UnityEvent _onReleaseEvent;
-        public UnityEvent OnReleaseEvent
-        {
-            get
-            {
-                if (_onReleaseEvent == null)
-                    _onReleaseEvent = new UnityEvent();
-                return _onReleaseEvent;
-            }
-        }
-
-        /// <summary>
         /// default constructor
         /// </summary>
         public Node()
@@ -470,6 +455,38 @@ namespace ModelViewer
             }
         }
 
+        /// <summary>
+        /// events fired from MultiPartsObject when input such as select, grab, or released are received
+        /// </summary>
+        public class MPOEvent: UnityEvent<Node> { };
+
+        /// <summary>
+        /// event fired when release input is received
+        /// </summary>
+        private MPOEvent _onReleaseEvent;
+        public MPOEvent OnReleaseEvent
+        {
+            get {
+                if (_onReleaseEvent == null)
+                    _onReleaseEvent = new MPOEvent();
+                return _onReleaseEvent;
+            }
+        }
+
+        /// <summary>
+        /// event fired when select input is received
+        /// </summary>
+        private MPOEvent _onSelectEvent;
+        public MPOEvent OnSelectEvent
+        {
+            get
+            {
+                if (_onSelectEvent == null)
+                    _onSelectEvent = new MPOEvent();
+                return _onSelectEvent;
+            }
+        }
+
         void Awake()
         {
             // construct dictionary on awake as we're not serializing the dictionary
@@ -706,6 +723,8 @@ namespace ModelViewer
                 node.GameObject.GetComponent<Renderer>().material = new Material(HighlightMaterial);
             //if (!SelectedNodes.Contains(node))
             SelectedNodes.Add(node);
+            if (OnSelectEvent != null)
+                OnSelectEvent.Invoke(node);
         }
 
         /// <summary>
@@ -733,7 +752,6 @@ namespace ModelViewer
         public void Deselect(Node node)
         {
             //if (node.Locked) return;
-            Debug.Log("deselect reached");
             node.Selected = false;
             if (node.HasMesh)
             {
@@ -818,10 +836,12 @@ namespace ModelViewer
         {
 			Node[] selectedArray = SelectedNodes.ToArray ();
 			for (int i = 0; i < selectedArray.Length; i++) {
-                if (selectedArray[i].OnReleaseEvent != null)
+                /*if (selectedArray[i].OnReleaseEvent != null)
                 {
                     SelectedNodes[i].OnReleaseEvent.Invoke();
-                }
+                }*/
+                if (OnReleaseEvent != null)
+                    OnReleaseEvent.Invoke(selectedArray[i]);
 
 				if (selectedArray [i].Childs.Count > 0) {
 					foreach (var child in selectedArray[i].Childs)
@@ -850,7 +870,6 @@ namespace ModelViewer
 
                 if (DeselectOnSnapped)
                 {
-                    Debug.Log("snap deselecting");
                     Deselect(node);
                 }
 			}
@@ -926,31 +945,64 @@ namespace ModelViewer
         public List<SerializableNode> serializedNodes;
 
         /// <summary>
-        /// add a serialized node into the list of serialized nodes
+        /// add serialized nodes into the list of serialized nodes
         /// </summary>
-        void AddNodeToSerializedNodes(Node n, int parentId)
+        void AddNodesToSerializedNodesBFS()
         {
-            if (n == null) return;
+            if (Root == null) return;
 
-            var serializedNode = new SerializableNode()
+            List<Node> toProcess = new List<Node>();
+            toProcess.Add(Root);
+
+            var serializedRoot = new SerializableNode()
             {
-                ChildCount = n.Childs.Count,
-                IndexOfFirstChild = serializedNodes.Count + 1,
-                GameObject = n.GameObject,
-                HasMesh = n.HasMesh,
-                indexOfParent = parentId,
-                P0 = n.P0,
-                R0 = n.R0,
-                S0 = n.S0,
-                Bounds = n.Bounds,
-                Material = n.Material,
-                Locked = n.Locked,
-                Name = n.Name
+                ChildCount = Root.Childs.Count,
+                IndexOfFirstChild = 1,
+                GameObject = Root.GameObject,
+                HasMesh = Root.HasMesh,
+                indexOfParent = -1,
+                P0 = Root.P0,
+                R0 = Root.R0,
+                S0 = Root.S0,
+                Bounds = Root.Bounds,
+                Material = Root.Material,
+                Locked = Root.Locked,
+                Name = Root.Name
             };
+            serializedNodes.Add(serializedRoot);
 
-            serializedNodes.Add(serializedNode);
-            foreach (var child in n.Childs)
-                AddNodeToSerializedNodes(child,serializedNode.IndexOfFirstChild - 1);
+            int parentId = 0;
+            while(toProcess.Count > 0)
+            {
+                Node n = toProcess[0];
+                int nCousins = 0;
+                int childid = 0;
+                foreach(var child in n.Childs)
+                {
+                    var serializedNode = new SerializableNode()
+                    {
+                        ChildCount = child.Childs.Count,
+                        IndexOfFirstChild = serializedNodes.Count + n.Childs.Count - childid + nCousins,
+                        GameObject = child.GameObject,
+                        HasMesh = child.HasMesh,
+                        indexOfParent = parentId,
+                        P0 = child.P0,
+                        R0 = child.R0,
+                        S0 = child.S0,
+                        Bounds = child.Bounds,
+                        Material = child.Material,
+                        Locked = child.Locked,
+                        Name = child.Name
+                    };
+                    serializedNodes.Add(serializedNode);
+                    nCousins += child.Childs.Count;
+                    childid++;
+                    toProcess.Add(child);
+                }
+
+                toProcess.RemoveAt(0);
+                parentId++;
+            }
         }
 
         /// <summary>
@@ -959,7 +1011,8 @@ namespace ModelViewer
         public void OnBeforeSerialize()
         {
             serializedNodes.Clear();
-            AddNodeToSerializedNodes(Root,-1);
+            //AddNodeToSerializedNodes(Root,-1);
+            AddNodesToSerializedNodesBFS();
         }
 
         /// <summary>
