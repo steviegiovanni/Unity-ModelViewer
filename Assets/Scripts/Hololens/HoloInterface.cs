@@ -13,6 +13,7 @@ public class HoloInterface : MonoBehaviour, IFocusable, IInputHandler, ISourceSt
 {
     public MultiPartsObject mpo;
     public float downtime;
+    public float downDuration;
 
     /// <summary>
     /// Event triggered when dragging starts.
@@ -49,6 +50,8 @@ public class HoloInterface : MonoBehaviour, IFocusable, IInputHandler, ISourceSt
     public float RotationLerpSpeed = 0.2f;
 
     public bool IsDraggingEnabled = true;
+
+    private bool isDown;
 
     private bool isDragging;
     private bool isGazed;
@@ -92,9 +95,16 @@ public class HoloInterface : MonoBehaviour, IFocusable, IInputHandler, ISourceSt
 
     private void Update()
     {
-        if (IsDraggingEnabled && isDragging)
+        if (isDown)
         {
-            UpdateDragging();
+            downDuration+=Time.deltaTime;
+            if(downDuration > 0.5f)
+            {
+                if (IsDraggingEnabled && isDragging)
+                {
+                    UpdateDragging();
+                }
+            }
         }
     }
 
@@ -339,6 +349,8 @@ public class HoloInterface : MonoBehaviour, IFocusable, IInputHandler, ISourceSt
 
     public void OnInputUp(InputEventData eventData)
     {
+        isDown = false;
+
         if (currentInputSource != null &&
             eventData.SourceId == currentInputSourceId)
         {
@@ -363,6 +375,9 @@ public class HoloInterface : MonoBehaviour, IFocusable, IInputHandler, ISourceSt
             // We're already handling drag input, so we can't start a new drag operation.
             return;
         }
+
+        isDown = true;
+        downDuration = 0.0f;
 
 #if UNITY_2017_2_OR_NEWER
         InteractionSourceInfo sourceKind;

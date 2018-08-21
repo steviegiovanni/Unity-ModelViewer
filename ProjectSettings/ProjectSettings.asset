@@ -577,12 +577,12 @@ PlayerSettings:
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Unity-ModelViewer
-  metroPackageVersion: 
-  metroCertificatePath: 
+  metroPackageVersion: 1.0.3.0
+  metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 005384377c4dd501
   metroApplicationDescription: Unity-ModelViewer
   wsaImages: {}
   metroTileShortName: 
