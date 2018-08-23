@@ -721,8 +721,8 @@ namespace ModelViewer
             node.Selected = true;
             if (node.HasMesh)
                 node.GameObject.GetComponent<Renderer>().material = new Material(HighlightMaterial);
-            //if (!SelectedNodes.Contains(node))
-            SelectedNodes.Add(node);
+            if (!SelectedNodes.Contains(node))
+                SelectedNodes.Add(node);
             if (OnSelectEvent != null)
                 OnSelectEvent.Invoke(node);
         }

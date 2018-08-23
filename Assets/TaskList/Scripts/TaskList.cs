@@ -157,7 +157,8 @@ namespace ModelViewer
                 while (!Tasks[CurrentTaskId].Finished)
                     yield return null;
                 MultiPartsObject mpo = GetComponent<MultiPartsObject>();
-                mpo.Deselect();
+                mpo.Release();
+                mpo.Deselect(Tasks[CurrentTaskId].GameObject);
 
                 // destroy hint if any
                 if (Hint != null)
