@@ -718,11 +718,13 @@ namespace ModelViewer
         public void Select(Node node)
         {
             if (node.Locked) return;
+            if (!node.Selected)
+                SelectedNodes.Add(node);
+
             node.Selected = true;
             if (node.HasMesh)
                 node.GameObject.GetComponent<Renderer>().material = new Material(HighlightMaterial);
             //if (!SelectedNodes.Contains(node))
-            SelectedNodes.Add(node);
             if (OnSelectEvent != null)
                 OnSelectEvent.Invoke(node);
         }
@@ -743,7 +745,9 @@ namespace ModelViewer
         {
             Node deselectedNode = null;
             if (Dict.TryGetValue(go, out deselectedNode))
+            {
                 Deselect(deselectedNode);
+            }
         }
 
         /// <summary>

@@ -51,8 +51,6 @@ public class HoloInterface : MonoBehaviour, IFocusable, IInputHandler, ISourceSt
 
     public bool IsDraggingEnabled = true;
 
-    private bool isDown;
-
     private bool isDragging;
     private bool isGazed;
     private Vector3 objRefForward;
@@ -95,8 +93,6 @@ public class HoloInterface : MonoBehaviour, IFocusable, IInputHandler, ISourceSt
 
     private void Update()
     {
-        if (isDown)
-        {
             downDuration+=Time.deltaTime;
             if(downDuration > 0.5f)
             {
@@ -105,7 +101,6 @@ public class HoloInterface : MonoBehaviour, IFocusable, IInputHandler, ISourceSt
                     UpdateDragging();
                 }
             }
-        }
     }
 
     /// <summary>
@@ -349,7 +344,6 @@ public class HoloInterface : MonoBehaviour, IFocusable, IInputHandler, ISourceSt
 
     public void OnInputUp(InputEventData eventData)
     {
-        isDown = false;
 
         if (currentInputSource != null &&
             eventData.SourceId == currentInputSourceId)
@@ -376,7 +370,6 @@ public class HoloInterface : MonoBehaviour, IFocusable, IInputHandler, ISourceSt
             return;
         }
 
-        isDown = true;
         downDuration = 0.0f;
 
 #if UNITY_2017_2_OR_NEWER
