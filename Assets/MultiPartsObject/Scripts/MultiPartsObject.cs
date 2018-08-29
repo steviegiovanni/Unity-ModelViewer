@@ -879,6 +879,19 @@ namespace ModelViewer
 			}
 		}
 
+        /// <summary>
+        /// change the lock of all the nodes
+        /// </summary>
+        public void SetNodeLockRecursive(Node root, bool value)
+        {
+            if(root != null)
+            {
+                root.Locked = value;
+                foreach (var child in root.Childs)
+                    SetNodeLockRecursive(child, value);
+            }
+        }
+
 
         /// ==================================================
         /// Gizmo stuff
