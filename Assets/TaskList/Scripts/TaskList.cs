@@ -139,6 +139,9 @@ namespace ModelViewer
             // set current task id to -1 as we're going to increment by 1 on NextTask() on start
             CurrentTaskId = -1;
 
+            // lock all nodes
+            ChangeLockOfAllTaskNodes(true);
+
             foreach (var task in Tasks)
             {
                 // destroy previous hint if any
@@ -147,6 +150,9 @@ namespace ModelViewer
 
                 // increment task id
                 CurrentTaskId++;
+
+                // unlock node
+                ChangeLockOfTaskNode(task, false);
 
                 // fire task start event
                 if (TaskStartListeners != null)
@@ -159,6 +165,9 @@ namespace ModelViewer
                 MultiPartsObject mpo = GetComponent<MultiPartsObject>();
                 mpo.Release();
                 mpo.Deselect(Tasks[CurrentTaskId].GameObject);
+
+                // lock node again
+                ChangeLockOfTaskNode(task, true);
 
                 // destroy hint if any
                 if (Hint != null)
@@ -206,6 +215,25 @@ namespace ModelViewer
                 Tasks[CurrentTaskId].DrawTaskHint(this);
             }
         }*/
+
+        void ChangeLockOfTaskNode(Task task, bool value)
+        {
+            MultiPartsObject mpo = GetComponent<MultiPartsObject>();
+            if (mpo == null)
+                Debug.LogError("No multiparts object attached");
+            else
+            {
+                Node node = null;
+                if(mpo.Dict.TryGetValue(task.GameObject,out node))
+                    node.Locked = value;
+            }
+        }
+
+        void ChangeLockOfAllTaskNodes(bool value)
+        {
+            foreach (var task in Tasks)
+                ChangeLockOfTaskNode(task, value);
+        }
 
         void OnDrawGizmosSelected()
         {
