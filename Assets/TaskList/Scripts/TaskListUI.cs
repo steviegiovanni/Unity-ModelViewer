@@ -69,7 +69,9 @@ namespace ModelViewer
         public void ShowNextTask(Task task)
         {
             elapsedTime = 0.0f;
-            hintObject = Instantiate(_hintPrefab, Camera.main.transform.position + Camera.main.transform.forward, Quaternion.identity);
+            //hintObject = Instantiate(_hintPrefab, Camera.main.transform.position + Camera.main.transform.forward, Quaternion.identity);
+            if (hintObject != null) Destroy(hintObject);
+            hintObject = Instantiate(_hintPrefab, Camera.main.transform.position + (this.transform.position - Camera.main.transform.position).normalized, Quaternion.identity);
             hintObject.transform.LookAt(2 * hintObject.transform.position - Camera.main.transform.position);
             hintObject.GetComponent<TextMesh>().text = task.TaskName;
         }
