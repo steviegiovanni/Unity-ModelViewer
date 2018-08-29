@@ -32,7 +32,17 @@ namespace ModelViewer
         void Start()
         {
             // listens to hover event of the object pointer
+            //ObjectPointer.Instance.OnHoverEvent.AddListener(OnHoverEvent);
+            StartCoroutine(ListensToObjectPointerHover());
+        }
+
+        public IEnumerator ListensToObjectPointerHover()
+        {
+            while (ObjectPointer.Instance == null)
+                yield return null;
+            Debug.Log("reached???");
             ObjectPointer.Instance.OnHoverEvent.AddListener(OnHoverEvent);
+            yield return null;
         }
 
         /// <summary>

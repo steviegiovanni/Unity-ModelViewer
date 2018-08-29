@@ -77,6 +77,71 @@ namespace ModelViewer
         }
 
         /// <summary>
+        /// initial position and rotation of gameobjects when the scene is started
+        /// </summary>
+        private List<Vector3> _goInitialPos;
+        private List<Quaternion> _goInitialRot;
+
+        /// <summary>
+        /// store initial position and rotation of game objects related to the task
+        /// </summary>
+        public void StoreInitialPosAndRot()
+        {
+            _goInitialPos = new List<Vector3>();
+            _goInitialRot = new List<Quaternion>();
+            foreach(var task in Tasks)
+            {
+                _goInitialPos.Add(task.GameObject.transform.position);
+                _goInitialRot.Add(task.GameObject.transform.rotation);
+            }
+        }
+
+        /// <summary>
+        /// reset initial position and rotation of gameobjects related to the task 
+        /// </summary>
+        public void ResetInitialPosAndRot()
+        {
+            int i = 0;
+            foreach (var task in Tasks)
+            {
+                // store all child pos and rot cos we only want to move this specific go
+                List<Vector3> childInitPos = new List<Vector3>();
+                List<Quaternion> childInitRot = new List<Quaternion>();
+                foreach (Transform child in task.GameObject.transform)
+                {
+                    childInitPos.Add(child.position);
+                    childInitRot.Add(child.rotation);
+                }
+
+                // reset go pos and rotation
+                task.GameObject.transform.SetPositionAndRotation(_goInitialPos[i], _goInitialRot[i]);
+
+                // reset all child pos and rot
+                int j = 0;
+                foreach (Transform child in task.GameObject.transform)
+                {
+                    child.SetPositionAndRotation(childInitPos[j], childInitRot[j]);
+                    j++;
+                }
+
+                // increment iterator
+                i++;
+            }
+        }
+
+        /// <summary>
+        /// reset the tasklist
+        /// </summary>
+        public void Reset()
+        {
+            this.StopAllCoroutines();
+            ResetInitialPosAndRot();
+            foreach (var task in Tasks)
+                task.Finished = false;
+            StartCoroutine(TaskListCoroutine());
+        }
+
+        /// <summary>
         /// serialization interface implementation
         /// </summary>
         public void OnBeforeSerialize()
@@ -130,6 +195,8 @@ namespace ModelViewer
 
             mpo.OnReleaseEvent.AddListener(CheckTaskOnRelease);
             mpo.OnSelectEvent.AddListener(CheckTaskOnSelect);
+
+            StoreInitialPosAndRot();
             // register each task "CheckTask" function to onrelease of the appropriate node
             StartCoroutine(TaskListCoroutine());
         }
@@ -179,42 +246,6 @@ namespace ModelViewer
             }
             yield return null;
         }
-
-        // next task is called by each task when it is finished
-        /*public void NextTask()
-        {
-            // if not task 0, there's a previous task, do some cleanup, locked the node etc.
-            if (Tasks.Count <= 0) return;
-            MultiPartsObject mpo = GetComponent<MultiPartsObject>();
-            if (CurrentTaskId != -1)
-            {
-                Node node = null;
-                if (mpo.Dict.TryGetValue(Tasks[CurrentTaskId].GameObject, out node))
-                    node.Locked = true;
-            }
-
-            // increment current task id
-            CurrentTaskId++;
-            // destroy previous hint if any
-            if (Hint != null)
-                Destroy(Hint);
-
-            // if not exceeding tasks count, there's a new task, set it up. unlock the node, setup hint etc.
-            if (CurrentTaskId < Tasks.Count)
-            {
-                Node node = null;
-                if (mpo.Dict.TryGetValue(Tasks[CurrentTaskId].GameObject, out node)) {
-                    node.Locked = false;
-                }
-
-                // fire task start event
-                if (TaskStartListeners != null)
-                    TaskStartListeners.Invoke(Tasks[CurrentTaskId]);
-
-                // leave the task to draw the next hint to each task
-                Tasks[CurrentTaskId].DrawTaskHint(this);
-            }
-        }*/
 
         void ChangeLockOfTaskNode(Task task, bool value)
         {

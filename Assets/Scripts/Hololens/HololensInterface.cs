@@ -1,57 +1,53 @@
-﻿using HoloToolkit.Unity.InputModule;
+﻿using HoloToolkit.Unity;
+using HoloToolkit.Unity.InputModule;
 using ModelViewer;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HololensInterface : MonoBehaviour, IInputClickHandler {
-    public int mode = 0;
-
-    public GameObject selectButton;
-    public GameObject grabButton;
-    public GameObject resetButton;
-
-    public MultiPartsObject mpo;
+    public TaskList TaskList;
 
     public void OnInputClicked(InputClickedEventData eventData)
     {
         Debug.Log(eventData.selectedObject.name);
-        if(eventData.selectedObject.name == "ToggleSelect")
+        if(eventData.selectedObject.name == "Disassembly")
         {
-            if (mode == 1)
-                mode = 0;
-            else
-                mode = 1;
-        }else if (eventData.selectedObject.name == "ToggleGrab")
+            var go = FindObjectOfType<AnimatedCursor>();
+            if (go != null)
+                Destroy(go.gameObject);
+            var go1 = FindObjectOfType<MotionControllerVisualizer>();
+            if (go1 != null)
+                Destroy(go1.gameObject);
+            var go2 = FindObjectOfType<MixedRealityCameraManager>();
+            if (go2 != null)
+                Destroy(go2.gameObject);
+            var go3 = FindObjectOfType<FocusManager>();
+            if (go3 != null)
+                Destroy(go3.gameObject);
+            var go4 = FindObjectOfType<StabilizationPlaneModifier>();
+            if (go4 != null)
+                Destroy(go4.gameObject);
+            var go5 = FindObjectOfType<InputManager>();
+            if (go5 != null)
+                Destroy(go5.gameObject);
+            var go6 = FindObjectOfType<GazeManager>();
+            if (go6 != null)
+                Destroy(go6.gameObject);
+            SceneManager.LoadScene("DynamicContent-hololens-disassembly");
+        }
+        else if (eventData.selectedObject.name == "ToggleGrab")
         {
-            if (mode == 2)
-                mode = 0;
-            else
-                mode = 2;
         }
         else if(eventData.selectedObject.name == "Reset")
         {
-            mpo.ResetAll(mpo.Root);
-            mpo.FitToScale(mpo.Root, mpo.VirtualScale);
+            TaskList.Reset();
         }
     }
 
     private void Update()
     {
-        switch (mode)
-        {
-            case 0: {
-                    selectButton.GetComponent<Renderer>().material.color = Color.white;
-                    grabButton.GetComponent<Renderer>().material.color = Color.white;
-                } break;
-            case 1: {
-                    selectButton.GetComponent<Renderer>().material.color = Color.red;
-                    grabButton.GetComponent<Renderer>().material.color = Color.white;
-                } break;
-            case 2: {
-                    selectButton.GetComponent<Renderer>().material.color = Color.white;
-                    grabButton.GetComponent<Renderer>().material.color = Color.red;
-                } break;
-        }
+        
     }
 }

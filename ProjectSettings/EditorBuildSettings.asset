@@ -8,3 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DynamicContent-hololens-2.unity
     guid: 574163309dd0c0442a1636e03918bb7f
+  - enabled: 1
+    path: Assets/Scenes/DynamicContent-hololens-disassembly.unity
+    guid: 383a35de8da88d747912d39b8500eecb
