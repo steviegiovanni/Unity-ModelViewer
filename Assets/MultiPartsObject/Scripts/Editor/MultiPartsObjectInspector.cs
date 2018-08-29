@@ -14,6 +14,7 @@ namespace ModelViewer
     public class MultiPartsObjectInspector : UnityEditor.Editor
     {
         MultiPartsObject obj;
+        bool lockState;
 
         public override void OnInspectorGUI()
         {
@@ -38,6 +39,12 @@ namespace ModelViewer
             }
 
             GUILayout.Space(10);
+
+            if(GUILayout.Button(lockState?"Unlock All Nodes":"Lock All Nodes"))
+            {
+                lockState = !lockState;
+                obj.SetNodeLockRecursive(obj.Root, lockState);
+            }
 
             // draw the tree structure
             GUILayout.Label("Tree");
