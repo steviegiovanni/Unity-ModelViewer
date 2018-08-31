@@ -83,8 +83,8 @@ namespace ModelViewer
             {
                 if (castedt.GameObject != null)
                 {
-                    castedt.Position = castedt.GameObject.transform.position;
-                    castedt.Rotation = castedt.GameObject.transform.rotation;
+                    castedt.Position = obj.transform.InverseTransformPoint(t.GameObject.transform.position);
+                    castedt.Rotation = Quaternion.Inverse(obj.transform.rotation) * t.GameObject.transform.rotation;
                 }
             }
         }
@@ -128,8 +128,8 @@ namespace ModelViewer
             {
                 if (t.GameObject != null)
                 {
-                    tte.StartPos = t.GameObject.transform.position;
-                    tte.StartRotation = t.GameObject.transform.rotation;
+                    tte.StartPos = obj.transform.InverseTransformPoint(t.GameObject.transform.position);
+                    tte.StartRotation = Quaternion.Inverse(obj.transform.rotation) * t.GameObject.transform.rotation;
                 }
             }
 
@@ -165,8 +165,8 @@ namespace ModelViewer
             {
                 if (t.GameObject != null)
                 {
-                    tte.EndPos = t.GameObject.transform.position;
-                    tte.EndRotation = t.GameObject.transform.rotation;
+                    tte.EndPos = obj.transform.InverseTransformPoint(t.GameObject.transform.position);
+                    tte.EndRotation = Quaternion.Inverse(obj.transform.rotation) * t.GameObject.transform.rotation;
                 }
             }
         }

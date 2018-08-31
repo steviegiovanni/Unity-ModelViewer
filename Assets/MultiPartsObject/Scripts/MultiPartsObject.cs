@@ -205,8 +205,10 @@ namespace ModelViewer
 
 			// get the original transforms, position relative to the cage
 			P0 = cage.InverseTransformPoint(go.transform.position);
-			R0 = go.transform.rotation;
-			S0 = go.transform.localScale;
+            //R0 = go.transform.rotation;
+            //R0 = go.transform.rotation * Quaternion.Inverse(cage.rotation);
+            R0 = Quaternion.Inverse(cage.rotation) * go.transform.rotation;
+            S0 = go.transform.localScale;
 
 			// check whether game object has a mesh
 			HasMesh = go.GetComponent<MeshFilter>() != null;
@@ -653,7 +655,7 @@ namespace ModelViewer
             CurrentScale = 1.0f;
             if (node != null)
             {
-				node.GameObject.transform.SetPositionAndRotation(this.transform.TransformPoint(node.P0), node.R0);
+				node.GameObject.transform.SetPositionAndRotation(this.transform.TransformPoint(node.P0), this.transform.rotation * node.R0);
                 node.GameObject.transform.localScale = node.S0;
                 foreach (var child in node.Childs)
                     ResetAll(child);
@@ -679,7 +681,7 @@ namespace ModelViewer
                 }
 
                 // reset current node transform
-                node.GameObject.transform.SetPositionAndRotation(this.transform.TransformPoint(node.P0), node.R0);
+                node.GameObject.transform.SetPositionAndRotation(this.transform.TransformPoint(node.P0), this.transform.rotation * node.R0);
                 node.GameObject.transform.localScale = node.S0;
 
                 // restore all children positions, rotations, and scales
@@ -870,7 +872,7 @@ namespace ModelViewer
 			Vector3 oriPosAfterSetup = this.transform.TransformPoint(node.P0);
 			if (Vector3.Distance (node.GameObject.transform.position,oriPosAfterSetup) < SnapThreshold) {
 				node.GameObject.transform.position = oriPosAfterSetup;
-				node.GameObject.transform.rotation = node.R0;
+                node.GameObject.transform.rotation = this.transform.rotation * node.R0;
 
                 if (DeselectOnSnapped)
                 {
@@ -939,7 +941,7 @@ namespace ModelViewer
                         Color col = Color.cyan;
                         col.a = 0.25f;
                         Gizmos.color = col;
-                        Gizmos.DrawMesh(node.GameObject.GetComponent<MeshFilter>().sharedMesh, this.transform.TransformPoint(node.P0), node.R0, node.GameObject.transform.lossyScale);
+                        Gizmos.DrawMesh(node.GameObject.GetComponent<MeshFilter>().sharedMesh, this.transform.TransformPoint(node.P0), this.transform.rotation * node.R0 , node.GameObject.transform.lossyScale);
                     }
                 }
 

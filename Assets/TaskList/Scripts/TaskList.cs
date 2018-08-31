@@ -228,7 +228,11 @@ namespace ModelViewer
                 // draw current task hint
                 Tasks[CurrentTaskId].DrawTaskHint(this);
                 while (!Tasks[CurrentTaskId].Finished)
+                {
+                    Tasks[CurrentTaskId].UpdateTaskHint(this);
                     yield return null;
+                }
+
                 MultiPartsObject mpo = GetComponent<MultiPartsObject>();
                 mpo.Release();
                 mpo.Deselect(Tasks[CurrentTaskId].GameObject);
@@ -242,7 +246,7 @@ namespace ModelViewer
 
                 // run task event coroutine if exists
                 if (Tasks[CurrentTaskId].TaskEvent != null)
-                    yield return StartCoroutine(Tasks[CurrentTaskId].TaskEvent.TaskEventCoroutine());
+                    yield return StartCoroutine(Tasks[CurrentTaskId].TaskEvent.TaskEventCoroutine(mpo));
             }
             yield return null;
         }
@@ -284,7 +288,13 @@ namespace ModelViewer
                 Task task = Tasks[CurrentTaskId];
                 if (task.GetType().Name != "MovingTask") return;
                 if (task.GameObject == node.GameObject)
-                    task.CheckTask();
+                {
+                    // make sure we have a multiparts object
+                    MultiPartsObject mpo = GetComponent<MultiPartsObject>();
+                    if (mpo == null)
+                        Debug.LogError("No multiparts object attached");
+                    task.CheckTask(mpo);
+                }
             }
         }
 
@@ -298,7 +308,13 @@ namespace ModelViewer
                 Task task = Tasks[CurrentTaskId];
                 if (task.GetType().Name != "ClickingTask") return;
                 if (task.GameObject == node.GameObject)
-                    task.CheckTask();
+                {
+                    // make sure we have a multiparts object
+                    MultiPartsObject mpo = GetComponent<MultiPartsObject>();
+                    if (mpo == null)
+                        Debug.LogError("No multiparts object attached");
+                    task.CheckTask(mpo);
+                }
             }
         }
     }
