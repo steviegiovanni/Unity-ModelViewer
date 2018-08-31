@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Utilities;
 
 /// <summary>
 /// interface for everything that uses a ray
@@ -20,7 +19,19 @@ public interface IHasRay
 /// implemented as singleton to handle situation where users forgot to put one in the scene
 /// as this will be used by the multipartsobject component
 /// </summary>
-public class ObjectPointer : Singleton<ObjectPointer> {
+public class ObjectPointer : MonoBehaviour {
+    static private ObjectPointer _instance = null;
+    static public ObjectPointer Instance
+    {
+        get {
+            if(_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<ObjectPointer>();
+            }
+            return _instance;
+        }
+    }
+
     /// <summary>
     /// the ray used to point to object
 	/// need to be assigned accordingly whether u're using the ray from hololens' headset, vive's controller etc...
