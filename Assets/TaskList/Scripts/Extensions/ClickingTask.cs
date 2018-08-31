@@ -33,6 +33,15 @@ namespace ModelViewer
         }
 
         /// <summary>
+        /// update task hint in case user is moving the cage around
+        /// </summary>
+        public override void UpdateTaskHint(TaskList taskList)
+        {
+            if (taskList.Hint != null)
+                taskList.Hint.transform.SetPositionAndRotation(GameObject.transform.position, GameObject.transform.rotation);
+        }
+
+        /// <summary>
         /// draw hint gizmos on editor mode
         /// </summary>
         public override void DrawEditorTaskHint()

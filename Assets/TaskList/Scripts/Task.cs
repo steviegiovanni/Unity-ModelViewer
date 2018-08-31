@@ -74,7 +74,7 @@ namespace ModelViewer
         /// <summary>
         /// check task is finished, override for different task behavior
         /// </summary>
-        public virtual void CheckTask()
+        public virtual void CheckTask(MultiPartsObject mpo)
         {
             Finished = true;
             /*if (!IsCurrentTask()) return;
@@ -88,6 +88,12 @@ namespace ModelViewer
         /// </summary>
         public virtual void DrawTaskHint(TaskList taskList)
         {}
+
+        /// <summary>
+        /// update task hint in case user is moving the cage around
+        /// </summary>
+        public virtual void UpdateTaskHint(TaskList taskList)
+        { }
 
         /// <summary>
         /// draw hint gizmos on editor mode

@@ -81,16 +81,16 @@ namespace ModelViewer
         /// <summary>
         /// reimplementation of checktask. simply checks whether the position of the go is close to the goal position
         /// </summary>
-        public override void CheckTask()
+        public override void CheckTask(MultiPartsObject mpo)
         {
-            Finished = (MoveType==MovingTaskType.MoveTo)?(Vector3.Distance(GameObject.transform.position, Position) <= SnapThreshold): (Vector3.Distance(GameObject.transform.position, Position) > SnapThreshold);
+            Finished = (MoveType==MovingTaskType.MoveTo)?(Vector3.Distance(GameObject.transform.position, mpo.transform.TransformPoint(Position)) <= SnapThreshold): (Vector3.Distance(GameObject.transform.position, mpo.transform.TransformPoint(Position)) > SnapThreshold);
             if (Finished)
             {
                 // snap to position if movetype is  moveto
                 if (MoveType == MovingTaskType.MoveTo)
                 {
-                    GameObject.transform.position = Position;
-                    GameObject.transform.rotation = Rotation;
+                    GameObject.transform.position = mpo.transform.TransformPoint(Position);
+                    GameObject.transform.rotation = mpo.transform.rotation * Rotation;
                 }
             }
         }
@@ -100,12 +100,21 @@ namespace ModelViewer
         /// </summary>
         public override void DrawTaskHint(TaskList taskList)
         {
-            taskList.Hint = GameObject.Instantiate(GameObject,Position,GameObject.transform.rotation);
+            taskList.Hint = GameObject.Instantiate(GameObject,taskList.transform.TransformPoint(Position),taskList.transform.rotation * Rotation);
             taskList.Hint.transform.localScale = GameObject.transform.lossyScale;
             if (taskList.Hint.GetComponent<Collider>() != null)
                 GameObject.Destroy(taskList.Hint.GetComponent<Collider>());
             if (taskList.Hint.GetComponent<Renderer>() != null)
                 taskList.Hint.GetComponent<Renderer>().material = taskList.SilhouetteMaterial;
+        }
+
+        /// <summary>
+        /// update task hint in case user is moving the cage around
+        /// </summary>
+        public override void UpdateTaskHint(TaskList taskList)
+        {
+            if (taskList.Hint != null)
+                taskList.Hint.transform.SetPositionAndRotation(taskList.transform.TransformPoint(Position), taskList.transform.rotation * Rotation);
         }
 
         /// <summary>
