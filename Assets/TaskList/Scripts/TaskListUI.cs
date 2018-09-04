@@ -49,6 +49,9 @@ namespace ModelViewer
         /// </summary>
         private GameObject hintObject;
 
+        [SerializeField]
+        private GameObject hintText;
+
         private void Awake()
         {
             // listen to task list start task event
@@ -58,9 +61,9 @@ namespace ModelViewer
         private void Update()
         {
             // update elapsed time, if it's more than duration, destroys the hint
-            elapsedTime += Time.deltaTime;
+            /*elapsedTime += Time.deltaTime;
             if (HintDuration <= elapsedTime && hintObject != null)
-                Destroy(hintObject);
+                Destroy(hintObject);*/
         }
 
         /// <summary>
@@ -68,12 +71,13 @@ namespace ModelViewer
         /// </summary>
         public void ShowNextTask(Task task)
         {
-            elapsedTime = 0.0f;
+            /*elapsedTime = 0.0f;
             //hintObject = Instantiate(_hintPrefab, Camera.main.transform.position + Camera.main.transform.forward, Quaternion.identity);
             if (hintObject != null) Destroy(hintObject);
             hintObject = Instantiate(_hintPrefab, Camera.main.transform.position + (this.transform.position - Camera.main.transform.position).normalized, Quaternion.identity);
             hintObject.transform.LookAt(2 * hintObject.transform.position - Camera.main.transform.position);
-            hintObject.GetComponent<TextMesh>().text = task.TaskName;
+            hintObject.GetComponent<TextMesh>().text = task.TaskName;*/
+            hintText.GetComponent<TextMesh>().text = task.TaskName;
         }
     }
 }

@@ -132,66 +132,6 @@ namespace ModelViewer
             set { _name = value; }
         }
 
-        /// <summary>
-        /// default constructor
-        /// </summary>
-        public Node()
-        {
-            GameObject = null;
-            HasMesh = false;
-            P0 = Vector3.zero;
-            R0 = Quaternion.identity;
-            S0 = Vector3.one;
-            Material = null;
-            Locked = true;
-            Childs = new List<Node>();
-        }
-
-        /// <summary>
-        /// constructor that takes a go and a parent node
-        /// </summary>
-        public Node(GameObject go, Node parent)
-        {
-            // assign parent
-            Parent = parent;
-
-            // assign game object
-            GameObject = go;
-
-            // get the original transforms
-			P0 = go.transform.position;
-			R0 = go.transform.rotation;
-            S0 = go.transform.localScale;
-
-            // check whether game object has a mesh
-            HasMesh = go.GetComponent<MeshFilter>() != null;
-
-            // get starting bounds
-            if (HasMesh)
-                Bounds = go.GetComponent<Renderer>().bounds;
-            else
-                Bounds = new Bounds(go.transform.position, Vector3.zero);
-
-            // get original material
-            if (HasMesh)
-                Material = go.GetComponent<Renderer>().sharedMaterial;
-            else
-                Material = null;
-
-            Locked = true;
-            Name = go.name;
-
-            // add collider if doesn't exist
-            if (HasMesh && go.GetComponent<Collider>() == null)
-                go.AddComponent<MeshCollider>();
-
-            // check childs
-            foreach (Transform child in go.transform)
-            {
-                Childs.Add(new Node(child.gameObject, this));
-            }
-        }
-
 		/// <summary>
 		/// constructor that takes a go and a parent node as well as the cage transform
 		/// </summary>
@@ -858,6 +798,19 @@ namespace ModelViewer
                 if(SnapParts)
 				    Snap (selectedArray [i]);
 			}
+        }
+
+        public void GrabCage()
+        {
+            if (MovableFrame != null)
+            {
+                this.transform.SetParent(MovableFrame.transform);
+            }
+        }
+
+        public void ReleaseCage()
+        {
+            this.transform.SetParent(null);
         }
 
 		/// <summary>
