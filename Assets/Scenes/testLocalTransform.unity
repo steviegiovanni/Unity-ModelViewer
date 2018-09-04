@@ -2728,6 +2728,10 @@ Prefab:
       propertyPath: m_FontSize
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1421252223823624, guid: e26f66a788ce79e4bb78e6e398a0e064, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e26f66a788ce79e4bb78e6e398a0e064, type: 2}
   m_IsPrefabParent: 0
@@ -2945,36 +2949,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7759532cd66a7340a80b140f1282406, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &449521628
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 449521629}
-  m_Layer: 0
-  m_Name: Button (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &449521629
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 449521628}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 539945345}
-  - {fileID: 1736338057}
-  m_Father: {fileID: 574666987}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &456726892 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100026, guid: a7759532cd66a7340a80b140f1282406, type: 3}
@@ -3235,6 +3209,7 @@ GameObject:
   - component: {fileID: 516467246}
   - component: {fileID: 516467247}
   - component: {fileID: 516467249}
+  - component: {fileID: 516467250}
   m_Layer: 0
   m_Name: MultiPartsObject
   m_TagString: Untagged
@@ -3275,7 +3250,7 @@ MonoBehaviour:
       m_Center: {x: 0.000000007450581, y: -0.38573414, z: 1.9286706}
       m_Extent: {x: 0, y: 0, z: 0}
     Material: {fileID: 0}
-    Locked: 1
+    Locked: 0
     Name: HyundaiEngine180815_Spec
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3289,7 +3264,7 @@ MonoBehaviour:
       m_Center: {x: -0.16764143, y: -0.50742596, z: 1.9180814}
       m_Extent: {x: 0.0096572675, y: 0.013181711, z: 0.024652038}
     Material: {fileID: 2100000, guid: 4a849964109d8d443b20c88bb3df7dd3, type: 2}
-    Locked: 1
+    Locked: 0
     Name: '#1MainBearing'
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3303,7 +3278,7 @@ MonoBehaviour:
       m_Center: {x: -0.1676573, y: -0.5434735, z: 1.9179499}
       m_Extent: {x: 0.009294645, y: 0.022767063, z: 0.042773053}
     Material: {fileID: 2100000, guid: 7b1bdc31a7e0fa24a95add74792f7494, type: 2}
-    Locked: 1
+    Locked: 0
     Name: '#1MainBearingCap'
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3317,7 +3292,7 @@ MonoBehaviour:
       m_Center: {x: -0.0920183, y: -0.50742596, z: 1.9180813}
       m_Extent: {x: 0.0096572675, y: 0.013181711, z: 0.024652038}
     Material: {fileID: 2100000, guid: 4a849964109d8d443b20c88bb3df7dd3, type: 2}
-    Locked: 1
+    Locked: 0
     Name: '#2MainBearing'
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3331,7 +3306,7 @@ MonoBehaviour:
       m_Center: {x: -0.091924064, y: -0.5434735, z: 1.9179498}
       m_Extent: {x: 0.009294645, y: 0.022767063, z: 0.042773053}
     Material: {fileID: 2100000, guid: 6cc641b5c6787924498b463517289c4e, type: 2}
-    Locked: 1
+    Locked: 0
     Name: '#2MainBearingCap'
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3345,7 +3320,7 @@ MonoBehaviour:
       m_Center: {x: -0.017781185, y: -0.5040641, z: 1.9180698}
       m_Extent: {x: 0.010472375, y: 0.016116427, z: 0.030509906}
     Material: {fileID: 2100000, guid: 4a849964109d8d443b20c88bb3df7dd3, type: 2}
-    Locked: 1
+    Locked: 0
     Name: '#3MainBearing'
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3359,7 +3334,7 @@ MonoBehaviour:
       m_Center: {x: -0.017974313, y: -0.5433977, z: 1.9179499}
       m_Extent: {x: 0.010640714, y: 0.023066116, z: 0.04251685}
     Material: {fileID: 2100000, guid: 0ab855922ce5d7c4496a8c766776d543, type: 2}
-    Locked: 1
+    Locked: 0
     Name: '#3MainBearingCap'
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3373,7 +3348,7 @@ MonoBehaviour:
       m_Center: {x: 0.056161013, y: -0.50742596, z: 1.9180814}
       m_Extent: {x: 0.0096572675, y: 0.013181711, z: 0.024652038}
     Material: {fileID: 2100000, guid: 4a849964109d8d443b20c88bb3df7dd3, type: 2}
-    Locked: 1
+    Locked: 0
     Name: '#4MainBearing'
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3387,7 +3362,7 @@ MonoBehaviour:
       m_Center: {x: 0.05616794, y: -0.5434735, z: 1.9179499}
       m_Extent: {x: 0.009294645, y: 0.022767063, z: 0.042773053}
     Material: {fileID: 2100000, guid: e56df12ff0b63fe4ebc50905159c9a64, type: 2}
-    Locked: 1
+    Locked: 0
     Name: '#4MainBearingCap'
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3401,7 +3376,7 @@ MonoBehaviour:
       m_Center: {x: 0.13159627, y: -0.50742596, z: 1.9180814}
       m_Extent: {x: 0.0096572675, y: 0.013181711, z: 0.024652038}
     Material: {fileID: 2100000, guid: 4a849964109d8d443b20c88bb3df7dd3, type: 2}
-    Locked: 1
+    Locked: 0
     Name: '#5MainBearing'
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3415,7 +3390,7 @@ MonoBehaviour:
       m_Center: {x: 0.1316543, y: -0.5434735, z: 1.9179498}
       m_Extent: {x: 0.009294645, y: 0.022767063, z: 0.042773053}
     Material: {fileID: 2100000, guid: c9c0e31d3c0148949bc168856ac29f2f, type: 2}
-    Locked: 1
+    Locked: 0
     Name: '#5MainBearingCap'
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3429,7 +3404,7 @@ MonoBehaviour:
       m_Center: {x: 0.010268584, y: -0.19759907, z: 1.9373027}
       m_Extent: {x: 0.14856388, y: 0.018167026, z: 0.06829285}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: CamShaftsBearingCapBolts
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3443,7 +3418,7 @@ MonoBehaviour:
       m_Center: {x: 0.15375592, y: -0.20556843, z: 1.9369453}
       m_Extent: {x: 0.012330919, y: 0.021261267, z: 0.070695385}
     Material: {fileID: 2100000, guid: 2510d9149fbe6e3428e0e5ae3f6f5638, type: 2}
-    Locked: 1
+    Locked: 0
     Name: CamShaftsBearingCapMajor
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3457,7 +3432,7 @@ MonoBehaviour:
       m_Center: {x: -0.021664016, y: -0.2044858, z: 1.937147}
       m_Extent: {x: 0.11947607, y: 0.021278538, z: 0.06889835}
     Material: {fileID: 2100000, guid: c36542144c552d446b1e6ffafdb2fc2a, type: 2}
-    Locked: 1
+    Locked: 0
     Name: CamShaftsBearingCapMinor
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3471,7 +3446,7 @@ MonoBehaviour:
       m_Center: {x: -0.22343819, y: -0.20860335, z: 1.8914181}
       m_Extent: {x: 0.012809213, y: 0.0546126, z: 0.05461259}
     Material: {fileID: 2100000, guid: 5a634436203da0c4c88b805d88274f96, type: 2}
-    Locked: 1
+    Locked: 0
     Name: CamShaftSprocket
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3485,7 +3460,7 @@ MonoBehaviour:
       m_Center: {x: -0.21455258, y: -0.20880468, z: 1.8905579}
       m_Extent: {x: 0.01661415, y: 0.014265227, z: 0.014259207}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: CamShaftSprocketBolt
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3499,7 +3474,7 @@ MonoBehaviour:
       m_Center: {x: 0.18137749, y: -0.21732867, z: 1.9339808}
       m_Extent: {x: 0.0024651114, y: 0.045137547, z: 0.07787025}
     Material: {fileID: 2100000, guid: bac3f7cbd21fffa4f84d2cdf2738c22c, type: 2}
-    Locked: 1
+    Locked: 0
     Name: Chain
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3513,7 +3488,7 @@ MonoBehaviour:
       m_Center: {x: 0.16330998, y: -0.22407751, z: 1.9305936}
       m_Extent: {x: 0.025193844, y: 0.03564987, z: 0.021829166}
     Material: {fileID: 2100000, guid: 00462cbd72bf9cd4b999239e0b16c88f, type: 2}
-    Locked: 1
+    Locked: 0
     Name: ChainTensioner
   - ChildCount: 0
     IndexOfFirstChild: 87
@@ -3527,7 +3502,7 @@ MonoBehaviour:
       m_Center: {x: 0.15529065, y: -0.24721089, z: 1.930351}
       m_Extent: {x: 0.0048059183, y: 0.026390422, z: 0.01925916}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: ChainTensionerBolts
   - ChildCount: 7
     IndexOfFirstChild: 87
@@ -3541,7 +3516,7 @@ MonoBehaviour:
       m_Center: {x: 0.22639208, y: -0.29324633, z: 1.9673326}
       m_Extent: {x: 0, y: 0, z: 0}
     Material: {fileID: 0}
-    Locked: 1
+    Locked: 0
     Name: CoolingSystemComponents
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3555,7 +3530,7 @@ MonoBehaviour:
       m_Center: {x: -0.035272606, y: -0.5173055, z: 1.9189013}
       m_Extent: {x: 0.20585807, y: 0.061854355, z: 0.06291653}
     Material: {fileID: 2100000, guid: b11a7b81c0ee4ea43b824e4f4e2aec76, type: 2}
-    Locked: 1
+    Locked: 0
     Name: CrankShaft
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3569,7 +3544,7 @@ MonoBehaviour:
       m_Center: {x: -0.23368026, y: -0.517825, z: 1.9177756}
       m_Extent: {x: 0.0028529286, y: 0.027799772, z: 0.027792156}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: CrankshaftFlange
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3583,7 +3558,7 @@ MonoBehaviour:
       m_Center: {x: -0.21943037, y: -0.5177945, z: 1.9178538}
       m_Extent: {x: 0.011687443, y: 0.029589135, z: 0.02958914}
     Material: {fileID: 2100000, guid: 4a63034d51a99d349a8e62760ef20fe7, type: 2}
-    Locked: 1
+    Locked: 0
     Name: CrankshaftSprocket
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3597,7 +3572,7 @@ MonoBehaviour:
       m_Center: {x: 0.17294745, y: -0.5344, z: 1.9220335}
       m_Extent: {x: 0.005257517, y: 0.093190454, z: 0.10271013}
     Material: {fileID: 2100000, guid: 95d903346837ca241a4768d4d45e003a, type: 2}
-    Locked: 1
+    Locked: 0
     Name: DrivePlate
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3611,7 +3586,7 @@ MonoBehaviour:
       m_Center: {x: 0.17385902, y: -0.5167829, z: 1.9234759}
       m_Extent: {x: 0.0108568305, y: 0.029615058, z: 0.02888498}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: DrivePlateBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3625,7 +3600,7 @@ MonoBehaviour:
       m_Center: {x: -0.016575327, y: -0.4523267, z: 1.9245899}
       m_Extent: {x: 0.16691758, y: 0.11804666, z: 0.15535465}
     Material: {fileID: 2100000, guid: e4a0a7a77eaeaa341b2f97f0f3ef6891, type: 2}
-    Locked: 1
+    Locked: 0
     Name: EngineBlock
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3639,7 +3614,7 @@ MonoBehaviour:
       m_Center: {x: 0.021592572, y: -0.24306388, z: 1.937814}
       m_Extent: {x: 0.23474985, y: 0.089323916, z: 0.112280816}
     Material: {fileID: 2100000, guid: ccb8327acc6ef44479b4a4dd5d32a34d, type: 2}
-    Locked: 1
+    Locked: 0
     Name: EngineHead
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3653,7 +3628,7 @@ MonoBehaviour:
       m_Center: {x: -0.021413833, y: -0.31745592, z: 1.9181988}
       m_Extent: {x: 0.15437768, y: 0.057299167, z: 0.04447618}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: EngineHeadBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3667,7 +3642,7 @@ MonoBehaviour:
       m_Center: {x: 0.019878969, y: -0.17535645, z: 1.9380783}
       m_Extent: {x: 0.23216435, y: 0.05463588, z: 0.11271239}
     Material: {fileID: 2100000, guid: 830e504d88436bc40ad147f4ff81a2fa, type: 2}
-    Locked: 1
+    Locked: 0
     Name: EngineHeadCover
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3681,7 +3656,7 @@ MonoBehaviour:
       m_Center: {x: 0.026978523, y: -0.206218, z: 1.9341234}
       m_Extent: {x: 0.2202, y: 0.028196674, z: 0.1035188}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: EngineHeadCoverBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3695,7 +3670,7 @@ MonoBehaviour:
       m_Center: {x: -0.0002161921, y: -0.20610487, z: 1.8937658}
       m_Extent: {x: 0.22568722, y: 0.040937655, z: 0.04014551}
     Material: {fileID: 2100000, guid: 1bcb6c328e28f0e41a94c90ecb43caf9, type: 2}
-    Locked: 1
+    Locked: 0
     Name: ExhaustCamShaft
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3709,7 +3684,7 @@ MonoBehaviour:
       m_Center: {x: -0.1972931, y: -0.19545594, z: 1.890342}
       m_Extent: {x: 0.015995571, y: 0.016359773, z: 0.026864322}
     Material: {fileID: 2100000, guid: 1bc35e9253f52ee4aaf6cb34b6748998, type: 2}
-    Locked: 1
+    Locked: 0
     Name: ExhaustCamShaftFrontSeal
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3723,7 +3698,7 @@ MonoBehaviour:
       m_Center: {x: -0.1882086, y: -0.19141856, z: 1.8932499}
       m_Extent: {x: 0.004895158, y: 0.0104871085, z: 0.021960733}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: ExhaustCamShaftFrontSealBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3737,7 +3712,7 @@ MonoBehaviour:
       m_Center: {x: -0.02171995, y: -0.2933006, z: 1.8469446}
       m_Extent: {x: 0.15633658, y: 0.03415954, z: 0.00017057912}
     Material: {fileID: 2100000, guid: ac6e3e0cf4b6e9c46a7d5972fea98e58, type: 2}
-    Locked: 1
+    Locked: 0
     Name: ExhaustGasket
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3751,7 +3726,7 @@ MonoBehaviour:
       m_Center: {x: -0.021814443, y: -0.46455792, z: 1.7766094}
       m_Extent: {x: 0.15797335, y: 0.2061368, z: 0.07065247}
     Material: {fileID: 2100000, guid: dac51dcb86436324fab3467063417a3d, type: 2}
-    Locked: 1
+    Locked: 0
     Name: ExhaustManifold/CatalytiConverter
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3765,7 +3740,7 @@ MonoBehaviour:
       m_Center: {x: -0.021472715, y: -0.29296467, z: 1.8333592}
       m_Extent: {x: 0.15576716, y: 0.032956164, z: 0.00314241}
     Material: {fileID: 2100000, guid: 1a36d3984c0cb3c4bb7937887b89c77b, type: 2}
-    Locked: 1
+    Locked: 0
     Name: ExhaustManifoldNuts
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3779,7 +3754,7 @@ MonoBehaviour:
       m_Center: {x: -0.01685549, y: -0.33280167, z: 1.9237627}
       m_Extent: {x: 0.16495965, y: 0.00045381987, z: 0.0688965}
     Material: {fileID: 2100000, guid: 710e11a542e39f24486fe0809c42bea4, type: 2}
-    Locked: 1
+    Locked: 0
     Name: HeadGasket
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3793,7 +3768,7 @@ MonoBehaviour:
       m_Center: {x: 0.07294894, y: -0.09974293, z: 2.0489433}
       m_Extent: {x: 0.04476742, y: 0.024608068, z: 0.01998192}
     Material: {fileID: 2100000, guid: 0ef23045880f80742a8c402be16d7fbe, type: 2}
-    Locked: 1
+    Locked: 0
     Name: IdleAirControlValve
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3807,7 +3782,7 @@ MonoBehaviour:
       m_Center: {x: 0.05795689, y: -0.1001181, z: 2.0663774}
       m_Extent: {x: 0.014063281, y: 0.02365614, z: 0.012614108}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: IdleAirControlValveBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3821,7 +3796,7 @@ MonoBehaviour:
       m_Center: {x: 0.02911876, y: -0.21925238, z: 1.9790969}
       m_Extent: {x: 0.1949937, y: 0.031066993, z: 0.03148965}
     Material: {fileID: 2100000, guid: 1f7efb8a87c95ca459b7aaca388b1b6a, type: 2}
-    Locked: 1
+    Locked: 0
     Name: IntakeCamShaft
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3835,7 +3810,7 @@ MonoBehaviour:
       m_Center: {x: 0.20957087, y: -0.20079507, z: 1.9789112}
       m_Extent: {x: 0.02057348, y: 0.026472436, z: 0.034863107}
     Material: {fileID: 2100000, guid: 96a68ccc2967e774a9225346822e41cd, type: 2}
-    Locked: 1
+    Locked: 0
     Name: IntakeCamShaftRearSeal
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3849,7 +3824,7 @@ MonoBehaviour:
       m_Center: {x: 0.21816719, y: -0.21556757, z: 1.97898}
       m_Extent: {x: 0.0064508156, y: 0.022925815, z: 0.033350874}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: IntakeCamShaftRearSealBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3863,7 +3838,7 @@ MonoBehaviour:
       m_Center: {x: 0.005637968, y: -0.20398293, z: 2.1078458}
       m_Extent: {x: 0.17603143, y: 0.13075507, z: 0.1055735}
     Material: {fileID: 2100000, guid: 9d31b62fea9df3f4ea28a23a94d83966, type: 2}
-    Locked: 1
+    Locked: 0
     Name: IntakeManifold
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3877,7 +3852,7 @@ MonoBehaviour:
       m_Center: {x: -0.020723216, y: -0.2885192, z: 2.0300634}
       m_Extent: {x: 0.14351362, y: 0.0409704, z: 0.014389748}
     Material: {fileID: 2100000, guid: 1a36d3984c0cb3c4bb7937887b89c77b, type: 2}
-    Locked: 1
+    Locked: 0
     Name: IntakeManifoldNuts
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3891,7 +3866,7 @@ MonoBehaviour:
       m_Center: {x: -0.018040746, y: -0.53263164, z: 1.9179497}
       m_Extent: {x: 0.15640633, y: 0.03545518, z: 0.03812866}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: MainBearingCapBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3905,7 +3880,7 @@ MonoBehaviour:
       m_Center: {x: -0.036386136, y: -0.11584238, z: 2.1651747}
       m_Extent: {x: 0.024456741, y: 0.02258388, z: 0.021087622}
     Material: {fileID: 2100000, guid: 2b21f9fe886ce3b439747c37ce48b645, type: 2}
-    Locked: 1
+    Locked: 0
     Name: ManifoldAbsolutePressure
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3919,7 +3894,7 @@ MonoBehaviour:
       m_Center: {x: -0.027129043, y: -0.11603541, z: 2.168898}
       m_Extent: {x: 0.0047780303, y: 0.022002582, z: 0.014906039}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: ManifoldAbsolutePressureBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3933,7 +3908,7 @@ MonoBehaviour:
       m_Center: {x: -0.19308129, y: -0.563771, z: 1.783647}
       m_Extent: {x: 0.031810936, y: 0.034570713, z: 0.025791684}
     Material: {fileID: 2100000, guid: 2aab40dd6cc3f1c4abaea4f39ac8b81f, type: 2}
-    Locked: 1
+    Locked: 0
     Name: OilFilter
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3947,7 +3922,7 @@ MonoBehaviour:
       m_Center: {x: -0.03816733, y: -0.63395286, z: 1.9138179}
       m_Extent: {x: 0.19685984, y: 0.06428754, z: 0.12331168}
     Material: {fileID: 2100000, guid: 2d973b86adf6134458b33ef97b77e416, type: 2}
-    Locked: 1
+    Locked: 0
     Name: OilPan
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -3961,7 +3936,7 @@ MonoBehaviour:
       m_Center: {x: -0.047528565, y: -0.57362497, z: 1.9229026}
       m_Extent: {x: 0.18193603, y: 0.010394147, z: 0.103575744}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: OilPanBolts
   - ChildCount: 4
     IndexOfFirstChild: 94
@@ -3975,7 +3950,7 @@ MonoBehaviour:
       m_Center: {x: -0.19586441, y: -0.510958, z: 1.9077542}
       m_Extent: {x: 0, y: 0, z: 0}
     Material: {fileID: 0}
-    Locked: 1
+    Locked: 0
     Name: OilPumpAssembly
   - ChildCount: 0
     IndexOfFirstChild: 98
@@ -3989,7 +3964,7 @@ MonoBehaviour:
       m_Center: {x: -0.19586457, y: -0.510958, z: 1.9077544}
       m_Extent: {x: 0.03531698, y: 0.08561811, z: 0.124986924}
     Material: {fileID: 2100000, guid: e7ebd76263010c94e84193cf68e20b22, type: 2}
-    Locked: 1
+    Locked: 0
     Name: OilPumpHousing
   - ChildCount: 0
     IndexOfFirstChild: 98
@@ -4003,7 +3978,7 @@ MonoBehaviour:
       m_Center: {x: -0.19328573, y: -0.49416277, z: 1.9234926}
       m_Extent: {x: 0.032893226, y: 0.055695202, z: 0.09222152}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: OilPumpHousingBolts
   - ChildCount: 0
     IndexOfFirstChild: 98
@@ -4017,7 +3992,7 @@ MonoBehaviour:
       m_Center: {x: -0.13499294, y: -0.61991173, z: 1.9297755}
       m_Extent: {x: 0.074696116, y: 0.051464103, z: 0.0407991}
     Material: {fileID: 2100000, guid: 0f26ac6fa3708ee4dbdde519596476a1, type: 2}
-    Locked: 1
+    Locked: 0
     Name: OilPumpPickup
   - ChildCount: 0
     IndexOfFirstChild: 98
@@ -4031,7 +4006,7 @@ MonoBehaviour:
       m_Center: {x: -0.19510725, y: -0.56919444, z: 1.9392071}
       m_Extent: {x: 0.010863173, y: 0.012841607, z: 0.027071455}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: OilPumpPickupBolts
   - ChildCount: 0
     IndexOfFirstChild: 98
@@ -4045,7 +4020,7 @@ MonoBehaviour:
       m_Center: {x: -0.04120483, y: -0.12942182, z: 2.0450602}
       m_Extent: {x: 0.002803619, y: 0.09252164, z: 0.06618565}
     Material: {fileID: 2100000, guid: 82a961ace4b9dfb4a8c600ac5443eb33, type: 2}
-    Locked: 1
+    Locked: 0
     Name: OpenEndWrench
   - ChildCount: 2
     IndexOfFirstChild: 98
@@ -4059,7 +4034,7 @@ MonoBehaviour:
       m_Center: {x: -0.12885833, y: -0.4847515, z: 1.9406506}
       m_Extent: {x: 0, y: 0, z: 0}
     Material: {fileID: 0}
-    Locked: 1
+    Locked: 0
     Name: PistonConnectingRodAssembly01
   - ChildCount: 2
     IndexOfFirstChild: 100
@@ -4073,7 +4048,7 @@ MonoBehaviour:
       m_Center: {x: -0.054548036, y: -0.43760264, z: 1.8931024}
       m_Extent: {x: 0, y: 0, z: 0}
     Material: {fileID: 0}
-    Locked: 1
+    Locked: 0
     Name: PistonConnectingRodAssembly02
   - ChildCount: 2
     IndexOfFirstChild: 102
@@ -4087,7 +4062,7 @@ MonoBehaviour:
       m_Center: {x: 0.019626057, y: -0.43760264, z: 1.8931024}
       m_Extent: {x: 0, y: 0, z: 0}
     Material: {fileID: 0}
-    Locked: 1
+    Locked: 0
     Name: PistonConnectingRodAssembly03
   - ChildCount: 2
     IndexOfFirstChild: 104
@@ -4101,7 +4076,7 @@ MonoBehaviour:
       m_Center: {x: 0.093942985, y: -0.4847515, z: 1.9406507}
       m_Extent: {x: 0, y: 0, z: 0}
     Material: {fileID: 0}
-    Locked: 1
+    Locked: 0
     Name: PistonConnectingRodAssembly04
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4115,7 +4090,7 @@ MonoBehaviour:
       m_Center: {x: 0.14775608, y: -0.513425, z: 1.9191953}
       m_Extent: {x: 0.007900818, y: 0.05716914, z: 0.08506915}
     Material: {fileID: 2100000, guid: cfdedb89039af6443a7ea16133c09748, type: 2}
-    Locked: 1
+    Locked: 0
     Name: RearMainSeal
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4129,7 +4104,7 @@ MonoBehaviour:
       m_Center: {x: 0.14282605, y: -0.51313335, z: 1.919332}
       m_Extent: {x: 0.0123082055, y: 0.05492466, z: 0.063996255}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: RearMainSealBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4143,7 +4118,7 @@ MonoBehaviour:
       m_Center: {x: -0.021609098, y: -0.27643484, z: 1.9229593}
       m_Extent: {x: 0.12052553, y: 0.03481881, z: 0.009773818}
     Material: {fileID: 2100000, guid: 92f1753edb2863242bdd81baa3d3707a, type: 2}
-    Locked: 1
+    Locked: 0
     Name: SparkPlug
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4157,7 +4132,7 @@ MonoBehaviour:
       m_Center: {x: -0.21137546, y: -0.46415046, z: 1.9537705}
       m_Extent: {x: 0.019575015, y: 0.040537786, z: 0.012239855}
     Material: {fileID: 2100000, guid: 12ea86257bfc9574c9b13bb52b2c6cd0, type: 2}
-    Locked: 1
+    Locked: 0
     Name: TensionerSpring
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4171,7 +4146,7 @@ MonoBehaviour:
       m_Center: {x: 0.14062846, y: -0.13517196, z: 2.1858957}
       m_Extent: {x: 0.025839182, y: 0.023229951, z: 0.012523244}
     Material: {fileID: 2100000, guid: 6b35b30b3bb0bc745bfe7d3b76486362, type: 2}
-    Locked: 1
+    Locked: 0
     Name: ThrottlePositionSensor
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4185,7 +4160,7 @@ MonoBehaviour:
       m_Center: {x: 0.12913716, y: -0.1336964, z: 2.1824188}
       m_Extent: {x: 0.010635682, y: 0.018396748, z: 0.005473028}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: ThrottlePositionSensorBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4199,7 +4174,7 @@ MonoBehaviour:
       m_Center: {x: -0.22044913, y: -0.3497538, z: 1.8915439}
       m_Extent: {x: 0.0076518147, y: 0.19733115, z: 0.056238096}
     Material: {fileID: 2100000, guid: 08b87706e3d886b45b78deee44a94c4a, type: 2}
-    Locked: 1
+    Locked: 0
     Name: TimingBelt
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4213,7 +4188,7 @@ MonoBehaviour:
       m_Center: {x: -0.22803698, y: -0.4361694, z: 1.9252013}
       m_Extent: {x: 0.023242459, y: 0.1268043, z: 0.10153763}
     Material: {fileID: 2100000, guid: 2db06dd21cb66c74e913c817ebc33002, type: 2}
-    Locked: 1
+    Locked: 0
     Name: TimingBeltCoverBottom
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4227,7 +4202,7 @@ MonoBehaviour:
       m_Center: {x: -0.21502909, y: -0.4502932, z: 1.9367812}
       m_Extent: {x: 0.026293218, y: 0.11261708, z: 0.087038636}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: TimingBeltCoverBottomBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4241,7 +4216,7 @@ MonoBehaviour:
       m_Center: {x: -0.22305633, y: -0.23117107, z: 1.9175249}
       m_Extent: {x: 0.013890048, y: 0.086813495, z: 0.11251535}
     Material: {fileID: 2100000, guid: 3e6fb2e4109f219498fa2179c9a8291b, type: 2}
-    Locked: 1
+    Locked: 0
     Name: TimingBeltCoverTop
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4255,7 +4230,7 @@ MonoBehaviour:
       m_Center: {x: -0.20808262, y: -0.23377559, z: 1.918635}
       m_Extent: {x: 0.019346911, y: 0.07909853, z: 0.10961882}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: TimingBeltCoverTopBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4269,7 +4244,7 @@ MonoBehaviour:
       m_Center: {x: -0.22164363, y: -0.29148063, z: 1.8604119}
       m_Extent: {x: 0.013339865, y: 0.025262767, z: 0.025262782}
     Material: {fileID: 2100000, guid: 53651db7ca87e004390bd3406aa6fdbe, type: 2}
-    Locked: 1
+    Locked: 0
     Name: TimingBeltIdler
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4283,7 +4258,7 @@ MonoBehaviour:
       m_Center: {x: -0.20598802, y: -0.29136622, z: 1.8604777}
       m_Extent: {x: 0.016614148, y: 0.009092242, z: 0.009088418}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: TimingBeltIdlerBolt
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4297,7 +4272,7 @@ MonoBehaviour:
       m_Center: {x: -0.19651788, y: -0.3445947, z: 1.9949688}
       m_Extent: {x: 0.013262932, y: 0.11325304, z: 0.035071634}
     Material: {fileID: 2100000, guid: 2db06dd21cb66c74e913c817ebc33002, type: 2}
-    Locked: 1
+    Locked: 0
     Name: TimingBeltSideCover
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4311,7 +4286,7 @@ MonoBehaviour:
       m_Center: {x: -0.18529882, y: -0.3193766, z: 1.9835861}
       m_Extent: {x: 0.015173845, y: 0.058138527, z: 0.012806318}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: TimingBeltSideCoverBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4325,7 +4300,7 @@ MonoBehaviour:
       m_Center: {x: -0.21284875, y: -0.4436297, z: 1.9242444}
       m_Extent: {x: 0.018285526, y: 0.041535974, z: 0.04253212}
     Material: {fileID: 2100000, guid: 53651db7ca87e004390bd3406aa6fdbe, type: 2}
-    Locked: 1
+    Locked: 0
     Name: TimingBeltTensionerAssembly
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4339,7 +4314,7 @@ MonoBehaviour:
       m_Center: {x: -0.1923564, y: -0.44393745, z: 1.8977588}
       m_Extent: {x: 0.010856756, y: 0.007159899, z: 0.0071570193}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: TimingBeltTensionerBolt
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4353,7 +4328,7 @@ MonoBehaviour:
       m_Center: {x: 0.16679092, y: -0.22371258, z: 1.8520063}
       m_Extent: {x: 0.02537475, y: 0.027666919, z: 0.047387473}
     Material: {fileID: 2100000, guid: efd75c2d68fee9445b73c57c2687d82e, type: 2}
-    Locked: 1
+    Locked: 0
     Name: VariableCamShaftSolenoidOilControlValve
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4367,7 +4342,7 @@ MonoBehaviour:
       m_Center: {x: 0.17133364, y: -0.2383372, z: 1.8362057}
       m_Extent: {x: 0.004805001, y: 0.0051329513, z: 0.0075736064}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: VariableCamShaftSolenoidOilControlValveBolt
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4395,7 +4370,7 @@ MonoBehaviour:
       m_Center: {x: -0.22884212, y: -0.51782084, z: 1.9177766}
       m_Extent: {x: 0.019346759, y: 0.016611483, z: 0.016604474}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: VibrationDampnerBolt
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4409,7 +4384,7 @@ MonoBehaviour:
       m_Center: {x: 0.0048695877, y: -0.38718987, z: 1.8347261}
       m_Extent: {x: 0.16662857, y: 0.026486168, z: 0.0297208}
     Material: {fileID: 2100000, guid: bed7adbc0f1068d48a72127881b7b2f5, type: 2}
-    Locked: 1
+    Locked: 0
     Name: WaterInletPipe
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4423,7 +4398,7 @@ MonoBehaviour:
       m_Center: {x: 0.12534073, y: -0.40475047, z: 1.8615772}
       m_Extent: {x: 0.008415987, y: 0.008416289, z: 0.0070189764}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: WaterInletPipeBolt
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4437,7 +4412,7 @@ MonoBehaviour:
       m_Center: {x: 0.18985064, y: -0.33736607, z: 1.8545688}
       m_Extent: {x: 0.047149178, y: 0.05839484, z: 0.051467463}
     Material: {fileID: 2100000, guid: d3516997a77e14344b052868fb249c01, type: 2}
-    Locked: 1
+    Locked: 0
     Name: WaterPipeHose
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4451,7 +4426,7 @@ MonoBehaviour:
       m_Center: {x: -0.22108826, y: -0.38354492, z: 1.8684318}
       m_Extent: {x: 0.050387178, y: 0.057627663, z: 0.07795858}
     Material: {fileID: 2100000, guid: b294474fb973d0b4c91e0f9b9700a61f, type: 2}
-    Locked: 1
+    Locked: 0
     Name: WaterPump
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4465,7 +4440,7 @@ MonoBehaviour:
       m_Center: {x: -0.2626237, y: -0.3806902, z: 1.8466526}
       m_Extent: {x: 0.0064269304, y: 0.021247657, z: 0.021646189}
     Material: {fileID: 2100000, guid: d3c178e32ee5b524d8ce9d3db0fb3989, type: 2}
-    Locked: 1
+    Locked: 0
     Name: WaterPumpBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4479,7 +4454,7 @@ MonoBehaviour:
       m_Center: {x: -0.25258937, y: -0.3808453, z: 1.8456786}
       m_Extent: {x: 0.013377175, y: 0.046898767, z: 0.046698436}
     Material: {fileID: 2100000, guid: 85a344633ceda224fbdbadf245ee2cf6, type: 2}
-    Locked: 1
+    Locked: 0
     Name: WaterPumpPully
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -4493,7 +4468,7 @@ MonoBehaviour:
       m_Center: {x: 0.23712002, y: -0.31366193, z: 1.941998}
       m_Extent: {x: 0.030327607, y: 0.034295004, z: 0.03427911}
     Material: {fileID: 2100000, guid: b9d291535cc760d4388f4c76f170f2fe, type: 2}
-    Locked: 1
+    Locked: 0
     Name: Thermostat
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -4507,7 +4482,7 @@ MonoBehaviour:
       m_Center: {x: 0.26225296, y: -0.3144694, z: 1.9292965}
       m_Extent: {x: 0.017048387, y: 0.041217975, z: 0.058044076}
     Material: {fileID: 2100000, guid: dc2a69d289359994ebff75c1d3cadfb8, type: 2}
-    Locked: 1
+    Locked: 0
     Name: ThermostatCover
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -4521,7 +4496,7 @@ MonoBehaviour:
       m_Center: {x: 0.2502225, y: -0.30921558, z: 1.9476708}
       m_Extent: {x: 0.016067823, y: 0.040410854, z: 0.040905707}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: ThermostatCoverBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -4535,7 +4510,7 @@ MonoBehaviour:
       m_Center: {x: 0.22565715, y: -0.29348522, z: 1.968415}
       m_Extent: {x: 0.053766083, y: 0.05766303, z: 0.09294845}
     Material: {fileID: 2100000, guid: 13c04f950e1ff444b835f9c59c958e84, type: 2}
-    Locked: 1
+    Locked: 0
     Name: ThermostatHousing
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -4549,7 +4524,7 @@ MonoBehaviour:
       m_Center: {x: 0.19548737, y: -0.32364362, z: 1.9821002}
       m_Extent: {x: 0.015612204, y: 0.0074915113, z: 0.007397826}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: ThermostatHousingBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -4563,7 +4538,7 @@ MonoBehaviour:
       m_Center: {x: 0.26223284, y: -0.25804332, z: 1.9288892}
       m_Extent: {x: 0.018660277, y: 0.026895428, z: 0.052165013}
     Material: {fileID: 2100000, guid: 31217aac3051f304da5a502b644f92ff, type: 2}
-    Locked: 1
+    Locked: 0
     Name: WaterInletFitting
   - ChildCount: 0
     IndexOfFirstChild: 94
@@ -4577,7 +4552,7 @@ MonoBehaviour:
       m_Center: {x: 0.26963693, y: -0.2599963, z: 1.9553688}
       m_Extent: {x: 0.002905854, y: 0.022742258, z: 0.020745574}
     Material: {fileID: 2100000, guid: 1a36d3984c0cb3c4bb7937887b89c77b, type: 2}
-    Locked: 1
+    Locked: 0
     Name: WaterInletFittingNuts
   - ChildCount: 0
     IndexOfFirstChild: 98
@@ -4591,7 +4566,7 @@ MonoBehaviour:
       m_Center: {x: -0.18817322, y: -0.5179672, z: 1.9166108}
       m_Extent: {x: 0.0045483313, y: 0.029228995, z: 0.029518554}
     Material: {fileID: 2100000, guid: 3ccfd8ab43262df4fbfdefef849b1d26, type: 2}
-    Locked: 1
+    Locked: 0
     Name: OilPumpInnerGear
   - ChildCount: 0
     IndexOfFirstChild: 98
@@ -4605,7 +4580,7 @@ MonoBehaviour:
       m_Center: {x: -0.18817322, y: -0.5173757, z: 1.9166051}
       m_Extent: {x: 0.0045483336, y: 0.035513822, z: 0.035513747}
     Material: {fileID: 2100000, guid: 9193a42098478154ea307d54bb1cc028, type: 2}
-    Locked: 1
+    Locked: 0
     Name: OilPumpOuterRing
   - ChildCount: 0
     IndexOfFirstChild: 98
@@ -4619,7 +4594,7 @@ MonoBehaviour:
       m_Center: {x: -0.18150951, y: -0.52169484, z: 1.9180225}
       m_Extent: {x: 0.003137814, y: 0.05658238, z: 0.050835118}
     Material: {fileID: 2100000, guid: 1c3e6fea04cba5b49980dcdf39582ae1, type: 2}
-    Locked: 1
+    Locked: 0
     Name: OilPumpPlate
   - ChildCount: 0
     IndexOfFirstChild: 98
@@ -4633,7 +4608,7 @@ MonoBehaviour:
       m_Center: {x: -0.18134487, y: -0.522394, z: 1.9176008}
       m_Extent: {x: 0.008764634, y: 0.0552112, z: 0.049362354}
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
-    Locked: 1
+    Locked: 0
     Name: OilPumpPlateBolt
   - ChildCount: 0
     IndexOfFirstChild: 100
@@ -4647,7 +4622,7 @@ MonoBehaviour:
       m_Center: {x: -0.12885827, y: -0.47697216, z: 1.9303443}
       m_Extent: {x: 0.036043014, y: 0.07394582, z: 0.049121764}
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
-    Locked: 1
+    Locked: 0
     Name: PistonConnectingRod04
   - ChildCount: 0
     IndexOfFirstChild: 100
@@ -4661,7 +4636,7 @@ MonoBehaviour:
       m_Center: {x: -0.12785088, y: -0.5562521, z: 1.9530585}
       m_Extent: {x: 0.010838058, y: 0.024001434, z: 0.035362512}
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
-    Locked: 1
+    Locked: 0
     Name: PistonConnectingRodCap04
   - ChildCount: 0
     IndexOfFirstChild: 102
@@ -4675,7 +4650,7 @@ MonoBehaviour:
       m_Center: {x: -0.054548003, y: -0.42674837, z: 1.9048138}
       m_Extent: {x: 0.03604305, y: 0.07355182, z: 0.047716714}
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
-    Locked: 1
+    Locked: 0
     Name: PistonConnectingRod01
   - ChildCount: 0
     IndexOfFirstChild: 102
@@ -4689,7 +4664,7 @@ MonoBehaviour:
       m_Center: {x: -0.05354564, y: -0.5074173, z: 1.8846519}
       m_Extent: {x: 0.010431816, y: 0.022595165, z: 0.03491717}
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
-    Locked: 1
+    Locked: 0
     Name: PistonConnectingRodCap01
   - ChildCount: 0
     IndexOfFirstChild: 104
@@ -4703,7 +4678,7 @@ MonoBehaviour:
       m_Center: {x: 0.019626085, y: -0.42674837, z: 1.9048136}
       m_Extent: {x: 0.03604305, y: 0.073551826, z: 0.047716714}
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
-    Locked: 1
+    Locked: 0
     Name: PistonConnectingRod02
   - ChildCount: 0
     IndexOfFirstChild: 104
@@ -4717,7 +4692,7 @@ MonoBehaviour:
       m_Center: {x: 0.020628456, y: -0.5074173, z: 1.8846519}
       m_Extent: {x: 0.010431816, y: 0.022595165, z: 0.03491717}
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
-    Locked: 1
+    Locked: 0
     Name: PistonConnectingRodCap02
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4731,7 +4706,7 @@ MonoBehaviour:
       m_Center: {x: 0.09394302, y: -0.47697216, z: 1.9303445}
       m_Extent: {x: 0.036043014, y: 0.07394582, z: 0.049121764}
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
-    Locked: 1
+    Locked: 0
     Name: PistonConnectingRod03
   - ChildCount: 0
     IndexOfFirstChild: 106
@@ -4745,7 +4720,7 @@ MonoBehaviour:
       m_Center: {x: 0.094950445, y: -0.5562521, z: 1.9530586}
       m_Extent: {x: 0.010838058, y: 0.024001434, z: 0.035362512}
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
-    Locked: 1
+    Locked: 0
     Name: PistonConnectingRodCap03
 --- !u!114 &516467245
 MonoBehaviour:
@@ -4817,6 +4792,7 @@ MonoBehaviour:
   mpo: {fileID: 516467244}
   downtime: 0
   downDuration: 0
+  partOrWhole: 0
   HostTransform: {fileID: 1207693976}
   DistanceScale: 2
   RotationMode: 1
@@ -4843,13 +4819,26 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 516467243}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7065ebbaa1631544ae6289d92a5d345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _partName: {fileID: 994153454}
   _mpo: {fileID: 516467244}
+--- !u!114 &516467250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 516467243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2ad286b7df817459b9e130715c0b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mpo: {fileID: 0}
+  _highlightMaterial: {fileID: 2100000, guid: cc00e811af034524794befcaf38e06ad, type: 2}
 --- !u!1 &516895269 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100172, guid: a7759532cd66a7340a80b140f1282406, type: 3}
@@ -4904,177 +4893,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300006, guid: a7759532cd66a7340a80b140f1282406, type: 3}
---- !u!1 &539945344
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 539945345}
-  - component: {fileID: 539945348}
-  - component: {fileID: 539945347}
-  - component: {fileID: 539945346}
-  m_Layer: 0
-  m_Name: TimingBelt
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &539945345
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 539945344}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.1, z: 0.01}
-  m_Children: []
-  m_Father: {fileID: 449521629}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &539945346
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 539945344}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 3d1e09375a79c5243995150db41533ee, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!65 &539945347
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 539945344}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &539945348
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 539945344}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &542598541
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 542598542}
-  - component: {fileID: 542598544}
-  - component: {fileID: 542598543}
-  m_Layer: 0
-  m_Name: HeadGasketText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &542598542
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 542598541}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_Children: []
-  m_Father: {fileID: 1212031865}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!102 &542598543
-TextMesh:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 542598541}
-  m_Text: 'Head Gasket
-
-    Replacement'
-  m_OffsetZ: 0
-  m_CharacterSize: 1
-  m_LineSpacing: 1
-  m_Anchor: 4
-  m_Alignment: 1
-  m_TabSize: 4
-  m_FontSize: 20
-  m_FontStyle: 0
-  m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Color:
-    serializedVersion: 2
-    rgba: 4294967295
---- !u!23 &542598544
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 542598541}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &567991790 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100038, guid: a7759532cd66a7340a80b140f1282406, type: 3}
@@ -5111,135 +4929,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300136, guid: a7759532cd66a7340a80b140f1282406, type: 3}
---- !u!1 &574666985
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 574666987}
-  - component: {fileID: 574666986}
-  m_Layer: 0
-  m_Name: GeneralUI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &574666986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 574666985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3711d3d74eaa7964380c853980e38b64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TaskList: {fileID: 516467245}
-  MPO: {fileID: 516467244}
---- !u!4 &574666987
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 574666985}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.65, z: 1.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 658680362}
-  - {fileID: 449521629}
-  - {fileID: 1212031865}
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &575332381
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 575332382}
-  - component: {fileID: 575332385}
-  - component: {fileID: 575332384}
-  - component: {fileID: 575332383}
-  m_Layer: 0
-  m_Name: HeadGasket
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &575332382
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 575332381}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.1, z: 0.01}
-  m_Children: []
-  m_Father: {fileID: 1212031865}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &575332383
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 575332381}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 3d1e09375a79c5243995150db41533ee, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!65 &575332384
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 575332381}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &575332385
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 575332381}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!21 &607184167
 Material:
   serializedVersion: 6
@@ -5429,36 +5118,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4587520633816736, guid: d29bc40b7f3df26479d6a0aac211c355,
     type: 2}
   m_PrefabInternal: {fileID: 1650939249}
---- !u!1 &658680361
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 658680362}
-  m_Layer: 0
-  m_Name: Button
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &658680362
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 658680361}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2122107503}
-  - {fileID: 1802191767}
-  m_Father: {fileID: 574666987}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &671545616 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100202, guid: a7759532cd66a7340a80b140f1282406, type: 3}
@@ -6846,6 +6505,63 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300010, guid: a7759532cd66a7340a80b140f1282406, type: 3}
+--- !u!1001 &1184197331
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4226449286986176, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226449286986176, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226449286986176, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226449286986176, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226449286986176, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226449286986176, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226449286986176, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226449286986176, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114573575119162976, guid: ce54d2f44e9ca1a45840a538cc8558d4,
+        type: 2}
+      propertyPath: TaskList
+      value: 
+      objectReference: {fileID: 516467245}
+    - target: {fileID: 114573575119162976, guid: ce54d2f44e9ca1a45840a538cc8558d4,
+        type: 2}
+      propertyPath: MPO
+      value: 
+      objectReference: {fileID: 516467244}
+    - target: {fileID: 114573575119162976, guid: ce54d2f44e9ca1a45840a538cc8558d4,
+        type: 2}
+      propertyPath: HoloInterface
+      value: 
+      objectReference: {fileID: 516467247}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1207693975
 GameObject:
   m_ObjectHideFlags: 0
@@ -6873,36 +6589,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1212031864
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1212031865}
-  m_Layer: 0
-  m_Name: Button (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1212031865
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1212031864}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 575332382}
-  - {fileID: 542598542}
-  m_Father: {fileID: 574666987}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1216811882 stripped
 GameObject:
@@ -8445,93 +8131,6 @@ Material:
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!1 &1736338056
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1736338057}
-  - component: {fileID: 1736338059}
-  - component: {fileID: 1736338058}
-  m_Layer: 0
-  m_Name: TimingBeltText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1736338057
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1736338056}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_Children: []
-  m_Father: {fileID: 449521629}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!102 &1736338058
-TextMesh:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1736338056}
-  m_Text: 'Timing Belt
-
-    Replacement'
-  m_OffsetZ: 0
-  m_CharacterSize: 1
-  m_LineSpacing: 1
-  m_Anchor: 4
-  m_Alignment: 1
-  m_TabSize: 4
-  m_FontSize: 20
-  m_FontStyle: 0
-  m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Color:
-    serializedVersion: 2
-    rgba: 4294967295
---- !u!23 &1736338059
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1736338056}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &1763260636 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100122, guid: a7759532cd66a7340a80b140f1282406, type: 3}
@@ -8622,91 +8221,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300034, guid: a7759532cd66a7340a80b140f1282406, type: 3}
---- !u!1 &1802191766
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1802191767}
-  - component: {fileID: 1802191769}
-  - component: {fileID: 1802191768}
-  m_Layer: 0
-  m_Name: ResetText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1802191767
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1802191766}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_Children: []
-  m_Father: {fileID: 658680362}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!102 &1802191768
-TextMesh:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1802191766}
-  m_Text: Reset
-  m_OffsetZ: 0
-  m_CharacterSize: 1
-  m_LineSpacing: 1
-  m_Anchor: 4
-  m_Alignment: 1
-  m_TabSize: 4
-  m_FontSize: 20
-  m_FontStyle: 0
-  m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Color:
-    serializedVersion: 2
-    rgba: 4294967295
---- !u!23 &1802191769
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1802191766}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &1814277429 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100068, guid: a7759532cd66a7340a80b140f1282406, type: 3}
@@ -9503,90 +9017,6 @@ Material:
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!1 &2122107502
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2122107503}
-  - component: {fileID: 2122107506}
-  - component: {fileID: 2122107505}
-  - component: {fileID: 2122107504}
-  m_Layer: 0
-  m_Name: ResetMPO
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2122107503
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2122107502}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.1, z: 0.01}
-  m_Children: []
-  m_Father: {fileID: 658680362}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &2122107504
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2122107502}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 3d1e09375a79c5243995150db41533ee, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!65 &2122107505
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2122107502}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &2122107506
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2122107502}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2130962498 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100174, guid: a7759532cd66a7340a80b140f1282406, type: 3}

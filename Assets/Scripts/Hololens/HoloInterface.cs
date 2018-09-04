@@ -14,6 +14,7 @@ public class HoloInterface : MonoBehaviour, IFocusable, IInputHandler, ISourceSt
     public MultiPartsObject mpo;
     public float downtime;
     public float downDuration;
+    public bool partOrWhole = false;
 
     /// <summary>
     /// Event triggered when dragging starts.
@@ -352,7 +353,10 @@ public class HoloInterface : MonoBehaviour, IFocusable, IInputHandler, ISourceSt
 
             StopDragging();
 
-            mpo.Release();
+            if(!partOrWhole)
+                mpo.Release();
+            else
+                mpo.ReleaseCage();
 
             if(Time.time - downtime < 0.5f)
             {
@@ -401,8 +405,16 @@ public class HoloInterface : MonoBehaviour, IFocusable, IInputHandler, ISourceSt
         FocusDetails? details = FocusManager.Instance.TryGetFocusDetails(eventData);
         downtime = Time.time;
         HostTransform.position = details.Value.Point;
-        mpo.Select(details.Value.Object);
-        mpo.Grab();
+
+        if (!partOrWhole)
+        {
+            mpo.Select(details.Value.Object);
+            mpo.Grab();
+        }
+        else
+        {
+            mpo.GrabCage();
+        }
 
         Vector3 initialDraggingPosition = (details == null)
             ? HostTransform.position
@@ -421,7 +433,10 @@ public class HoloInterface : MonoBehaviour, IFocusable, IInputHandler, ISourceSt
         if (currentInputSource != null && eventData.SourceId == currentInputSourceId)
         {
             StopDragging();
-            mpo.Release();
+            if(!partOrWhole)
+                mpo.Release();
+            else
+                mpo.ReleaseCage();
         }
     }
 }

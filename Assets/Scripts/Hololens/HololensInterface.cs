@@ -9,6 +9,9 @@ using UnityEngine.SceneManagement;
 public class HololensInterface : MonoBehaviour, IInputClickHandler {
     public TaskList TaskList;
     public MultiPartsObject MPO;
+    public HoloInterface HoloInterface;
+    public GameObject PartButton;
+    public GameObject WholeButton;
 
     public void CleanUpHololensPrefabs()
     {
@@ -49,6 +52,24 @@ public class HololensInterface : MonoBehaviour, IInputClickHandler {
         {
             MPO.ResetAll(MPO.Root);
         }
+        else if (eventData.selectedObject.name == "Part")
+        {
+            HoloInterface.partOrWhole = false;
+            WholeButton.SetActive(true);
+            PartButton.SetActive(false);
+        }
+        else if (eventData.selectedObject.name == "Whole")
+        {
+            HoloInterface.partOrWhole = true;
+            WholeButton.SetActive(false);
+            PartButton.SetActive(true);
+        }
+    }
+
+    void Start()
+    {
+        WholeButton.SetActive(true);
+        PartButton.SetActive(false);
     }
 
     private void Update()
