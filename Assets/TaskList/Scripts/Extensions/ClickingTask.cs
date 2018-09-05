@@ -12,33 +12,33 @@ namespace ModelViewer
         /// <summary>
         /// constructor taking a go
         /// </summary>
-        public ClickingTask(GameObject go) : base(go){}
+        public ClickingTask(TaskList tl, GameObject go) : base(tl,go){}
 
         /// <summary>
         /// constructor taking a serializable task
         /// </summary>
-        public ClickingTask (SerializableTask task):base(task){}
+        public ClickingTask (TaskList tl, SerializableTask task):base(tl, task){}
 
         /// <summary>
         /// reimplemntation of draw task hint. draw the silhouette of the game object at the goal pos
         /// </summary>
-        public override void DrawTaskHint(TaskList taskList)
+        public override void DrawTaskHint()
         {
-            taskList.Hint = GameObject.Instantiate(GameObject, GameObject.transform.position, GameObject.transform.rotation);
-            taskList.Hint.transform.localScale = GameObject.transform.lossyScale;
-            if (taskList.Hint.GetComponent<Collider>() != null)
-                GameObject.Destroy(taskList.Hint.GetComponent<Collider>());
-            if (taskList.Hint.GetComponent<Renderer>() != null)
-                taskList.Hint.GetComponent<Renderer>().material = taskList.SilhouetteMaterial;
+            TaskList.Hint = GameObject.Instantiate(GameObject, GameObject.transform.position, GameObject.transform.rotation);
+            TaskList.Hint.transform.localScale = GameObject.transform.lossyScale;
+            if (TaskList.Hint.GetComponent<Collider>() != null)
+                GameObject.Destroy(TaskList.Hint.GetComponent<Collider>());
+            if (TaskList.Hint.GetComponent<Renderer>() != null)
+                TaskList.Hint.GetComponent<Renderer>().material = TaskList.SilhouetteMaterial;
         }
 
         /// <summary>
         /// update task hint in case user is moving the cage around
         /// </summary>
-        public override void UpdateTaskHint(TaskList taskList)
+        public override void UpdateTaskHint()
         {
-            if (taskList.Hint != null)
-                taskList.Hint.transform.SetPositionAndRotation(GameObject.transform.position, GameObject.transform.rotation);
+            if (TaskList.Hint != null)
+                TaskList.Hint.transform.SetPositionAndRotation(GameObject.transform.position, GameObject.transform.rotation);
         }
 
         /// <summary>

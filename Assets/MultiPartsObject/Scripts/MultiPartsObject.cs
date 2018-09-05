@@ -804,6 +804,9 @@ namespace ModelViewer
 			}
         }
 
+        /// <summary>
+        /// grab the entire cage of the multi partsobject
+        /// </summary>
         public void GrabCage()
         {
             if (MovableFrame != null)
@@ -812,6 +815,9 @@ namespace ModelViewer
             }
         }
 
+        /// <summary>
+        /// release the entire cage of the multi parts object
+        /// </summary>
         public void ReleaseCage()
         {
             this.transform.SetParent(null);

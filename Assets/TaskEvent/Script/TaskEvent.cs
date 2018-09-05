@@ -34,7 +34,7 @@ namespace ModelViewer
         /// <summary>
         /// base coroutine. override to create different behaviors
         /// </summary>
-        public virtual IEnumerator TaskEventCoroutine(MultiPartsObject mpo)
+        public virtual IEnumerator TaskEventCoroutine()
         {
             yield return null;
         }

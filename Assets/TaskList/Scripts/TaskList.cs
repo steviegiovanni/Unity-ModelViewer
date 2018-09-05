@@ -13,6 +13,24 @@ namespace ModelViewer
     public class TaskList : MonoBehaviour, ISerializationCallbackReceiver
     {
         /// <summary>
+        /// the multiparts object that this tasklist is associated with
+        /// </summary>
+        [SerializeField]
+        private MultiPartsObject _mpo;
+        public MultiPartsObject MPO
+        {
+            get {
+                if(_mpo == null)
+                {
+                    _mpo = GameObject.FindObjectOfType<MultiPartsObject>();
+                    if (_mpo == null)
+                        Debug.LogError("No multiparts object found!");
+                }
+                return _mpo;
+            }
+        }
+
+        /// <summary>
         /// the id of the currently active task
         /// </summary>
         private int _currentTaskId = 0;
@@ -160,15 +178,15 @@ namespace ModelViewer
             {
                 case "MovingTask":
                     {
-                        return new MovingTask(st);
+                        return new MovingTask(this,st);
                     }break;
                 case "ClickingTask":
                     {
-                        return new ClickingTask(st);
+                        return new ClickingTask(this,st);
                     }break;
                 default:
                     {
-                        return new Task(st);
+                        return new Task(this,st);
                     }
             }
         }
@@ -188,13 +206,8 @@ namespace ModelViewer
         /// </summary>
         public void Start()
         {
-            // make sure we have a multiparts object
-            MultiPartsObject mpo = GetComponent<MultiPartsObject>();
-            if (mpo == null)
-                Debug.LogError("No multiparts object attached");
-
-            mpo.OnReleaseEvent.AddListener(CheckTaskOnRelease);
-            mpo.OnSelectEvent.AddListener(CheckTaskOnSelect);
+            MPO.OnReleaseEvent.AddListener(CheckTaskOnRelease);
+            MPO.OnSelectEvent.AddListener(CheckTaskOnSelect);
 
             StoreInitialPosAndRot();
             // register each task "CheckTask" function to onrelease of the appropriate node
@@ -226,16 +239,15 @@ namespace ModelViewer
                     TaskStartListeners.Invoke(Tasks[CurrentTaskId]);
 
                 // draw current task hint
-                Tasks[CurrentTaskId].DrawTaskHint(this);
+                Tasks[CurrentTaskId].DrawTaskHint();
                 while (!Tasks[CurrentTaskId].Finished)
                 {
-                    Tasks[CurrentTaskId].UpdateTaskHint(this);
+                    Tasks[CurrentTaskId].UpdateTaskHint();
                     yield return null;
                 }
-
-                MultiPartsObject mpo = GetComponent<MultiPartsObject>();
-                mpo.Release();
-                mpo.Deselect(Tasks[CurrentTaskId].GameObject);
+                
+                MPO.Release();
+                MPO.Deselect(Tasks[CurrentTaskId].GameObject);
 
                 // lock node again
                 ChangeLockOfTaskNode(task, true);
@@ -246,22 +258,16 @@ namespace ModelViewer
 
                 // run task event coroutine if exists
                 if (Tasks[CurrentTaskId].TaskEvent != null)
-                    yield return StartCoroutine(Tasks[CurrentTaskId].TaskEvent.TaskEventCoroutine(mpo));
+                    yield return StartCoroutine(Tasks[CurrentTaskId].TaskEvent.TaskEventCoroutine());
             }
             yield return null;
         }
 
         void ChangeLockOfTaskNode(Task task, bool value)
         {
-            MultiPartsObject mpo = GetComponent<MultiPartsObject>();
-            if (mpo == null)
-                Debug.LogError("No multiparts object attached");
-            else
-            {
-                Node node = null;
-                if(mpo.Dict.TryGetValue(task.GameObject,out node))
-                    node.Locked = value;
-            }
+            Node node = null;
+            if(MPO.Dict.TryGetValue(task.GameObject,out node))
+                node.Locked = value;
         }
 
         void ChangeLockOfAllTaskNodes(bool value)
@@ -290,10 +296,7 @@ namespace ModelViewer
                 if (task.GameObject == node.GameObject)
                 {
                     // make sure we have a multiparts object
-                    MultiPartsObject mpo = GetComponent<MultiPartsObject>();
-                    if (mpo == null)
-                        Debug.LogError("No multiparts object attached");
-                    task.CheckTask(mpo);
+                    task.CheckTask();
                 }
             }
         }
@@ -310,10 +313,7 @@ namespace ModelViewer
                 if (task.GameObject == node.GameObject)
                 {
                     // make sure we have a multiparts object
-                    MultiPartsObject mpo = GetComponent<MultiPartsObject>();
-                    if (mpo == null)
-                        Debug.LogError("No multiparts object attached");
-                    task.CheckTask(mpo);
+                    task.CheckTask();
                 }
             }
         }

@@ -103,13 +103,13 @@ namespace ModelViewer
                                     case 0:
                                         {
                                             TaskList tl = obj.TaskList;
-                                            tl.Tasks.Add(new MovingTask(node.GameObject, obj.transform.InverseTransformPoint(node.GameObject.transform.position), Quaternion.Inverse(obj.transform.rotation) * node.GameObject.transform.rotation));
+                                            tl.Tasks.Add(new MovingTask(tl,node.GameObject, obj.transform.InverseTransformPoint(node.GameObject.transform.position), Quaternion.Inverse(obj.transform.rotation) * node.GameObject.transform.rotation));
                                         }
                                         break;
                                     case 1:
                                         {
                                             TaskList tl = obj.TaskList;
-                                            tl.Tasks.Add(new ClickingTask(node.GameObject));
+                                            tl.Tasks.Add(new ClickingTask(tl,node.GameObject));
                                         }
                                         break;
                                 }
