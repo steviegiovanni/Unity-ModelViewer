@@ -12,6 +12,16 @@ namespace ModelViewer
     public class Task
     {
         /// <summary>
+        /// the task list that contains this task
+        /// </summary>
+        private TaskList _taskList;
+        public TaskList TaskList
+        {
+            get { return _taskList; }
+            set { _taskList = value; }
+        }
+
+        /// <summary>
         /// name of the task
         /// </summary>
         private string _taskName;
@@ -74,7 +84,7 @@ namespace ModelViewer
         /// <summary>
         /// check task is finished, override for different task behavior
         /// </summary>
-        public virtual void CheckTask(MultiPartsObject mpo)
+        public virtual void CheckTask()
         {
             Finished = true;
             /*if (!IsCurrentTask()) return;
@@ -86,13 +96,13 @@ namespace ModelViewer
         /// <summary>
         /// what kind of hint should be drawn? override for different task behaviour
         /// </summary>
-        public virtual void DrawTaskHint(TaskList taskList)
+        public virtual void DrawTaskHint()
         {}
 
         /// <summary>
         /// update task hint in case user is moving the cage around
         /// </summary>
-        public virtual void UpdateTaskHint(TaskList taskList)
+        public virtual void UpdateTaskHint()
         { }
 
         /// <summary>
@@ -104,8 +114,9 @@ namespace ModelViewer
         /// <summary>
         /// base constructor taking a game object
         /// </summary>
-        public Task(GameObject go)
+        public Task(TaskList tl, GameObject go)
         {
+            TaskList = tl;
             TaskName = "New Task";
             GameObject = go;
         }
@@ -113,8 +124,9 @@ namespace ModelViewer
         /// <summary>
         /// constructor taking a serializable task
         /// </summary>
-        public Task(SerializableTask task)
+        public Task(TaskList tl, SerializableTask task)
         {
+            TaskList = tl;
             GameObject = task.GameObject;
             TaskName = task.TaskName;
             Description = task.Description;

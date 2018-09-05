@@ -77,7 +77,7 @@ namespace ModelViewer
         /// <summary>
         /// coroutine that animates the object associated from start to finish
         /// </summary>
-        public override IEnumerator TaskEventCoroutine(MultiPartsObject mpo)
+        public override IEnumerator TaskEventCoroutine()
         {
             // store all child start position and rotations because we only want to animate the associated part
             List<Vector3> childStartPositions = new List<Vector3>();
@@ -97,7 +97,7 @@ namespace ModelViewer
             {
                 curTime += Time.deltaTime;
 
-                taskObj.transform.SetPositionAndRotation(taskObj.transform.position + (mpo.transform.TransformPoint(EndPos) - mpo.transform.TransformPoint(StartPos)) * Time.deltaTime / Duration, Quaternion.Lerp(mpo.transform.rotation * StartRotation, mpo.transform.rotation *EndRotation, (curTime - startTime) / Duration));
+                taskObj.transform.SetPositionAndRotation(taskObj.transform.position + (Task.TaskList.MPO.transform.TransformPoint(EndPos) - Task.TaskList.MPO.transform.TransformPoint(StartPos)) * Time.deltaTime / Duration, Quaternion.Lerp(Task.TaskList.MPO.transform.rotation * StartRotation, Task.TaskList.MPO.transform.rotation *EndRotation, (curTime - startTime) / Duration));
 
                 for (int i = 0; i < taskObj.transform.childCount; i++)
                     taskObj.transform.GetChild(i).SetPositionAndRotation(childStartPositions[i],childStartRotations[i]);
