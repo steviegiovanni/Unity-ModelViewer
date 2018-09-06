@@ -29,6 +29,7 @@ public class BodyLock : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // follow the camera's position
+        if (Camera.main == null) return;
         this.transform.position = Camera.main.transform.position;
 
         // get delta rotation with the camera's rotation
