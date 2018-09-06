@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ModelViewer;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// interfaces Steam input with MultiPartsObject's interaction
@@ -53,16 +54,21 @@ public class SteamInterface : MonoBehaviour {
                     }break;
                 case "Inspect":
                     {
-
-                    }break;
+                        if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
+                            SceneManager.LoadScene("DynamicContent-vive-inspect");
+                    }
+                    break;
                 case "TimingBeltTask":
                     {
-
+                        if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
+                            SceneManager.LoadScene("DynamicContent-vive-timingbelt");
                     }break;
                 case "HeadGasketTask":
                     {
-
-                    }break;
+                        if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
+                            SceneManager.LoadScene("DynamicContent-vive-headgasket");
+                    }
+                    break;
                 case "Part":
                     {
                         if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
