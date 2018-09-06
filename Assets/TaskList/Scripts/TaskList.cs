@@ -99,12 +99,16 @@ namespace ModelViewer
         /// </summary>
         private List<Vector3> _goInitialPos;
         private List<Quaternion> _goInitialRot;
+        private Vector3 cagePos;
+        private Quaternion cageRot;
 
         /// <summary>
         /// store initial position and rotation of game objects related to the task
         /// </summary>
         public void StoreInitialPosAndRot()
         {
+            cagePos = MPO.transform.position;
+            cageRot = MPO.transform.rotation;
             _goInitialPos = new List<Vector3>();
             _goInitialRot = new List<Quaternion>();
             foreach(var task in Tasks)
@@ -119,6 +123,8 @@ namespace ModelViewer
         /// </summary>
         public void ResetInitialPosAndRot()
         {
+            MPO.transform.SetPositionAndRotation(cagePos, cageRot);
+
             int i = 0;
             foreach (var task in Tasks)
             {
@@ -260,6 +266,8 @@ namespace ModelViewer
                 if (Tasks[CurrentTaskId].TaskEvent != null)
                     yield return StartCoroutine(Tasks[CurrentTaskId].TaskEvent.TaskEventCoroutine());
             }
+
+            TaskStartListeners.Invoke(null);
             yield return null;
         }
 
