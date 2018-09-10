@@ -77,7 +77,10 @@ namespace ModelViewer
             hintObject = Instantiate(_hintPrefab, Camera.main.transform.position + (this.transform.position - Camera.main.transform.position).normalized, Quaternion.identity);
             hintObject.transform.LookAt(2 * hintObject.transform.position - Camera.main.transform.position);
             hintObject.GetComponent<TextMesh>().text = task.TaskName;*/
-            hintText.GetComponent<TextMesh>().text = task.TaskName;
+            if(task == null)
+                hintText.GetComponent<TextMesh>().text = "Well Done!";
+            else
+                hintText.GetComponent<TextMesh>().text = task.TaskName;
         }
     }
 }

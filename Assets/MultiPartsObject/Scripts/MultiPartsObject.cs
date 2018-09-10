@@ -649,6 +649,7 @@ namespace ModelViewer
         /// </summary>
         public void Select(GameObject go)
         {
+            if (go == null) return;
             Node selectedNode = null;
             if (Dict.TryGetValue(go, out selectedNode))
                 Select(selectedNode);
@@ -685,6 +686,7 @@ namespace ModelViewer
         /// </summary>
         public void Deselect(GameObject go)
         {
+            if (go == null) return;
             Node deselectedNode = null;
             if (Dict.TryGetValue(go, out deselectedNode))
             {
@@ -720,6 +722,7 @@ namespace ModelViewer
         /// </summary>
         public void ToggleSelect(GameObject go)
         {
+            if (go == null) return;
             Node node = null;
             if (Dict.TryGetValue(go, out node))
                 ToggleSelect(node);

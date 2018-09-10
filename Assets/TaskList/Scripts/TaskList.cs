@@ -260,6 +260,9 @@ namespace ModelViewer
                 if (Tasks[CurrentTaskId].TaskEvent != null)
                     yield return StartCoroutine(Tasks[CurrentTaskId].TaskEvent.TaskEventCoroutine());
             }
+
+            TaskStartListeners.Invoke(null);
+
             yield return null;
         }
 

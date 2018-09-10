@@ -261,6 +261,82 @@ Material:
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1001 &69807895
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1541643336732284, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_Name
+      value: TimingBeltTask
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321522903040032, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_Name
+      value: TimingBeltText
+      objectReference: {fileID: 0}
+    - target: {fileID: 102140630231451306, guid: c61f09cca6122424385f1ae1377b4aa6,
+        type: 2}
+      propertyPath: m_Text
+      value: 'TimingBelt
+
+        Replacement'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114638469616073532, guid: c61f09cca6122424385f1ae1377b4aa6,
+        type: 2}
+      propertyPath: TaskList
+      value: 
+      objectReference: {fileID: 516467245}
+    - target: {fileID: 114638469616073532, guid: c61f09cca6122424385f1ae1377b4aa6,
+        type: 2}
+      propertyPath: MPO
+      value: 
+      objectReference: {fileID: 516467244}
+    - target: {fileID: 114638469616073532, guid: c61f09cca6122424385f1ae1377b4aa6,
+        type: 2}
+      propertyPath: HoloInterface
+      value: 
+      objectReference: {fileID: 516467247}
+    - target: {fileID: 1382418990757108, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_Name
+      value: HeadGasketTask
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+  m_IsPrefabParent: 0
 --- !u!21 &77752747
 Material:
   serializedVersion: 6
@@ -567,63 +643,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &194073226
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4226449286986176, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4226449286986176, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4226449286986176, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4226449286986176, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4226449286986176, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4226449286986176, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4226449286986176, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4226449286986176, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 114573575119162976, guid: ce54d2f44e9ca1a45840a538cc8558d4,
-        type: 2}
-      propertyPath: TaskList
-      value: 
-      objectReference: {fileID: 516467245}
-    - target: {fileID: 114573575119162976, guid: ce54d2f44e9ca1a45840a538cc8558d4,
-        type: 2}
-      propertyPath: MPO
-      value: 
-      objectReference: {fileID: 516467244}
-    - target: {fileID: 114573575119162976, guid: ce54d2f44e9ca1a45840a538cc8558d4,
-        type: 2}
-      propertyPath: HoloInterface
-      value: 
-      objectReference: {fileID: 516467247}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: ce54d2f44e9ca1a45840a538cc8558d4, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &236714665
 Prefab:
   m_ObjectHideFlags: 0
@@ -4306,6 +4325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45707788982e4614d95e6d6e2c0ca9d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mpo: {fileID: 0}
   _silhouetteMaterial: {fileID: 2100000, guid: cc00e811af034524794befcaf38e06ad, type: 2}
   serializedTasks: []
 --- !u!114 &516467246
@@ -6375,6 +6395,16 @@ Prefab:
     - target: {fileID: 20770519707920992, guid: d29bc40b7f3df26479d6a0aac211c355,
         type: 2}
       propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114504390558679740, guid: d29bc40b7f3df26479d6a0aac211c355,
+        type: 2}
+      propertyPath: NearClipPlane_TransparentDisplay
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114504390558679740, guid: d29bc40b7f3df26479d6a0aac211c355,
+        type: 2}
+      propertyPath: NearClipPlane_OpaqueDisplay
       value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []

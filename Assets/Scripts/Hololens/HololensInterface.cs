@@ -12,6 +12,9 @@ public class HololensInterface : MonoBehaviour, IInputClickHandler {
     public HoloInterface HoloInterface;
     public GameObject PartButton;
     public GameObject WholeButton;
+    public GameObject UIInFrontButton;
+    public GameObject ObjectInFrontButton;
+    public MultiPartsObjectCageUI mpoCageUI;
 
     public void CleanUpHololensPrefabs()
     {
@@ -29,12 +32,12 @@ public class HololensInterface : MonoBehaviour, IInputClickHandler {
     public void OnInputClicked(InputClickedEventData eventData)
     {
         Debug.Log(eventData.selectedObject.name);
-        if(eventData.selectedObject.name == "TimingBelt")
+        if(eventData.selectedObject.name == "TimingBeltTask")
         {
             CleanUpHololensPrefabs();
             SceneManager.LoadScene("DynamicContent-hololens-timingbelt");
         }
-        else if (eventData.selectedObject.name == "HeadGasket")
+        else if (eventData.selectedObject.name == "HeadGasketTask")
         {
             CleanUpHololensPrefabs();
             SceneManager.LoadScene("DynamicContent-hololens-headgasket");
@@ -64,12 +67,26 @@ public class HololensInterface : MonoBehaviour, IInputClickHandler {
             WholeButton.SetActive(false);
             PartButton.SetActive(true);
         }
+        else if(eventData.selectedObject.name == "UIInFront")
+        {
+            UIInFrontButton.SetActive(false);
+            ObjectInFrontButton.SetActive(true);
+            mpoCageUI.BringUICloser();
+        }
+        else if (eventData.selectedObject.name == "ObjectInFront")
+        {
+            UIInFrontButton.SetActive(true);
+            ObjectInFrontButton.SetActive(false);
+            mpoCageUI.BringUIFurther();
+        }
     }
 
     void Start()
     {
         WholeButton.SetActive(true);
         PartButton.SetActive(false);
+        UIInFrontButton.SetActive(true);
+        ObjectInFrontButton.SetActive(false);
     }
 
     private void Update()
