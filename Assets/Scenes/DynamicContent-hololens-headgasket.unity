@@ -567,6 +567,97 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &219775361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1321522903040032, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 219775362}
+  - component: {fileID: 219775364}
+  - component: {fileID: 219775363}
+  m_Layer: 0
+  m_Name: TimingBeltText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &219775362
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4731309920902908, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 219775361}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 322969318}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!102 &219775363
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 102140630231451306, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 219775361}
+  m_Text: 'Timing Belt
+
+    Replacement'
+  m_OffsetZ: 0
+  m_CharacterSize: 1
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 1
+  m_TabSize: 4
+  m_FontSize: 20
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+--- !u!23 &219775364
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23242630005625072, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 219775361}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1001 &236714665
 Prefab:
   m_ObjectHideFlags: 0
@@ -2480,6 +2571,216 @@ GameObject:
   m_PrefabParentObject: {fileID: 1421252223823624, guid: e26f66a788ce79e4bb78e6e398a0e064,
     type: 2}
   m_PrefabInternal: {fileID: 308389569}
+--- !u!1 &322969317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1249405063679596, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 322969318}
+  m_Layer: 0
+  m_Name: Button (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &322969318
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4442841522119526, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 322969317}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 705865171}
+  - {fileID: 219775362}
+  m_Father: {fileID: 655534254}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &396900223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1745229933046154, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 396900224}
+  - component: {fileID: 396900227}
+  - component: {fileID: 396900226}
+  - component: {fileID: 396900225}
+  m_Layer: 0
+  m_Name: UIInFront
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &396900224
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4015828069617814, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 396900223}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.001}
+  m_Children: []
+  m_Father: {fileID: 668157520}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!23 &396900225
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23135526401969880, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 396900223}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 215711028b1394c47b554d9ae26c7d56, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &396900226
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 65144250264409508, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 396900223}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &396900227
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33620358606349658, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 396900223}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &422039913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1680426695641044, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 422039914}
+  - component: {fileID: 422039916}
+  - component: {fileID: 422039915}
+  m_Layer: 0
+  m_Name: InspectText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &422039914
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4971113856814452, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 422039913}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 1985958105}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!102 &422039915
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 102886795214744784, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 422039913}
+  m_Text: Inspect
+  m_OffsetZ: 0
+  m_CharacterSize: 1
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 1
+  m_TabSize: 4
+  m_FontSize: 20
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+--- !u!23 &422039916
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23174419964825172, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 422039913}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!21 &431801931
 Material:
   serializedVersion: 6
@@ -2777,6 +3078,7 @@ MonoBehaviour:
     Material: {fileID: 0}
     Locked: 1
     Name: HyundaiEngine180815_Spec
+    GOName: HyundaiEngine180815_Spec
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458516}
@@ -2791,6 +3093,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4a849964109d8d443b20c88bb3df7dd3, type: 2}
     Locked: 1
     Name: '#1MainBearing'
+    GOName: '#1MainBearing'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458515}
@@ -2805,6 +3108,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 7b1bdc31a7e0fa24a95add74792f7494, type: 2}
     Locked: 1
     Name: '#1MainBearingCap'
+    GOName: '#1MainBearingCap'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458514}
@@ -2819,6 +3123,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4a849964109d8d443b20c88bb3df7dd3, type: 2}
     Locked: 1
     Name: '#2MainBearing'
+    GOName: '#2MainBearing'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458513}
@@ -2833,6 +3138,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 6cc641b5c6787924498b463517289c4e, type: 2}
     Locked: 1
     Name: '#2MainBearingCap'
+    GOName: '#2MainBearingCap'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458512}
@@ -2847,6 +3153,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4a849964109d8d443b20c88bb3df7dd3, type: 2}
     Locked: 1
     Name: '#3MainBearing'
+    GOName: '#3MainBearing'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458511}
@@ -2861,6 +3168,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 0ab855922ce5d7c4496a8c766776d543, type: 2}
     Locked: 1
     Name: '#3MainBearingCap'
+    GOName: '#3MainBearingCap'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458510}
@@ -2875,6 +3183,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4a849964109d8d443b20c88bb3df7dd3, type: 2}
     Locked: 1
     Name: '#4MainBearing'
+    GOName: '#4MainBearing'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458509}
@@ -2889,6 +3198,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: e56df12ff0b63fe4ebc50905159c9a64, type: 2}
     Locked: 1
     Name: '#4MainBearingCap'
+    GOName: '#4MainBearingCap'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458508}
@@ -2903,6 +3213,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4a849964109d8d443b20c88bb3df7dd3, type: 2}
     Locked: 1
     Name: '#5MainBearing'
+    GOName: '#5MainBearing'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458507}
@@ -2917,6 +3228,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: c9c0e31d3c0148949bc168856ac29f2f, type: 2}
     Locked: 1
     Name: '#5MainBearingCap'
+    GOName: '#5MainBearingCap'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458506}
@@ -2931,6 +3243,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: CamShaftsBearingCapBolts
+    GOName: CamShaftsBearingCapBolts
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458505}
@@ -2945,6 +3258,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 2510d9149fbe6e3428e0e5ae3f6f5638, type: 2}
     Locked: 1
     Name: CamShaftsBearingCapMajor
+    GOName: CamShaftsBearingCapMajor
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458504}
@@ -2959,6 +3273,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: c36542144c552d446b1e6ffafdb2fc2a, type: 2}
     Locked: 1
     Name: CamShaftsBearingCapMinor
+    GOName: CamShaftsBearingCapMinor
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458503}
@@ -2973,6 +3288,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 5a634436203da0c4c88b805d88274f96, type: 2}
     Locked: 1
     Name: CamShaftSprocket
+    GOName: CamShaftSprocket
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458502}
@@ -2987,6 +3303,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: CamShaftSprocketBolt
+    GOName: CamShaftSprocketBolt
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458501}
@@ -3001,6 +3318,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: bac3f7cbd21fffa4f84d2cdf2738c22c, type: 2}
     Locked: 1
     Name: Chain
+    GOName: Chain
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458500}
@@ -3015,6 +3333,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 00462cbd72bf9cd4b999239e0b16c88f, type: 2}
     Locked: 1
     Name: ChainTensioner
+    GOName: ChainTensioner
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458499}
@@ -3029,6 +3348,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: ChainTensionerBolts
+    GOName: ChainTensionerBolts
   - ChildCount: 7
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458498}
@@ -3043,6 +3363,7 @@ MonoBehaviour:
     Material: {fileID: 0}
     Locked: 1
     Name: CoolingSystemComponents
+    GOName: CoolingSystemComponents
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458490}
@@ -3057,6 +3378,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: b11a7b81c0ee4ea43b824e4f4e2aec76, type: 2}
     Locked: 1
     Name: CrankShaft
+    GOName: CrankShaft
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458489}
@@ -3071,6 +3393,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: CrankshaftFlange
+    GOName: CrankshaftFlange
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458488}
@@ -3085,6 +3408,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4a63034d51a99d349a8e62760ef20fe7, type: 2}
     Locked: 1
     Name: CrankshaftSprocket
+    GOName: CrankshaftSprocket
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458487}
@@ -3099,6 +3423,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 95d903346837ca241a4768d4d45e003a, type: 2}
     Locked: 1
     Name: DrivePlate
+    GOName: DrivePlate
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458486}
@@ -3113,6 +3438,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: DrivePlateBolts
+    GOName: DrivePlateBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458485}
@@ -3127,6 +3453,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: e4a0a7a77eaeaa341b2f97f0f3ef6891, type: 2}
     Locked: 1
     Name: EngineBlock
+    GOName: EngineBlock
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458484}
@@ -3141,6 +3468,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: ccb8327acc6ef44479b4a4dd5d32a34d, type: 2}
     Locked: 1
     Name: EngineHead
+    GOName: EngineHead
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458483}
@@ -3155,6 +3483,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: EngineHeadBolts
+    GOName: EngineHeadBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458482}
@@ -3169,6 +3498,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 830e504d88436bc40ad147f4ff81a2fa, type: 2}
     Locked: 1
     Name: EngineHeadCover
+    GOName: EngineHeadCover
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458481}
@@ -3183,6 +3513,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: EngineHeadCoverBolts
+    GOName: EngineHeadCoverBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458480}
@@ -3197,6 +3528,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 1bcb6c328e28f0e41a94c90ecb43caf9, type: 2}
     Locked: 1
     Name: ExhaustCamShaft
+    GOName: ExhaustCamShaft
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458479}
@@ -3211,6 +3543,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 1bc35e9253f52ee4aaf6cb34b6748998, type: 2}
     Locked: 1
     Name: ExhaustCamShaftFrontSeal
+    GOName: ExhaustCamShaftFrontSeal
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458478}
@@ -3225,6 +3558,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: ExhaustCamShaftFrontSealBolts
+    GOName: ExhaustCamShaftFrontSealBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458477}
@@ -3239,6 +3573,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: ac6e3e0cf4b6e9c46a7d5972fea98e58, type: 2}
     Locked: 1
     Name: ExhaustGasket
+    GOName: ExhaustGasket
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458476}
@@ -3253,6 +3588,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: dac51dcb86436324fab3467063417a3d, type: 2}
     Locked: 1
     Name: ExhaustManifold/CatalytiConverter
+    GOName: ExhaustManifold/CatalytiConverter
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458475}
@@ -3267,6 +3603,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 1a36d3984c0cb3c4bb7937887b89c77b, type: 2}
     Locked: 1
     Name: ExhaustManifoldNuts
+    GOName: ExhaustManifoldNuts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458474}
@@ -3281,6 +3618,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 710e11a542e39f24486fe0809c42bea4, type: 2}
     Locked: 1
     Name: HeadGasket
+    GOName: HeadGasket
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458473}
@@ -3295,6 +3633,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 0ef23045880f80742a8c402be16d7fbe, type: 2}
     Locked: 1
     Name: IdleAirControlValve
+    GOName: IdleAirControlValve
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458472}
@@ -3309,6 +3648,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: IdleAirControlValveBolts
+    GOName: IdleAirControlValveBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458471}
@@ -3323,6 +3663,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 1f7efb8a87c95ca459b7aaca388b1b6a, type: 2}
     Locked: 1
     Name: IntakeCamShaft
+    GOName: IntakeCamShaft
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458470}
@@ -3337,6 +3678,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 96a68ccc2967e774a9225346822e41cd, type: 2}
     Locked: 1
     Name: IntakeCamShaftRearSeal
+    GOName: IntakeCamShaftRearSeal
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458469}
@@ -3351,6 +3693,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: IntakeCamShaftRearSealBolts
+    GOName: IntakeCamShaftRearSealBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458468}
@@ -3365,6 +3708,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 9d31b62fea9df3f4ea28a23a94d83966, type: 2}
     Locked: 1
     Name: IntakeManifold
+    GOName: IntakeManifold
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458467}
@@ -3379,6 +3723,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 1a36d3984c0cb3c4bb7937887b89c77b, type: 2}
     Locked: 1
     Name: IntakeManifoldNuts
+    GOName: IntakeManifoldNuts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458466}
@@ -3393,6 +3738,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: MainBearingCapBolts
+    GOName: MainBearingCapBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458465}
@@ -3407,6 +3753,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 2b21f9fe886ce3b439747c37ce48b645, type: 2}
     Locked: 1
     Name: ManifoldAbsolutePressure
+    GOName: ManifoldAbsolutePressure
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458464}
@@ -3421,6 +3768,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: ManifoldAbsolutePressureBolts
+    GOName: ManifoldAbsolutePressureBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458463}
@@ -3435,6 +3783,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 2aab40dd6cc3f1c4abaea4f39ac8b81f, type: 2}
     Locked: 1
     Name: OilFilter
+    GOName: OilFilter
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458462}
@@ -3449,6 +3798,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 2d973b86adf6134458b33ef97b77e416, type: 2}
     Locked: 1
     Name: OilPan
+    GOName: OilPan
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458461}
@@ -3463,6 +3813,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: OilPanBolts
+    GOName: OilPanBolts
   - ChildCount: 4
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458460}
@@ -3477,6 +3828,7 @@ MonoBehaviour:
     Material: {fileID: 0}
     Locked: 1
     Name: OilPumpAssembly
+    GOName: OilPumpAssembly
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458455}
@@ -3491,6 +3843,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: e7ebd76263010c94e84193cf68e20b22, type: 2}
     Locked: 1
     Name: OilPumpHousing
+    GOName: OilPumpHousing
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458454}
@@ -3505,6 +3858,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: OilPumpHousingBolts
+    GOName: OilPumpHousingBolts
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458453}
@@ -3519,6 +3873,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 0f26ac6fa3708ee4dbdde519596476a1, type: 2}
     Locked: 1
     Name: OilPumpPickup
+    GOName: OilPumpPickup
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458452}
@@ -3533,6 +3888,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: OilPumpPickupBolts
+    GOName: OilPumpPickupBolts
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458451}
@@ -3547,6 +3903,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 82a961ace4b9dfb4a8c600ac5443eb33, type: 2}
     Locked: 1
     Name: OpenEndWrench
+    GOName: OpenEndWrench
   - ChildCount: 2
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458450}
@@ -3561,6 +3918,7 @@ MonoBehaviour:
     Material: {fileID: 0}
     Locked: 1
     Name: PistonConnectingRodAssembly01
+    GOName: PistonConnectingRodAssembly01
   - ChildCount: 2
     IndexOfFirstChild: 100
     GameObject: {fileID: 1711458447}
@@ -3575,6 +3933,7 @@ MonoBehaviour:
     Material: {fileID: 0}
     Locked: 1
     Name: PistonConnectingRodAssembly02
+    GOName: PistonConnectingRodAssembly02
   - ChildCount: 2
     IndexOfFirstChild: 102
     GameObject: {fileID: 1711458444}
@@ -3589,6 +3948,7 @@ MonoBehaviour:
     Material: {fileID: 0}
     Locked: 1
     Name: PistonConnectingRodAssembly03
+    GOName: PistonConnectingRodAssembly03
   - ChildCount: 2
     IndexOfFirstChild: 104
     GameObject: {fileID: 1711458441}
@@ -3603,6 +3963,7 @@ MonoBehaviour:
     Material: {fileID: 0}
     Locked: 1
     Name: PistonConnectingRodAssembly04
+    GOName: PistonConnectingRodAssembly04
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458438}
@@ -3617,6 +3978,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: cfdedb89039af6443a7ea16133c09748, type: 2}
     Locked: 1
     Name: RearMainSeal
+    GOName: RearMainSeal
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458437}
@@ -3631,6 +3993,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: RearMainSealBolts
+    GOName: RearMainSealBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458436}
@@ -3645,6 +4008,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 92f1753edb2863242bdd81baa3d3707a, type: 2}
     Locked: 1
     Name: SparkPlug
+    GOName: SparkPlug
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458435}
@@ -3659,6 +4023,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 12ea86257bfc9574c9b13bb52b2c6cd0, type: 2}
     Locked: 1
     Name: TensionerSpring
+    GOName: TensionerSpring
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458434}
@@ -3673,6 +4038,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 6b35b30b3bb0bc745bfe7d3b76486362, type: 2}
     Locked: 1
     Name: ThrottlePositionSensor
+    GOName: ThrottlePositionSensor
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458433}
@@ -3687,6 +4053,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: ThrottlePositionSensorBolts
+    GOName: ThrottlePositionSensorBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458432}
@@ -3701,6 +4068,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 08b87706e3d886b45b78deee44a94c4a, type: 2}
     Locked: 1
     Name: TimingBelt
+    GOName: TimingBelt
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458431}
@@ -3715,6 +4083,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 2db06dd21cb66c74e913c817ebc33002, type: 2}
     Locked: 1
     Name: TimingBeltCoverBottom
+    GOName: TimingBeltCoverBottom
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458430}
@@ -3729,6 +4098,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: TimingBeltCoverBottomBolts
+    GOName: TimingBeltCoverBottomBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458429}
@@ -3743,6 +4113,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 3e6fb2e4109f219498fa2179c9a8291b, type: 2}
     Locked: 1
     Name: TimingBeltCoverTop
+    GOName: TimingBeltCoverTop
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458428}
@@ -3757,6 +4128,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: TimingBeltCoverTopBolts
+    GOName: TimingBeltCoverTopBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458427}
@@ -3771,6 +4143,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 53651db7ca87e004390bd3406aa6fdbe, type: 2}
     Locked: 1
     Name: TimingBeltIdler
+    GOName: TimingBeltIdler
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458426}
@@ -3785,6 +4158,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: TimingBeltIdlerBolt
+    GOName: TimingBeltIdlerBolt
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458425}
@@ -3799,6 +4173,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 2db06dd21cb66c74e913c817ebc33002, type: 2}
     Locked: 1
     Name: TimingBeltSideCover
+    GOName: TimingBeltSideCover
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458424}
@@ -3813,6 +4188,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: TimingBeltSideCoverBolts
+    GOName: TimingBeltSideCoverBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458423}
@@ -3827,6 +4203,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 53651db7ca87e004390bd3406aa6fdbe, type: 2}
     Locked: 1
     Name: TimingBeltTensionerAssembly
+    GOName: TimingBeltTensionerAssembly
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458422}
@@ -3841,6 +4218,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: TimingBeltTensionerBolt
+    GOName: TimingBeltTensionerBolt
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458421}
@@ -3855,6 +4233,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: efd75c2d68fee9445b73c57c2687d82e, type: 2}
     Locked: 1
     Name: VariableCamShaftSolenoidOilControlValve
+    GOName: VariableCamShaftSolenoidOilControlValve
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458420}
@@ -3869,6 +4248,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: VariableCamShaftSolenoidOilControlValveBolt
+    GOName: VariableCamShaftSolenoidOilControlValveBolt
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458518}
@@ -3883,6 +4263,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: e69c7e465135e414ba3487dc93cf0bbf, type: 2}
     Locked: 1
     Name: VibrationDamper
+    GOName: VibrationDamper
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458412}
@@ -3897,6 +4278,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: VibrationDampnerBolt
+    GOName: VibrationDampnerBolt
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458419}
@@ -3911,6 +4293,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: bed7adbc0f1068d48a72127881b7b2f5, type: 2}
     Locked: 1
     Name: WaterInletPipe
+    GOName: WaterInletPipe
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458418}
@@ -3925,6 +4308,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: WaterInletPipeBolt
+    GOName: WaterInletPipeBolt
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458417}
@@ -3939,6 +4323,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: d3516997a77e14344b052868fb249c01, type: 2}
     Locked: 1
     Name: WaterPipeHose
+    GOName: WaterPipeHose
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458416}
@@ -3953,6 +4338,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: b294474fb973d0b4c91e0f9b9700a61f, type: 2}
     Locked: 1
     Name: WaterPump
+    GOName: WaterPump
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458415}
@@ -3967,6 +4353,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: d3c178e32ee5b524d8ce9d3db0fb3989, type: 2}
     Locked: 1
     Name: WaterPumpBolts
+    GOName: WaterPumpBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458414}
@@ -3981,6 +4368,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 85a344633ceda224fbdbadf245ee2cf6, type: 2}
     Locked: 1
     Name: WaterPumpPully
+    GOName: WaterPumpPully
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458497}
@@ -3995,6 +4383,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: b9d291535cc760d4388f4c76f170f2fe, type: 2}
     Locked: 1
     Name: Thermostat
+    GOName: Thermostat
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458496}
@@ -4009,6 +4398,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: dc2a69d289359994ebff75c1d3cadfb8, type: 2}
     Locked: 1
     Name: ThermostatCover
+    GOName: ThermostatCover
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458495}
@@ -4023,6 +4413,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: ThermostatCoverBolts
+    GOName: ThermostatCoverBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458494}
@@ -4037,6 +4428,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 13c04f950e1ff444b835f9c59c958e84, type: 2}
     Locked: 1
     Name: ThermostatHousing
+    GOName: ThermostatHousing
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458493}
@@ -4051,6 +4443,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: ThermostatHousingBolts
+    GOName: ThermostatHousingBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458492}
@@ -4065,6 +4458,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 31217aac3051f304da5a502b644f92ff, type: 2}
     Locked: 1
     Name: WaterInletFitting
+    GOName: WaterInletFitting
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458491}
@@ -4079,6 +4473,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 1a36d3984c0cb3c4bb7937887b89c77b, type: 2}
     Locked: 1
     Name: WaterInletFittingNuts
+    GOName: WaterInletFittingNuts
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458459}
@@ -4093,6 +4488,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 3ccfd8ab43262df4fbfdefef849b1d26, type: 2}
     Locked: 1
     Name: OilPumpInnerGear
+    GOName: OilPumpInnerGear
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458458}
@@ -4107,6 +4503,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 9193a42098478154ea307d54bb1cc028, type: 2}
     Locked: 1
     Name: OilPumpOuterRing
+    GOName: OilPumpOuterRing
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458457}
@@ -4121,6 +4518,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 1c3e6fea04cba5b49980dcdf39582ae1, type: 2}
     Locked: 1
     Name: OilPumpPlate
+    GOName: OilPumpPlate
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458456}
@@ -4135,6 +4533,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: OilPumpPlateBolt
+    GOName: OilPumpPlateBolt
   - ChildCount: 0
     IndexOfFirstChild: 100
     GameObject: {fileID: 1711458449}
@@ -4149,6 +4548,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
     Locked: 1
     Name: PistonConnectingRod04
+    GOName: PistonConnectingRod04
   - ChildCount: 0
     IndexOfFirstChild: 100
     GameObject: {fileID: 1711458448}
@@ -4163,6 +4563,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
     Locked: 1
     Name: PistonConnectingRodCap04
+    GOName: PistonConnectingRodCap04
   - ChildCount: 0
     IndexOfFirstChild: 102
     GameObject: {fileID: 1711458446}
@@ -4177,6 +4578,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
     Locked: 1
     Name: PistonConnectingRod01
+    GOName: PistonConnectingRod01
   - ChildCount: 0
     IndexOfFirstChild: 102
     GameObject: {fileID: 1711458445}
@@ -4191,6 +4593,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
     Locked: 1
     Name: PistonConnectingRodCap01
+    GOName: PistonConnectingRodCap01
   - ChildCount: 0
     IndexOfFirstChild: 104
     GameObject: {fileID: 1711458443}
@@ -4205,6 +4608,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
     Locked: 1
     Name: PistonConnectingRod02
+    GOName: PistonConnectingRod02
   - ChildCount: 0
     IndexOfFirstChild: 104
     GameObject: {fileID: 1711458442}
@@ -4219,6 +4623,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
     Locked: 1
     Name: PistonConnectingRodCap02
+    GOName: PistonConnectingRodCap02
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458440}
@@ -4233,6 +4638,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
     Locked: 1
     Name: PistonConnectingRod03
+    GOName: PistonConnectingRod03
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458439}
@@ -4247,6 +4653,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
     Locked: 1
     Name: PistonConnectingRodCap03
+    GOName: PistonConnectingRodCap03
 --- !u!114 &516467245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4258,7 +4665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45707788982e4614d95e6d6e2c0ca9d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mpo: {fileID: 0}
+  _mpo: {fileID: 516467244}
   _silhouetteMaterial: {fileID: 2100000, guid: cc00e811af034524794befcaf38e06ad, type: 2}
   serializedTasks:
   - TypeName: MovingTask
@@ -4269,6 +4676,7 @@ MonoBehaviour:
     TaskName: Remove Engine Head Cover Bolts
     Description: 
     MoveType: 1
+    GOName: EngineHeadCoverBolts
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4283,6 +4691,7 @@ MonoBehaviour:
     TaskName: Remove Engine Head Cover
     Description: 
     MoveType: 1
+    GOName: EngineHeadCover
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4297,6 +4706,7 @@ MonoBehaviour:
     TaskName: Attach Wrench
     Description: 
     MoveType: 0
+    GOName: OpenEndWrench
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4311,6 +4721,7 @@ MonoBehaviour:
     TaskName: Remove Cam Shaft Sprocket Bolt
     Description: 
     MoveType: 1
+    GOName: CamShaftSprocketBolt
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4325,6 +4736,7 @@ MonoBehaviour:
     TaskName: Remove Wrench
     Description: 
     MoveType: 1
+    GOName: OpenEndWrench
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4339,6 +4751,7 @@ MonoBehaviour:
     TaskName: Remove Chain Tensioner Bolts
     Description: 
     MoveType: 1
+    GOName: ChainTensionerBolts
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4353,6 +4766,7 @@ MonoBehaviour:
     TaskName: Remove Chain Tensioner
     Description: 
     MoveType: 1
+    GOName: ChainTensioner
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4367,6 +4781,7 @@ MonoBehaviour:
     TaskName: Remove Cam Shafts Bearing Cap Bolts
     Description: 
     MoveType: 1
+    GOName: CamShaftsBearingCapBolts
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4381,6 +4796,7 @@ MonoBehaviour:
     TaskName: Remove Cam Shafts Bearing Cap Major
     Description: 
     MoveType: 1
+    GOName: CamShaftsBearingCapMajor
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4395,6 +4811,7 @@ MonoBehaviour:
     TaskName: Remove Cam Shafts Bearing Cap Minor
     Description: 
     MoveType: 1
+    GOName: CamShaftsBearingCapMinor
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4409,6 +4826,7 @@ MonoBehaviour:
     TaskName: Remove Exhaust Cam Shaft Front Seal Bolts
     Description: 
     MoveType: 1
+    GOName: ExhaustCamShaftFrontSealBolts
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4423,6 +4841,7 @@ MonoBehaviour:
     TaskName: Remove Exhaust Cam Shaft Front Seal
     Description: 
     MoveType: 1
+    GOName: ExhaustCamShaftFrontSeal
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4437,6 +4856,7 @@ MonoBehaviour:
     TaskName: Remove Intake Cam Shaft Real Seal Bolts
     Description: 
     MoveType: 1
+    GOName: IntakeCamShaftRearSealBolts
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4450,7 +4870,8 @@ MonoBehaviour:
     SnapThreshold: 0.1
     TaskName: Remove Intake Cam Shaft Real Seal
     Description: 
-    MoveType: 0
+    MoveType: 1
+    GOName: IntakeCamShaftRearSeal
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4465,6 +4886,7 @@ MonoBehaviour:
     TaskName: Remove Chain Assembly
     Description: 
     MoveType: 1
+    GOName: Chain
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4479,6 +4901,7 @@ MonoBehaviour:
     TaskName: Remove Exhaust Manifold Nuts
     Description: 
     MoveType: 1
+    GOName: ExhaustManifoldNuts
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4493,6 +4916,7 @@ MonoBehaviour:
     TaskName: Remove Exhaust Manifold / Catalytic Converter
     Description: 
     MoveType: 1
+    GOName: ExhaustManifold/CatalytiConverter
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4507,6 +4931,7 @@ MonoBehaviour:
     TaskName: Remove Exhaust Gasket
     Description: 
     MoveType: 1
+    GOName: ExhaustGasket
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4521,6 +4946,7 @@ MonoBehaviour:
     TaskName: Remove Water Inlet Fitting Nuts
     Description: 
     MoveType: 1
+    GOName: WaterInletFittingNuts
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4535,6 +4961,7 @@ MonoBehaviour:
     TaskName: Remove Water Pipe Hose
     Description: 
     MoveType: 1
+    GOName: WaterPipeHose
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4549,6 +4976,7 @@ MonoBehaviour:
     TaskName: Remove Water Inlet Pipe Bolt
     Description: 
     MoveType: 1
+    GOName: WaterInletPipeBolt
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4563,6 +4991,7 @@ MonoBehaviour:
     TaskName: Remove Water Inlet Pipe
     Description: 
     MoveType: 1
+    GOName: WaterInletPipe
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4577,6 +5006,7 @@ MonoBehaviour:
     TaskName: Remove Thermostat Cover Bolts
     Description: 
     MoveType: 1
+    GOName: ThermostatCoverBolts
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4591,6 +5021,7 @@ MonoBehaviour:
     TaskName: Remove Thermostat Cover
     Description: 
     MoveType: 1
+    GOName: ThermostatCover
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4605,6 +5036,7 @@ MonoBehaviour:
     TaskName: Remove Thermostat Housing Bolts
     Description: 
     MoveType: 1
+    GOName: ThermostatHousingBolts
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4619,6 +5051,7 @@ MonoBehaviour:
     TaskName: Remove Thermostat Housing
     Description: 
     MoveType: 1
+    GOName: ThermostatHousing
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4633,6 +5066,7 @@ MonoBehaviour:
     TaskName: Remove Intake Manifold Nuts
     Description: 
     MoveType: 1
+    GOName: IntakeManifoldNuts
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4647,6 +5081,7 @@ MonoBehaviour:
     TaskName: Remove Intake Manifold
     Description: 
     MoveType: 1
+    GOName: IntakeManifold
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4661,6 +5096,7 @@ MonoBehaviour:
     TaskName: Remove Engine Head Bolts
     Description: 
     MoveType: 1
+    GOName: EngineHeadBolts
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4675,6 +5111,7 @@ MonoBehaviour:
     TaskName: Remove Engine Head
     Description: 
     MoveType: 1
+    GOName: EngineHead
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4688,7 +5125,8 @@ MonoBehaviour:
     SnapThreshold: 0.1
     TaskName: Remove Head Gasket
     Description: 
-    MoveType: 0
+    MoveType: 1
+    GOName: HeadGasket
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4772,6 +5210,184 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mpo: {fileID: 516467244}
   _highlightMaterial: {fileID: 2100000, guid: 6a862915858e3214eb45785f033c512c, type: 2}
+--- !u!1 &521487813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1041107660471248, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 521487814}
+  - component: {fileID: 521487816}
+  - component: {fileID: 521487815}
+  m_Layer: 0
+  m_Name: ResetText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &521487814
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4952003321738700, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 521487813}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 1640159233}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!102 &521487815
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 102683659326108876, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 521487813}
+  m_Text: Reset
+  m_OffsetZ: 0
+  m_CharacterSize: 1
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 1
+  m_TabSize: 4
+  m_FontSize: 20
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+--- !u!23 &521487816
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23889304192824306, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 521487813}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!1 &550774703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1884358225055302, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 550774704}
+  - component: {fileID: 550774707}
+  - component: {fileID: 550774706}
+  - component: {fileID: 550774705}
+  m_Layer: 0
+  m_Name: ObjectInFront
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &550774704
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4390453025027298, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 550774703}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.001}
+  m_Children: []
+  m_Father: {fileID: 1198005536}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!23 &550774705
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23835870121383996, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 550774703}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c04a6204580fc0249b1f7acb0003c6d4, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &550774706
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 65998586257657568, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 550774703}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &550774707
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33737817289977096, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 550774703}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!21 &607184167
 Material:
   serializedVersion: 6
@@ -4925,6 +5541,161 @@ Transform:
   m_PrefabParentObject: {fileID: 4587520633816736, guid: d29bc40b7f3df26479d6a0aac211c355,
     type: 2}
   m_PrefabInternal: {fileID: 1650939249}
+--- !u!1 &655534253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1521612236405682, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 655534254}
+  m_Layer: 0
+  m_Name: GeneralUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &655534254
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4623648295448850, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 655534253}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1640159233}
+  - {fileID: 322969318}
+  - {fileID: 1985958105}
+  - {fileID: 2118010907}
+  - {fileID: 1897303558}
+  m_Father: {fileID: 1927693805}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &668157519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1247418726449084, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 668157520}
+  m_Layer: 0
+  m_Name: Button (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &668157520
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4602848322753688, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 668157519}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.25, y: -0.15, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 396900224}
+  m_Father: {fileID: 1616772947}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &705865170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1541643336732284, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 705865171}
+  - component: {fileID: 705865174}
+  - component: {fileID: 705865173}
+  - component: {fileID: 705865172}
+  m_Layer: 0
+  m_Name: TimingBeltTask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &705865171
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4306175576751334, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705865170}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.1, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 322969318}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &705865172
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23003294002285996, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705865170}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 3d1e09375a79c5243995150db41533ee, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &705865173
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 65821606482672710, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705865170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &705865174
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33341971134538570, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705865170}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &722867956 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000011070707148, guid: 3eddd1c29199313478dd3f912bfab2ab,
@@ -4948,6 +5719,184 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 506908611}
   m_Script: {fileID: 11500000, guid: b81e3e700505863408cacaa0346cb1a6, type: 3}
+--- !u!1 &725767456
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1382418990757108, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 725767457}
+  - component: {fileID: 725767460}
+  - component: {fileID: 725767459}
+  - component: {fileID: 725767458}
+  m_Layer: 0
+  m_Name: Inspect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &725767457
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4504437123953082, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 725767456}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.1, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 1985958105}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &725767458
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23757815241495116, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 725767456}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 3d1e09375a79c5243995150db41533ee, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &725767459
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 65144441781775180, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 725767456}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &725767460
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33257578538734744, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 725767456}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &749396720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1909940712964702, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 749396721}
+  - component: {fileID: 749396724}
+  - component: {fileID: 749396723}
+  - component: {fileID: 749396722}
+  m_Layer: 0
+  m_Name: Part
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &749396721
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4252758907364876, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 749396720}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 2118010907}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &749396722
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23653138613460520, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 749396720}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c723eb6661186b546bbbf748cdc70aaf, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &749396723
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 65402675382917496, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 749396720}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &749396724
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33720168566091534, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 749396720}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!21 &808849854
 Material:
   serializedVersion: 6
@@ -5876,6 +6825,37 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!1 &1198005535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1037280471532212, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1198005536}
+  m_Layer: 0
+  m_Name: Button (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1198005536
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4141829347922744, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1198005535}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.25, y: -0.15, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 550774704}
+  m_Father: {fileID: 1616772947}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1207693975
 GameObject:
   m_ObjectHideFlags: 0
@@ -6052,6 +7032,95 @@ Material:
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &1262669888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1776081188044688, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1262669889}
+  - component: {fileID: 1262669892}
+  - component: {fileID: 1262669891}
+  - component: {fileID: 1262669890}
+  m_Layer: 0
+  m_Name: Whole
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1262669889
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4554254558833958, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1262669888}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.099999994, y: 0.099999994, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 1897303558}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1262669890
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23812065391449834, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1262669888}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: f841363dee69d5f49a19830ed90188a7, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &1262669891
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 65852606859979572, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1262669888}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1262669892
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33086791356522382, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1262669888}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!21 &1310509291
 Material:
   serializedVersion: 6
@@ -6280,6 +7349,59 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1088945352}
   m_Script: {fileID: 11500000, guid: 0decd33ba8702954885a62b5bc1a778e, type: 3}
+--- !u!1 &1439436434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1300188607948048, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1439436436}
+  - component: {fileID: 1439436435}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1439436435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114638469616073532, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1439436434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3711d3d74eaa7964380c853980e38b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TaskList: {fileID: 516467245}
+  MPO: {fileID: 516467244}
+  HoloInterface: {fileID: 516467247}
+  PartButton: {fileID: 2118010906}
+  WholeButton: {fileID: 1897303557}
+  UIInFrontButton: {fileID: 668157519}
+  ObjectInFrontButton: {fileID: 1198005535}
+  mpoCageUI: {fileID: 1927693804}
+--- !u!4 &1439436436
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1439436434}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1927693805}
+  - {fileID: 1616772947}
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!21 &1439601577
 Material:
   serializedVersion: 6
@@ -6535,6 +7657,95 @@ Material:
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &1581373999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1080958587266902, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1581374000}
+  - component: {fileID: 1581374003}
+  - component: {fileID: 1581374002}
+  - component: {fileID: 1581374001}
+  m_Layer: 0
+  m_Name: Reset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1581374000
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4302977203383380, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1581373999}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.1, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 1640159233}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1581374001
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23716391419302190, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1581373999}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 3d1e09375a79c5243995150db41533ee, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &1581374002
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 65917000914641612, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1581373999}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1581374003
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33212902108676412, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1581373999}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!21 &1597890184
 Material:
   serializedVersion: 6
@@ -6609,6 +7820,53 @@ Material:
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &1616772946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1301198933140698, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1616772947}
+  - component: {fileID: 1616772948}
+  m_Layer: 0
+  m_Name: BodyLockedUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1616772947
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4418080666109178, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1616772946}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 668157520}
+  - {fileID: 1198005536}
+  m_Father: {fileID: 1439436436}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1616772948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114261375393431010, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1616772946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19602abf80e4cb40a450d80715a74b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beginRotateThreshold: 17.5
+  stopRotateThreshold: 1
 --- !u!21 &1618436746
 Material:
   serializedVersion: 6
@@ -6757,6 +8015,38 @@ Material:
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &1640159232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1179743068349240, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1640159233}
+  m_Layer: 0
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1640159233
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4683005964871624, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1640159232}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1581374000}
+  - {fileID: 521487814}
+  m_Father: {fileID: 655534254}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1650939249
 Prefab:
   m_ObjectHideFlags: 0
@@ -11537,95 +12827,6 @@ Material:
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
---- !u!1001 &1721484001
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 114638469616073532, guid: c61f09cca6122424385f1ae1377b4aa6,
-        type: 2}
-      propertyPath: TaskList
-      value: 
-      objectReference: {fileID: 516467245}
-    - target: {fileID: 114638469616073532, guid: c61f09cca6122424385f1ae1377b4aa6,
-        type: 2}
-      propertyPath: MPO
-      value: 
-      objectReference: {fileID: 516467244}
-    - target: {fileID: 114638469616073532, guid: c61f09cca6122424385f1ae1377b4aa6,
-        type: 2}
-      propertyPath: HoloInterface
-      value: 
-      objectReference: {fileID: 516467247}
-    - target: {fileID: 1382418990757108, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
-      propertyPath: m_Name
-      value: Inspect
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680426695641044, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
-      propertyPath: m_Name
-      value: InspectText
-      objectReference: {fileID: 0}
-    - target: {fileID: 1541643336732284, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
-      propertyPath: m_Name
-      value: TimingBeltTask
-      objectReference: {fileID: 0}
-    - target: {fileID: 1321522903040032, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
-      propertyPath: m_Name
-      value: TimingBeltText
-      objectReference: {fileID: 0}
-    - target: {fileID: 102140630231451306, guid: c61f09cca6122424385f1ae1377b4aa6,
-        type: 2}
-      propertyPath: m_Text
-      value: 'Timing Belt
-
-        Replacement'
-      objectReference: {fileID: 0}
-    - target: {fileID: 102886795214744784, guid: c61f09cca6122424385f1ae1377b4aa6,
-        type: 2}
-      propertyPath: m_Text
-      value: Inspect
-      objectReference: {fileID: 0}
-    - target: {fileID: 1080958587266902, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
-      propertyPath: m_Name
-      value: Reset
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
-  m_IsPrefabParent: 0
 --- !u!21 &1729542388
 Material:
   serializedVersion: 6
@@ -11700,6 +12901,37 @@ Material:
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &1897303557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1070461646866460, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1897303558}
+  m_Layer: 0
+  m_Name: Button (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1897303558
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4170236555655808, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1897303557}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.2, y: 0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1262669889}
+  m_Father: {fileID: 655534254}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!21 &1901422733
 Material:
   serializedVersion: 6
@@ -11774,6 +13006,55 @@ Material:
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &1927693803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1963591632639808, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1927693805}
+  - component: {fileID: 1927693804}
+  m_Layer: 0
+  m_Name: CageUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1927693804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114486567155557020, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1927693803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f478f195d88704d9ac588efd45da5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mpo: {fileID: 0}
+  _nearDistance: -0.5
+  _farDistance: 2
+  _uiFrame: {fileID: 655534253}
+  _speed: 2
+--- !u!4 &1927693805
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4633983008365286, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1927693803}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 655534254}
+  m_Father: {fileID: 1439436436}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!21 &1938102332
 Material:
   serializedVersion: 6
@@ -11996,6 +13277,38 @@ Material:
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &1985958104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1697330356970704, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1985958105}
+  m_Layer: 0
+  m_Name: Button (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1985958105
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4742937434710686, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1985958104}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 725767457}
+  - {fileID: 422039914}
+  m_Father: {fileID: 655534254}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!21 &2004570391
 Material:
   serializedVersion: 6
@@ -12218,3 +13531,34 @@ Material:
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &2118010906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1681333437989854, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2118010907}
+  m_Layer: 0
+  m_Name: Button (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2118010907
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4631810505438268, guid: c61f09cca6122424385f1ae1377b4aa6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2118010906}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.2, y: 0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 749396721}
+  m_Father: {fileID: 655534254}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

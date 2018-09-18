@@ -62,6 +62,16 @@ namespace ModelViewer
         }
 
         /// <summary>
+        /// the game object name to help find the object if the model is replaced
+        /// </summary>
+        private string _goName;
+        public string GOName
+        {
+            get { return _goName; }
+            set { _goName = value; }
+        }
+
+        /// <summary>
         /// whether this task is active or not
         /// </summary>
         private bool _active = false;
@@ -119,6 +129,7 @@ namespace ModelViewer
             TaskList = tl;
             TaskName = "New Task";
             GameObject = go;
+            GOName = go.name;
         }
 
         /// <summary>
@@ -130,6 +141,7 @@ namespace ModelViewer
             GameObject = task.GameObject;
             TaskName = task.TaskName;
             Description = task.Description;
+            GOName = task.GOName;
 
             SerializableTaskEvent ste = task.TaskEvent;
             if (ste != null)

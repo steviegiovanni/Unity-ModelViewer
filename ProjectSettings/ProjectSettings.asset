@@ -577,7 +577,7 @@ PlayerSettings:
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Unity-ModelViewer
-  metroPackageVersion: 1.0.14.0
+  metroPackageVersion: 1.0.21.0
   metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
@@ -601,8 +601,8 @@ PlayerSettings:
     WindowsStoreApps:
       HumanInterfaceDevice: False
       InternetClient: False
-      InternetClientServer: False
-      PrivateNetworkClientServer: False
+      InternetClientServer: True
+      PrivateNetworkClientServer: True
       SpatialPerception: True
   metroFTAName: 
   metroFTAFileTypes: []

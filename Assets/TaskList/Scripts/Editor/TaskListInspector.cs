@@ -181,6 +181,18 @@ namespace ModelViewer
             // task type
             GUILayout.Label(t.GetType().Name, EditorStyles.boldLabel);
 
+            // allows to change the game object of the node
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("GO", GUILayout.Width(50));
+            t.GameObject = (GameObject)EditorGUILayout.ObjectField(t.GameObject, typeof(Transform), true);
+            GUILayout.EndHorizontal();
+
+            // go name
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("GOName", GUILayout.Width(50));
+            t.GOName = GUILayout.TextField(t.GOName);
+            GUILayout.EndHorizontal();
+
             // task name
             GUILayout.BeginHorizontal();
             GUILayout.Label("Name", GUILayout.Width(50));
@@ -261,6 +273,18 @@ namespace ModelViewer
             base.OnInspectorGUI();
 
             obj = (TaskList)target;
+
+            // to find missing game objects
+            if (GUILayout.Button("Find Missing Objects by Name"))
+            {
+                obj.FindMissingObjectsByName();
+            }
+
+            // to recapture associated game object names
+            if (GUILayout.Button("Capture Game Objects Names"))
+            {
+                obj.CaptureGameObjectNames();
+            }
 
             GUILayout.BeginVertical();
             for(int i=0; i < obj.Tasks.Count; i++) {

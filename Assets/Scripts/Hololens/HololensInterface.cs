@@ -31,7 +31,9 @@ public class HololensInterface : MonoBehaviour, IInputClickHandler {
 
     public void OnInputClicked(InputClickedEventData eventData)
     {
-        Debug.Log(eventData.selectedObject.name);
+        if (eventData == null) return;
+        //Debug.Log(eventData.selectedObject.name);
+
         if(eventData.selectedObject.name == "TimingBeltTask")
         {
             CleanUpHololensPrefabs();
