@@ -95,6 +95,30 @@ namespace ModelViewer
         }
 
         /// <summary>
+        /// find game object associated to a task based on its name (useful for when the multi parts object is replaced)
+        /// </summary>
+        public void FindMissingObjectsByName()
+        {
+            foreach (var task in Tasks)
+            {
+                if (task.GameObject == null)
+                    task.GameObject = GameObject.Find(task.GOName);
+            }
+        }
+
+        /// <summary>
+        /// recapture the names of the game objects associated to all tasks
+        /// </summary>
+        public void CaptureGameObjectNames()
+        {
+            foreach (var task in Tasks)
+            {
+                if (task.GameObject != null)
+                    task.GOName = task.GameObject.name;
+            }
+        }
+
+        /// <summary>
         /// initial position and rotation of gameobjects when the scene is started
         /// </summary>
         private List<Vector3> _goInitialPos;
@@ -185,11 +209,11 @@ namespace ModelViewer
                 case "MovingTask":
                     {
                         return new MovingTask(this,st);
-                    }break;
+                    }
                 case "ClickingTask":
                     {
                         return new ClickingTask(this,st);
-                    }break;
+                    }
                 default:
                     {
                         return new Task(this,st);

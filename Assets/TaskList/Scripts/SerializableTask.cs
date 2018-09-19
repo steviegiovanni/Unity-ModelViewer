@@ -23,6 +23,7 @@ namespace ModelViewer
         public string TaskName;
         public string Description;
         public MovingTaskType MoveType;
+        public string GOName;
 
         // task event data
         public SerializableTaskEvent TaskEvent;
@@ -32,6 +33,7 @@ namespace ModelViewer
         /// </summary>
         public SerializableTask(Task t)
         {
+            GOName = t.GOName;
             TypeName = t.GetType().Name;
             GameObject = t.GameObject;
             TaskName = t.TaskName;

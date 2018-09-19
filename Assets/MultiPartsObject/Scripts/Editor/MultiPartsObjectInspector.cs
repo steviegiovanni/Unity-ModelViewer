@@ -31,6 +31,18 @@ namespace ModelViewer
             if (GUILayout.Button("Fit"))
                 obj.FitToScale(obj.Root, obj.VirtualScale);
 
+            // to find missing game objects
+            if (GUILayout.Button("Find Missing Objects by Name"))
+            {
+                obj.FindMissingObjectsByName(obj.Root);
+            }
+
+            // to find missing game objects
+            if (GUILayout.Button("Capture GameObject Names"))
+            {
+                obj.CaptureGameObjectName(obj.Root);
+            }
+
             // to reset all transform position, rotation, and scale
             if (GUILayout.Button("Reset"))
             {
@@ -132,6 +144,18 @@ namespace ModelViewer
                     GUILayout.BeginHorizontal();
                     GUILayout.Label("Name", GUILayout.Width(100));
                     node.Name = GUILayout.TextField(node.Name);
+                    GUILayout.EndHorizontal();
+
+                    // allows to change the game object of the node
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Label("GO", GUILayout.Width(100));
+                    node.GameObject = (GameObject)EditorGUILayout.ObjectField(node.GameObject, typeof(Transform), true);
+                    GUILayout.EndHorizontal();
+
+                    // go name
+                    GUILayout.BeginHorizontal();
+                    GUILayout.Label("GOName", GUILayout.Width(100));
+                    node.GOName = GUILayout.TextField(node.GOName);
                     GUILayout.EndHorizontal();
 
                     GUILayout.EndVertical();

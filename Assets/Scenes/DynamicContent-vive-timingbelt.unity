@@ -113,39 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!21 &10061530
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!21 &32464155
 Material:
   serializedVersion: 6
@@ -600,224 +567,95 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &228952643
-Mesh:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  serializedVersion: 8
-  m_SubMeshes:
-  - serializedVersion: 2
-    firstByte: 0
-    indexCount: 24
-    topology: 0
-    baseVertex: 0
-    firstVertex: 0
-    vertexCount: 8
-    localAABB:
-      m_Center: {x: 0, y: 0.01, z: 0}
-      m_Extent: {x: 1.65, y: 0, z: 1.275}
-  m_Shapes:
-    vertices: []
-    shapes: []
-    channels: []
-    fullWeights: []
-  m_BindPose: []
-  m_BoneNameHashes: 
-  m_RootBoneNameHash: 0
-  m_MeshCompression: 0
-  m_IsReadable: 1
-  m_KeepVertices: 1
-  m_KeepIndices: 1
-  m_IndexFormat: 0
-  m_IndexBuffer: 000004000100010004000500010005000200020005000600020006000300030006000700030007000000000007000400
-  m_Skin: []
-  m_VertexData:
-    m_CurrentChannels: 13
-    m_VertexCount: 8
-    m_Channels:
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 12
-      format: 0
-      dimension: 4
-    - stream: 0
-      offset: 28
-      format: 0
-      dimension: 2
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 288
-    _typelessdata: 0000c03f0ad7233c000090bf000000000000803f0000803f0000803f00000000000000000000c0bf0ad7233c000090bf000000000000803f0000803f0000803f0000803f000000000000c0bf0ad7233c0000903f000000000000803f0000803f0000803f00000000000000000000c03f0ad7233c0000903f000000000000803f0000803f0000803f0000803f000000003333d33f0ad7233c3333a3bf000000000000803f0000803f00000000000000000000803f3333d3bf0ad7233c3333a3bf000000000000803f0000803f000000000000803f0000803f3333d3bf0ad7233c3333a33f000000000000803f0000803f00000000000000000000803f3333d33f0ad7233c3333a33f000000000000803f0000803f000000000000803f0000803f
-  m_CompressedMesh:
-    m_Vertices:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UV:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Normals:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Tangents:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Weights:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_NormalSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_TangentSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_FloatColors:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_BoneIndices:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Triangles:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UVInfo: 0
-  m_LocalAABB:
-    m_Center: {x: 0, y: 0.01, z: 0}
-    m_Extent: {x: 1.65, y: 0, z: 1.275}
-  m_MeshUsageFlags: 0
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
-  m_MeshOptimized: 0
---- !u!1001 &235824004
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1890315833}
-    m_Modifications:
-    - target: {fileID: 4778787771766434, guid: 6af9890c441a10542adff8dfaa186796, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4778787771766434, guid: 6af9890c441a10542adff8dfaa186796, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4778787771766434, guid: 6af9890c441a10542adff8dfaa186796, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4778787771766434, guid: 6af9890c441a10542adff8dfaa186796, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4778787771766434, guid: 6af9890c441a10542adff8dfaa186796, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4778787771766434, guid: 6af9890c441a10542adff8dfaa186796, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4778787771766434, guid: 6af9890c441a10542adff8dfaa186796, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4778787771766434, guid: 6af9890c441a10542adff8dfaa186796, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114630949534844180, guid: 6af9890c441a10542adff8dfaa186796,
-        type: 2}
-      propertyPath: mpo
-      value: 
-      objectReference: {fileID: 516467244}
-    - target: {fileID: 114630949534844180, guid: 6af9890c441a10542adff8dfaa186796,
-        type: 2}
-      propertyPath: taskList
-      value: 
-      objectReference: {fileID: 516467245}
-    - target: {fileID: 114630949534844180, guid: 6af9890c441a10542adff8dfaa186796,
-        type: 2}
-      propertyPath: trackedObject
-      value: 
-      objectReference: {fileID: 1421829013}
-    - target: {fileID: 1078271797349502, guid: 6af9890c441a10542adff8dfaa186796, type: 2}
-      propertyPath: m_Name
-      value: Reset
-      objectReference: {fileID: 0}
-    - target: {fileID: 1555331018154998, guid: 6af9890c441a10542adff8dfaa186796, type: 2}
-      propertyPath: m_Name
-      value: Inspect
-      objectReference: {fileID: 0}
-    - target: {fileID: 1863721232754266, guid: 6af9890c441a10542adff8dfaa186796, type: 2}
-      propertyPath: m_Name
-      value: HeadGasketTask
-      objectReference: {fileID: 0}
-    - target: {fileID: 1904979551366910, guid: 6af9890c441a10542adff8dfaa186796, type: 2}
-      propertyPath: m_Name
-      value: InspectText
-      objectReference: {fileID: 0}
-    - target: {fileID: 102949570339058692, guid: 6af9890c441a10542adff8dfaa186796,
-        type: 2}
-      propertyPath: m_Text
-      value: Inspect
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 6af9890c441a10542adff8dfaa186796, type: 2}
-  m_IsPrefabParent: 0
---- !u!1 &235824005 stripped
+--- !u!1 &235824005
 GameObject:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 1859584311025184, guid: 6af9890c441a10542adff8dfaa186796,
     type: 2}
-  m_PrefabInternal: {fileID: 235824004}
---- !u!102 &235824006 stripped
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 235824007}
+  - component: {fileID: 235824008}
+  - component: {fileID: 235824006}
+  m_Layer: 0
+  m_Name: HintText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!102 &235824006
 TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 102301544773715452, guid: 6af9890c441a10542adff8dfaa186796,
     type: 2}
-  m_PrefabInternal: {fileID: 235824004}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 235824005}
+  m_Text: Hello World
+  m_OffsetZ: 0
+  m_CharacterSize: 1
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 0
+  m_TabSize: 4
+  m_FontSize: 40
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278255360
+--- !u!4 &235824007
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4852789500748166, guid: 6af9890c441a10542adff8dfaa186796,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 235824005}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 1890315833}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &235824008
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23102177595746610, guid: 6af9890c441a10542adff8dfaa186796,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 235824005}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1001 &236714665
 Prefab:
   m_ObjectHideFlags: 0
@@ -2919,6 +2757,7 @@ MonoBehaviour:
     Material: {fileID: 0}
     Locked: 1
     Name: HyundaiEngine180815_Spec
+    GOName: HyundaiEngine180815_Spec
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458516}
@@ -2933,6 +2772,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4a849964109d8d443b20c88bb3df7dd3, type: 2}
     Locked: 1
     Name: '#1MainBearing'
+    GOName: '#1MainBearing'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458515}
@@ -2947,6 +2787,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 7b1bdc31a7e0fa24a95add74792f7494, type: 2}
     Locked: 1
     Name: '#1MainBearingCap'
+    GOName: '#1MainBearingCap'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458514}
@@ -2961,6 +2802,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4a849964109d8d443b20c88bb3df7dd3, type: 2}
     Locked: 1
     Name: '#2MainBearing'
+    GOName: '#2MainBearing'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458513}
@@ -2975,6 +2817,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 6cc641b5c6787924498b463517289c4e, type: 2}
     Locked: 1
     Name: '#2MainBearingCap'
+    GOName: '#2MainBearingCap'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458512}
@@ -2989,6 +2832,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4a849964109d8d443b20c88bb3df7dd3, type: 2}
     Locked: 1
     Name: '#3MainBearing'
+    GOName: '#3MainBearing'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458511}
@@ -3003,6 +2847,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 0ab855922ce5d7c4496a8c766776d543, type: 2}
     Locked: 1
     Name: '#3MainBearingCap'
+    GOName: '#3MainBearingCap'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458510}
@@ -3017,6 +2862,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4a849964109d8d443b20c88bb3df7dd3, type: 2}
     Locked: 1
     Name: '#4MainBearing'
+    GOName: '#4MainBearing'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458509}
@@ -3031,6 +2877,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: e56df12ff0b63fe4ebc50905159c9a64, type: 2}
     Locked: 1
     Name: '#4MainBearingCap'
+    GOName: '#4MainBearingCap'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458508}
@@ -3045,6 +2892,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4a849964109d8d443b20c88bb3df7dd3, type: 2}
     Locked: 1
     Name: '#5MainBearing'
+    GOName: '#5MainBearing'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458507}
@@ -3059,6 +2907,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: c9c0e31d3c0148949bc168856ac29f2f, type: 2}
     Locked: 1
     Name: '#5MainBearingCap'
+    GOName: '#5MainBearingCap'
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458506}
@@ -3073,6 +2922,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: CamShaftsBearingCapBolts
+    GOName: CamShaftsBearingCapBolts
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458505}
@@ -3087,6 +2937,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 2510d9149fbe6e3428e0e5ae3f6f5638, type: 2}
     Locked: 1
     Name: CamShaftsBearingCapMajor
+    GOName: CamShaftsBearingCapMajor
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458504}
@@ -3101,6 +2952,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: c36542144c552d446b1e6ffafdb2fc2a, type: 2}
     Locked: 1
     Name: CamShaftsBearingCapMinor
+    GOName: CamShaftsBearingCapMinor
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458503}
@@ -3115,6 +2967,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 5a634436203da0c4c88b805d88274f96, type: 2}
     Locked: 1
     Name: CamShaftSprocket
+    GOName: CamShaftSprocket
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458502}
@@ -3129,6 +2982,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: CamShaftSprocketBolt
+    GOName: CamShaftSprocketBolt
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458501}
@@ -3143,6 +2997,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: bac3f7cbd21fffa4f84d2cdf2738c22c, type: 2}
     Locked: 1
     Name: Chain
+    GOName: Chain
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458500}
@@ -3157,6 +3012,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 00462cbd72bf9cd4b999239e0b16c88f, type: 2}
     Locked: 1
     Name: ChainTensioner
+    GOName: ChainTensioner
   - ChildCount: 0
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458499}
@@ -3171,6 +3027,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: ChainTensionerBolts
+    GOName: ChainTensionerBolts
   - ChildCount: 7
     IndexOfFirstChild: 87
     GameObject: {fileID: 1711458498}
@@ -3185,6 +3042,7 @@ MonoBehaviour:
     Material: {fileID: 0}
     Locked: 1
     Name: CoolingSystemComponents
+    GOName: CoolingSystemComponents
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458490}
@@ -3199,6 +3057,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: b11a7b81c0ee4ea43b824e4f4e2aec76, type: 2}
     Locked: 1
     Name: CrankShaft
+    GOName: CrankShaft
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458489}
@@ -3213,6 +3072,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: CrankshaftFlange
+    GOName: CrankshaftFlange
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458488}
@@ -3227,6 +3087,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4a63034d51a99d349a8e62760ef20fe7, type: 2}
     Locked: 1
     Name: CrankshaftSprocket
+    GOName: CrankshaftSprocket
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458487}
@@ -3241,6 +3102,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 95d903346837ca241a4768d4d45e003a, type: 2}
     Locked: 1
     Name: DrivePlate
+    GOName: DrivePlate
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458486}
@@ -3255,6 +3117,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: DrivePlateBolts
+    GOName: DrivePlateBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458485}
@@ -3269,6 +3132,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: e4a0a7a77eaeaa341b2f97f0f3ef6891, type: 2}
     Locked: 1
     Name: EngineBlock
+    GOName: EngineBlock
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458484}
@@ -3283,6 +3147,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: ccb8327acc6ef44479b4a4dd5d32a34d, type: 2}
     Locked: 1
     Name: EngineHead
+    GOName: EngineHead
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458483}
@@ -3297,6 +3162,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: EngineHeadBolts
+    GOName: EngineHeadBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458482}
@@ -3311,6 +3177,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 830e504d88436bc40ad147f4ff81a2fa, type: 2}
     Locked: 1
     Name: EngineHeadCover
+    GOName: EngineHeadCover
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458481}
@@ -3325,6 +3192,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: EngineHeadCoverBolts
+    GOName: EngineHeadCoverBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458480}
@@ -3339,6 +3207,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 1bcb6c328e28f0e41a94c90ecb43caf9, type: 2}
     Locked: 1
     Name: ExhaustCamShaft
+    GOName: ExhaustCamShaft
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458479}
@@ -3353,6 +3222,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 1bc35e9253f52ee4aaf6cb34b6748998, type: 2}
     Locked: 1
     Name: ExhaustCamShaftFrontSeal
+    GOName: ExhaustCamShaftFrontSeal
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458478}
@@ -3367,6 +3237,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: ExhaustCamShaftFrontSealBolts
+    GOName: ExhaustCamShaftFrontSealBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458477}
@@ -3381,6 +3252,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: ac6e3e0cf4b6e9c46a7d5972fea98e58, type: 2}
     Locked: 1
     Name: ExhaustGasket
+    GOName: ExhaustGasket
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458476}
@@ -3395,6 +3267,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: dac51dcb86436324fab3467063417a3d, type: 2}
     Locked: 1
     Name: ExhaustManifold/CatalytiConverter
+    GOName: ExhaustManifold/CatalytiConverter
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458475}
@@ -3409,6 +3282,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 1a36d3984c0cb3c4bb7937887b89c77b, type: 2}
     Locked: 1
     Name: ExhaustManifoldNuts
+    GOName: ExhaustManifoldNuts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458474}
@@ -3423,6 +3297,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 710e11a542e39f24486fe0809c42bea4, type: 2}
     Locked: 1
     Name: HeadGasket
+    GOName: HeadGasket
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458473}
@@ -3437,6 +3312,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 0ef23045880f80742a8c402be16d7fbe, type: 2}
     Locked: 1
     Name: IdleAirControlValve
+    GOName: IdleAirControlValve
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458472}
@@ -3451,6 +3327,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: IdleAirControlValveBolts
+    GOName: IdleAirControlValveBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458471}
@@ -3465,6 +3342,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 1f7efb8a87c95ca459b7aaca388b1b6a, type: 2}
     Locked: 1
     Name: IntakeCamShaft
+    GOName: IntakeCamShaft
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458470}
@@ -3479,6 +3357,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 96a68ccc2967e774a9225346822e41cd, type: 2}
     Locked: 1
     Name: IntakeCamShaftRearSeal
+    GOName: IntakeCamShaftRearSeal
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458469}
@@ -3493,6 +3372,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: IntakeCamShaftRearSealBolts
+    GOName: IntakeCamShaftRearSealBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458468}
@@ -3507,6 +3387,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 9d31b62fea9df3f4ea28a23a94d83966, type: 2}
     Locked: 1
     Name: IntakeManifold
+    GOName: IntakeManifold
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458467}
@@ -3521,6 +3402,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 1a36d3984c0cb3c4bb7937887b89c77b, type: 2}
     Locked: 1
     Name: IntakeManifoldNuts
+    GOName: IntakeManifoldNuts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458466}
@@ -3535,6 +3417,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: MainBearingCapBolts
+    GOName: MainBearingCapBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458465}
@@ -3549,6 +3432,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 2b21f9fe886ce3b439747c37ce48b645, type: 2}
     Locked: 1
     Name: ManifoldAbsolutePressure
+    GOName: ManifoldAbsolutePressure
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458464}
@@ -3563,6 +3447,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: ManifoldAbsolutePressureBolts
+    GOName: ManifoldAbsolutePressureBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458463}
@@ -3577,6 +3462,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 2aab40dd6cc3f1c4abaea4f39ac8b81f, type: 2}
     Locked: 1
     Name: OilFilter
+    GOName: OilFilter
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458462}
@@ -3591,6 +3477,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 2d973b86adf6134458b33ef97b77e416, type: 2}
     Locked: 1
     Name: OilPan
+    GOName: OilPan
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458461}
@@ -3605,6 +3492,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: OilPanBolts
+    GOName: OilPanBolts
   - ChildCount: 4
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458460}
@@ -3619,6 +3507,7 @@ MonoBehaviour:
     Material: {fileID: 0}
     Locked: 1
     Name: OilPumpAssembly
+    GOName: OilPumpAssembly
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458455}
@@ -3633,6 +3522,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: e7ebd76263010c94e84193cf68e20b22, type: 2}
     Locked: 1
     Name: OilPumpHousing
+    GOName: OilPumpHousing
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458454}
@@ -3647,6 +3537,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: OilPumpHousingBolts
+    GOName: OilPumpHousingBolts
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458453}
@@ -3661,6 +3552,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 0f26ac6fa3708ee4dbdde519596476a1, type: 2}
     Locked: 1
     Name: OilPumpPickup
+    GOName: OilPumpPickup
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458452}
@@ -3675,6 +3567,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: OilPumpPickupBolts
+    GOName: OilPumpPickupBolts
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458451}
@@ -3689,6 +3582,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 82a961ace4b9dfb4a8c600ac5443eb33, type: 2}
     Locked: 1
     Name: OpenEndWrench
+    GOName: OpenEndWrench
   - ChildCount: 2
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458450}
@@ -3703,6 +3597,7 @@ MonoBehaviour:
     Material: {fileID: 0}
     Locked: 1
     Name: PistonConnectingRodAssembly01
+    GOName: PistonConnectingRodAssembly01
   - ChildCount: 2
     IndexOfFirstChild: 100
     GameObject: {fileID: 1711458447}
@@ -3717,6 +3612,7 @@ MonoBehaviour:
     Material: {fileID: 0}
     Locked: 1
     Name: PistonConnectingRodAssembly02
+    GOName: PistonConnectingRodAssembly02
   - ChildCount: 2
     IndexOfFirstChild: 102
     GameObject: {fileID: 1711458444}
@@ -3731,6 +3627,7 @@ MonoBehaviour:
     Material: {fileID: 0}
     Locked: 1
     Name: PistonConnectingRodAssembly03
+    GOName: PistonConnectingRodAssembly03
   - ChildCount: 2
     IndexOfFirstChild: 104
     GameObject: {fileID: 1711458441}
@@ -3745,6 +3642,7 @@ MonoBehaviour:
     Material: {fileID: 0}
     Locked: 1
     Name: PistonConnectingRodAssembly04
+    GOName: PistonConnectingRodAssembly04
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458438}
@@ -3759,6 +3657,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: cfdedb89039af6443a7ea16133c09748, type: 2}
     Locked: 1
     Name: RearMainSeal
+    GOName: RearMainSeal
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458437}
@@ -3773,6 +3672,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: RearMainSealBolts
+    GOName: RearMainSealBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458436}
@@ -3787,6 +3687,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 92f1753edb2863242bdd81baa3d3707a, type: 2}
     Locked: 1
     Name: SparkPlug
+    GOName: SparkPlug
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458435}
@@ -3801,6 +3702,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 12ea86257bfc9574c9b13bb52b2c6cd0, type: 2}
     Locked: 1
     Name: TensionerSpring
+    GOName: TensionerSpring
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458434}
@@ -3815,6 +3717,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 6b35b30b3bb0bc745bfe7d3b76486362, type: 2}
     Locked: 1
     Name: ThrottlePositionSensor
+    GOName: ThrottlePositionSensor
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458433}
@@ -3829,6 +3732,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: ThrottlePositionSensorBolts
+    GOName: ThrottlePositionSensorBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458432}
@@ -3843,6 +3747,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 08b87706e3d886b45b78deee44a94c4a, type: 2}
     Locked: 1
     Name: TimingBelt
+    GOName: TimingBelt
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458431}
@@ -3857,6 +3762,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 2db06dd21cb66c74e913c817ebc33002, type: 2}
     Locked: 1
     Name: TimingBeltCoverBottom
+    GOName: TimingBeltCoverBottom
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458430}
@@ -3871,6 +3777,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: TimingBeltCoverBottomBolts
+    GOName: TimingBeltCoverBottomBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458429}
@@ -3885,6 +3792,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 3e6fb2e4109f219498fa2179c9a8291b, type: 2}
     Locked: 1
     Name: TimingBeltCoverTop
+    GOName: TimingBeltCoverTop
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458428}
@@ -3899,6 +3807,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: TimingBeltCoverTopBolts
+    GOName: TimingBeltCoverTopBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458427}
@@ -3913,6 +3822,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 53651db7ca87e004390bd3406aa6fdbe, type: 2}
     Locked: 1
     Name: TimingBeltIdler
+    GOName: TimingBeltIdler
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458426}
@@ -3927,6 +3837,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: TimingBeltIdlerBolt
+    GOName: TimingBeltIdlerBolt
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458425}
@@ -3941,6 +3852,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 2db06dd21cb66c74e913c817ebc33002, type: 2}
     Locked: 1
     Name: TimingBeltSideCover
+    GOName: TimingBeltSideCover
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458424}
@@ -3955,6 +3867,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: TimingBeltSideCoverBolts
+    GOName: TimingBeltSideCoverBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458423}
@@ -3969,6 +3882,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 53651db7ca87e004390bd3406aa6fdbe, type: 2}
     Locked: 1
     Name: TimingBeltTensionerAssembly
+    GOName: TimingBeltTensionerAssembly
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458422}
@@ -3983,6 +3897,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: TimingBeltTensionerBolt
+    GOName: TimingBeltTensionerBolt
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458421}
@@ -3997,6 +3912,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: efd75c2d68fee9445b73c57c2687d82e, type: 2}
     Locked: 1
     Name: VariableCamShaftSolenoidOilControlValve
+    GOName: VariableCamShaftSolenoidOilControlValve
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458420}
@@ -4011,6 +3927,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: VariableCamShaftSolenoidOilControlValveBolt
+    GOName: VariableCamShaftSolenoidOilControlValveBolt
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458518}
@@ -4025,6 +3942,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: e69c7e465135e414ba3487dc93cf0bbf, type: 2}
     Locked: 1
     Name: VibrationDamper
+    GOName: VibrationDamper
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458412}
@@ -4039,6 +3957,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: VibrationDampnerBolt
+    GOName: VibrationDampnerBolt
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458419}
@@ -4053,6 +3972,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: bed7adbc0f1068d48a72127881b7b2f5, type: 2}
     Locked: 1
     Name: WaterInletPipe
+    GOName: WaterInletPipe
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458418}
@@ -4067,6 +3987,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: WaterInletPipeBolt
+    GOName: WaterInletPipeBolt
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458417}
@@ -4081,6 +4002,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: d3516997a77e14344b052868fb249c01, type: 2}
     Locked: 1
     Name: WaterPipeHose
+    GOName: WaterPipeHose
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458416}
@@ -4095,6 +4017,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: b294474fb973d0b4c91e0f9b9700a61f, type: 2}
     Locked: 1
     Name: WaterPump
+    GOName: WaterPump
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458415}
@@ -4109,6 +4032,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: d3c178e32ee5b524d8ce9d3db0fb3989, type: 2}
     Locked: 1
     Name: WaterPumpBolts
+    GOName: WaterPumpBolts
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458414}
@@ -4123,6 +4047,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 85a344633ceda224fbdbadf245ee2cf6, type: 2}
     Locked: 1
     Name: WaterPumpPully
+    GOName: WaterPumpPully
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458497}
@@ -4137,6 +4062,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: b9d291535cc760d4388f4c76f170f2fe, type: 2}
     Locked: 1
     Name: Thermostat
+    GOName: Thermostat
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458496}
@@ -4151,6 +4077,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: dc2a69d289359994ebff75c1d3cadfb8, type: 2}
     Locked: 1
     Name: ThermostatCover
+    GOName: ThermostatCover
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458495}
@@ -4165,6 +4092,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: ThermostatCoverBolts
+    GOName: ThermostatCoverBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458494}
@@ -4179,6 +4107,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 13c04f950e1ff444b835f9c59c958e84, type: 2}
     Locked: 1
     Name: ThermostatHousing
+    GOName: ThermostatHousing
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458493}
@@ -4193,6 +4122,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: ThermostatHousingBolts
+    GOName: ThermostatHousingBolts
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458492}
@@ -4207,6 +4137,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 31217aac3051f304da5a502b644f92ff, type: 2}
     Locked: 1
     Name: WaterInletFitting
+    GOName: WaterInletFitting
   - ChildCount: 0
     IndexOfFirstChild: 94
     GameObject: {fileID: 1711458491}
@@ -4221,6 +4152,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 1a36d3984c0cb3c4bb7937887b89c77b, type: 2}
     Locked: 1
     Name: WaterInletFittingNuts
+    GOName: WaterInletFittingNuts
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458459}
@@ -4235,6 +4167,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 3ccfd8ab43262df4fbfdefef849b1d26, type: 2}
     Locked: 1
     Name: OilPumpInnerGear
+    GOName: OilPumpInnerGear
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458458}
@@ -4249,6 +4182,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 9193a42098478154ea307d54bb1cc028, type: 2}
     Locked: 1
     Name: OilPumpOuterRing
+    GOName: OilPumpOuterRing
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458457}
@@ -4263,6 +4197,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 1c3e6fea04cba5b49980dcdf39582ae1, type: 2}
     Locked: 1
     Name: OilPumpPlate
+    GOName: OilPumpPlate
   - ChildCount: 0
     IndexOfFirstChild: 98
     GameObject: {fileID: 1711458456}
@@ -4277,6 +4212,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 20b10e7ab79cec94d976424d7ef69395, type: 2}
     Locked: 1
     Name: OilPumpPlateBolt
+    GOName: OilPumpPlateBolt
   - ChildCount: 0
     IndexOfFirstChild: 100
     GameObject: {fileID: 1711458449}
@@ -4291,6 +4227,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
     Locked: 1
     Name: PistonConnectingRod04
+    GOName: PistonConnectingRod04
   - ChildCount: 0
     IndexOfFirstChild: 100
     GameObject: {fileID: 1711458448}
@@ -4305,6 +4242,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
     Locked: 1
     Name: PistonConnectingRodCap04
+    GOName: PistonConnectingRodCap04
   - ChildCount: 0
     IndexOfFirstChild: 102
     GameObject: {fileID: 1711458446}
@@ -4319,6 +4257,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
     Locked: 1
     Name: PistonConnectingRod01
+    GOName: PistonConnectingRod01
   - ChildCount: 0
     IndexOfFirstChild: 102
     GameObject: {fileID: 1711458445}
@@ -4333,6 +4272,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
     Locked: 1
     Name: PistonConnectingRodCap01
+    GOName: PistonConnectingRodCap01
   - ChildCount: 0
     IndexOfFirstChild: 104
     GameObject: {fileID: 1711458443}
@@ -4347,6 +4287,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
     Locked: 1
     Name: PistonConnectingRod02
+    GOName: PistonConnectingRod02
   - ChildCount: 0
     IndexOfFirstChild: 104
     GameObject: {fileID: 1711458442}
@@ -4361,6 +4302,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
     Locked: 1
     Name: PistonConnectingRodCap02
+    GOName: PistonConnectingRodCap02
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458440}
@@ -4375,6 +4317,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
     Locked: 1
     Name: PistonConnectingRod03
+    GOName: PistonConnectingRod03
   - ChildCount: 0
     IndexOfFirstChild: 106
     GameObject: {fileID: 1711458439}
@@ -4389,6 +4332,7 @@ MonoBehaviour:
     Material: {fileID: 2100000, guid: 4f91bd436bcd2be438b48a34c3a1caa1, type: 2}
     Locked: 1
     Name: PistonConnectingRodCap03
+    GOName: PistonConnectingRodCap03
 --- !u!114 &516467245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4411,6 +4355,7 @@ MonoBehaviour:
     TaskName: Turn Vibration Damper
     Description: 
     MoveType: 0
+    GOName: VibrationDamper
     TaskEvent:
       TypeName: TransformTaskEvent
       StartPos: {x: -7.087143, y: -3.7063017, z: -0.30533096}
@@ -4425,6 +4370,7 @@ MonoBehaviour:
     TaskName: Remove Vibration Damper Bolts
     Description: 
     MoveType: 1
+    GOName: VibrationDampnerBolt
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4439,6 +4385,7 @@ MonoBehaviour:
     TaskName: Remove Vibration Damper
     Description: 
     MoveType: 1
+    GOName: VibrationDamper
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4453,6 +4400,7 @@ MonoBehaviour:
     TaskName: Remove Crankshaft Flange
     Description: 
     MoveType: 1
+    GOName: CrankshaftFlange
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4467,6 +4415,7 @@ MonoBehaviour:
     TaskName: Remove Water Pump Bolts
     Description: 
     MoveType: 1
+    GOName: WaterPumpBolts
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4481,6 +4430,7 @@ MonoBehaviour:
     TaskName: Remove Water Pump Pully
     Description: 
     MoveType: 1
+    GOName: WaterPumpPully
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4495,6 +4445,7 @@ MonoBehaviour:
     TaskName: Remove Timing Belt Cover Bottom Bolts
     Description: 
     MoveType: 1
+    GOName: TimingBeltCoverBottomBolts
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4509,6 +4460,7 @@ MonoBehaviour:
     TaskName: Remove Timing Belt Cover Bottom
     Description: 
     MoveType: 1
+    GOName: TimingBeltCoverBottom
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4523,6 +4475,7 @@ MonoBehaviour:
     TaskName: Remove Timing Belt Cover Top Bolts
     Description: 
     MoveType: 1
+    GOName: TimingBeltCoverTopBolts
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4537,6 +4490,7 @@ MonoBehaviour:
     TaskName: Remove Timing Belt Cover Top
     Description: 
     MoveType: 1
+    GOName: TimingBeltCoverTop
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4551,6 +4505,7 @@ MonoBehaviour:
     TaskName: Remove Timing Belt Tensioner Bolt
     Description: 
     MoveType: 1
+    GOName: TimingBeltTensionerBolt
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4565,6 +4520,7 @@ MonoBehaviour:
     TaskName: Remove Tensioner Spring
     Description: 
     MoveType: 1
+    GOName: TensionerSpring
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4579,6 +4535,7 @@ MonoBehaviour:
     TaskName: Remove Timing Belt Tensioner Assembly
     Description: 
     MoveType: 1
+    GOName: TimingBeltTensionerAssembly
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4593,6 +4550,7 @@ MonoBehaviour:
     TaskName: Remove Timing Belt
     Description: 
     MoveType: 1
+    GOName: TimingBelt
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4607,6 +4565,7 @@ MonoBehaviour:
     TaskName: Remove Timing Belt Idler Bolt
     Description: 
     MoveType: 1
+    GOName: TimingBeltIdlerBolt
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4621,6 +4580,7 @@ MonoBehaviour:
     TaskName: Remove Timing Belt Idler
     Description: 
     MoveType: 1
+    GOName: TimingBeltIdler
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4635,6 +4595,7 @@ MonoBehaviour:
     TaskName: Remove Crankshaft Sprocket
     Description: 
     MoveType: 1
+    GOName: CrankshaftSprocket
     TaskEvent:
       TypeName: 
       StartPos: {x: 0, y: 0, z: 0}
@@ -4845,6 +4806,76 @@ Material:
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1001 &747921122
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4144484334785330, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114845309778927266, guid: c61f09cca6122424385f1ae1377b4aa6,
+        type: 2}
+      propertyPath: mpo
+      value: 
+      objectReference: {fileID: 516467244}
+    - target: {fileID: 114845309778927266, guid: c61f09cca6122424385f1ae1377b4aa6,
+        type: 2}
+      propertyPath: taskList
+      value: 
+      objectReference: {fileID: 516467245}
+    - target: {fileID: 114845309778927266, guid: c61f09cca6122424385f1ae1377b4aa6,
+        type: 2}
+      propertyPath: trackedObject
+      value: 
+      objectReference: {fileID: 1421829013}
+    - target: {fileID: 114486567155557020, guid: c61f09cca6122424385f1ae1377b4aa6,
+        type: 2}
+      propertyPath: _mpo
+      value: 
+      objectReference: {fileID: 516467244}
+    - target: {fileID: 1382418990757108, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_Name
+      value: HeadGasketTask
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080958587266902, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+      propertyPath: m_Name
+      value: Reset
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c61f09cca6122424385f1ae1377b4aa6, type: 2}
+  m_IsPrefabParent: 0
 --- !u!21 &808849854
 Material:
   serializedVersion: 6
@@ -5215,6 +5246,95 @@ Material:
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &1076195980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1809264746296492, guid: 6af9890c441a10542adff8dfaa186796,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1076195981}
+  - component: {fileID: 1076195984}
+  - component: {fileID: 1076195983}
+  - component: {fileID: 1076195982}
+  m_Layer: 0
+  m_Name: BCITLogo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1076195981
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4036101810102948, guid: 6af9890c441a10542adff8dfaa186796,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076195980}
+  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
+  m_LocalPosition: {x: -0.2, y: 0.1, z: 0.5}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.001}
+  m_Children: []
+  m_Father: {fileID: 1890315833}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!23 &1076195982
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23632398658266954, guid: 6af9890c441a10542adff8dfaa186796,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076195980}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 3019b68bd3343424aab3a6b2d890fb77, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &1076195983
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 65608835502336356, guid: 6af9890c441a10542adff8dfaa186796,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076195980}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1076195984
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33432031944134440, guid: 6af9890c441a10542adff8dfaa186796,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076195980}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!21 &1079736749
 Material:
   serializedVersion: 6
@@ -6185,11 +6305,11 @@ Prefab:
     - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 228952643}
+      objectReference: {fileID: 1479070050}
     - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10061530}
+      objectReference: {fileID: 1746624693}
     m_RemovedComponents:
     - {fileID: 11420968, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
@@ -6381,6 +6501,136 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f35fa249b5008c44ac2998be6f82d4d, type: 2}
   m_IsPrefabParent: 0
+--- !u!43 &1479070050
+Mesh:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  serializedVersion: 8
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 24
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 8
+    localAABB:
+      m_Center: {x: 0, y: 0.01, z: 0}
+      m_Extent: {x: 1.65, y: 0, z: 1.275}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 000004000100010004000500010005000200020005000600020006000300030006000700030007000000000007000400
+  m_Skin: []
+  m_VertexData:
+    m_CurrentChannels: 13
+    m_VertexCount: 8
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 28
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 288
+    _typelessdata: 0000c03f0ad7233c000090bf000000000000803f0000803f0000803f00000000000000000000c0bf0ad7233c000090bf000000000000803f0000803f0000803f0000803f000000000000c0bf0ad7233c0000903f000000000000803f0000803f0000803f00000000000000000000c03f0ad7233c0000903f000000000000803f0000803f0000803f0000803f000000003333d33f0ad7233c3333a3bf000000000000803f0000803f00000000000000000000803f3333d3bf0ad7233c3333a3bf000000000000803f0000803f000000000000803f0000803f3333d3bf0ad7233c3333a33f000000000000803f0000803f00000000000000000000803f3333d33f0ad7233c3333a33f000000000000803f0000803f000000000000803f0000803f
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0.01, z: 0}
+    m_Extent: {x: 1.65, y: 0, z: 1.275}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshOptimized: 0
 --- !u!21 &1539432820
 Material:
   serializedVersion: 6
@@ -9889,6 +10139,39 @@ Material:
     m_Colors:
     - _Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!21 &1746624693
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1890315833 stripped
 Transform:
   m_PrefabParentObject: {fileID: 408470, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}

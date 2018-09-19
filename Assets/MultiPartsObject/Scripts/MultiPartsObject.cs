@@ -13,6 +13,16 @@ namespace ModelViewer
     public class Node
     {
         /// <summary>
+        /// store the name of the game object so that we can search for the go based on name if we switch the model
+        /// </summary>
+        private string _goName;
+        public string GOName
+        {
+            get { return _goName; }
+            set { _goName = value; }
+        }
+
+        /// <summary>
         /// the game object associated with this node
         /// </summary>
         private GameObject _gameObject;
@@ -142,6 +152,7 @@ namespace ModelViewer
 
 			// assign game object
 			GameObject = go;
+            GOName = GameObject.name;
 
 			// get the original transforms, position relative to the cage
 			P0 = cage.InverseTransformPoint(go.transform.position);
@@ -195,6 +206,7 @@ namespace ModelViewer
             Material = sn.Material;
             Locked = sn.Locked;
             Name = sn.Name;
+            GOName = sn.GOName;
         }
 
         /// <summary>
@@ -232,6 +244,7 @@ namespace ModelViewer
         public Material Material;
         public bool Locked;
         public string Name;
+        public string GOName;
     }
 
     /// <summary>
@@ -588,6 +601,32 @@ namespace ModelViewer
         }
 
         /// <summary>
+        /// use the node's game object name to find the game object associated to a node when it's missing
+        /// </summary>
+        public void FindMissingObjectsByName(Node node)
+        {
+            if (node == null) return;
+            if (node.GameObject == null)
+                node.GameObject = GameObject.Find(node.GOName);
+
+            foreach (var child in node.Childs)
+                FindMissingObjectsByName(child);
+        }
+
+        /// <summary>
+        /// recapture the names of the game object associated to each node
+        /// </summary>
+        public void CaptureGameObjectName(Node node)
+        {
+            if (node == null) return;
+            if (node.GameObject != null)
+                node.GOName = node.GameObject.name;
+
+            foreach (var child in node.Childs)
+                CaptureGameObjectName(child);
+        }
+
+        /// <summary>
         /// reset transform of a node and its children recursively
         /// </summary>
         public void ResetAll(Node node)
@@ -941,7 +980,8 @@ namespace ModelViewer
                 Bounds = Root.Bounds,
                 Material = Root.Material,
                 Locked = Root.Locked,
-                Name = Root.Name
+                Name = Root.Name,
+                GOName = Root.GOName
             };
             serializedNodes.Add(serializedRoot);
 
@@ -966,7 +1006,8 @@ namespace ModelViewer
                         Bounds = child.Bounds,
                         Material = child.Material,
                         Locked = child.Locked,
-                        Name = child.Name
+                        Name = child.Name,
+                        GOName = child.GOName
                     };
                     serializedNodes.Add(serializedNode);
                     nCousins += child.Childs.Count;

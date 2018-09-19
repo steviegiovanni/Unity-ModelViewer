@@ -40,11 +40,6 @@ namespace ModelViewer
         private GameObject _hintPrefab;
 
         /// <summary>
-        /// current elapsed time of the hint
-        /// </summary>
-        private float elapsedTime = 0.0f;
-
-        /// <summary>
         /// the currently instantiated hint
         /// </summary>
         private GameObject hintObject;

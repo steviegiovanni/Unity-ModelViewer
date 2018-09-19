@@ -15,6 +15,11 @@ public class SteamInterface : MonoBehaviour {
     public GameObject WholeButton;
     public GameObject PartButton;
 
+    public GameObject UIInFrontButton;
+    public GameObject ObjectInFrontButton;
+
+    public MultiPartsObjectCageUI mpoCageUI;
+
     private bool PartOrWhole = false;
 
 	/// <summary>
@@ -31,6 +36,8 @@ public class SteamInterface : MonoBehaviour {
 		//trackedObject = GetComponent<SteamVR_TrackedObject> ();
         WholeButton.SetActive(true);
         PartButton.SetActive(false);
+        ObjectInFrontButton.SetActive(false);
+        UIInFrontButton.SetActive(true);
 	}
 	
 	// Update is called once per frame
@@ -85,6 +92,26 @@ public class SteamInterface : MonoBehaviour {
                             PartOrWhole = true;
                             WholeButton.SetActive(false);
                             PartButton.SetActive(true);
+                        }
+                    }
+                    break;
+                case "UIInFront":
+                    {
+                        if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
+                        {
+                            UIInFrontButton.SetActive(false);
+                            ObjectInFrontButton.SetActive(true);
+                            mpoCageUI.BringUICloser();
+                        }
+                    }
+                    break;
+                case "ObjectInFront":
+                    {
+                        if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
+                        {
+                            UIInFrontButton.SetActive(true);
+                            ObjectInFrontButton.SetActive(false);
+                            mpoCageUI.BringUIFurther();
                         }
                     }
                     break;
