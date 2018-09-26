@@ -1025,6 +1025,7 @@ namespace ModelViewer
         /// </summary>
         public void OnBeforeSerialize()
         {
+            if (serializedNodes == null) serializedNodes = new List<SerializableNode>();
             serializedNodes.Clear();
             //AddNodeToSerializedNodes(Root,-1);
             AddNodesToSerializedNodesBFS();

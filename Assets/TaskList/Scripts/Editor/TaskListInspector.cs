@@ -3,7 +3,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ModelViewer
 {
@@ -183,7 +185,7 @@ namespace ModelViewer
 
             GUILayout.BeginHorizontal();
             GUILayout.Label("GO", GUILayout.Width(50));
-            t.GameObject = (GameObject)EditorGUILayout.ObjectField(t.GameObject, typeof(Transform), true);
+            t.GameObject = (GameObject)EditorGUILayout.ObjectField(t.GameObject, typeof(GameObject), true);
             GUILayout.EndHorizontal();
 
             // go name
@@ -353,6 +355,9 @@ namespace ModelViewer
                 }
             }
             GUILayout.EndVertical();
+
+            if (GUI.changed)
+                EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
         }
     }
 }

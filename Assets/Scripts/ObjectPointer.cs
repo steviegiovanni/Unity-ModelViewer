@@ -5,148 +5,166 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-/// <summary>
-/// interface for everything that uses a ray
-/// implements this interface for different devices (e.g. hololens, vive)
-/// </summary>
-public interface IHasRay
+namespace ModelViewer
 {
-    Ray GetRay();
-}
 
-/// <summary>
-/// Object pointer returns the hitinfo of a specified ray in the simulation
-/// implemented as singleton to handle situation where users forgot to put one in the scene
-/// as this will be used by the multipartsobject component
-/// </summary>
-public class ObjectPointer : MonoBehaviour {
-    static private ObjectPointer _instance = null;
-    static public ObjectPointer Instance
+    /// <summary>
+    /// interface for everything that uses a ray
+    /// implements this interface for different devices (e.g. hololens, vive)
+    /// </summary>
+    public interface IHasRay
     {
-        get {
-            if(_instance == null)
+        Ray GetRay();
+    }
+
+    /// <summary>
+    /// Object pointer returns the hitinfo of a specified ray in the simulation
+    /// implemented as singleton to handle situation where users forgot to put one in the scene
+    /// as this will be used by the multipartsobject component
+    /// </summary>
+    public class ObjectPointer : MonoBehaviour
+    {
+        static private ObjectPointer _instance = null;
+        static public ObjectPointer Instance
+        {
+            get
             {
-                _instance = GameObject.FindObjectOfType<ObjectPointer>();
+                if (_instance == null)
+                {
+                    _instance = GameObject.FindObjectOfType<ObjectPointer>();
+                }
+                return _instance;
             }
-            return _instance;
         }
-    }
 
-    /// <summary>
-    /// the ray used to point to object
-	/// need to be assigned accordingly whether u're using the ray from hololens' headset, vive's controller etc...
-    /// </summary>
-    [SerializeField]
-    private GameObject _ray;
-    private IHasRay _iray;
-    public IHasRay Ray
-    {
-        get { return _iray; }
-        set { _iray = value; }
-    }
-
-    /// <summary>
-    /// line renderer to show ray
-    /// </summary>
-    private LineRenderer _lr;
-    public LineRenderer LR {
-        get {
-            if (_lr == null)
-                _lr = GetComponent<LineRenderer>();
-            return _lr;
-        }
-    }
-
-    /// <summary>
-    /// show the ray or not
-    /// </summary>
-    [SerializeField]
-    private bool _rayVisible;
-    public bool RayVisible {
-        get { return _rayVisible; } set { _rayVisible = value; }
-    }
-
-    /// <summary>
-    /// check ray whenever we modify the ray field
-    /// </summary>
-    void OnValidate()
-    {
-        CheckRay();
-    }
-
-    /// <summary>
-    /// check whether we have a valid ray object 
-    /// </summary>
-    void CheckRay()
-    {
-        if (_ray != null)
+        /// <summary>
+        /// the ray used to point to object
+        /// need to be assigned accordingly whether u're using the ray from hololens' headset, vive's controller etc...
+        /// </summary>
+        [SerializeField]
+        private GameObject _ray;
+        private IHasRay _iray;
+        public IHasRay Ray
         {
-            _iray = _ray.GetComponent<IHasRay>();
-            if (_iray == null) _ray = null;
+            get { return _iray; }
+            set { _iray = value; }
         }
-    }
 
-    /// <summary>
-    /// the hit info
-    /// </summary>
-    private RaycastHit _hitInfo;
-    public RaycastHit HitInfo
-    {
-        get { return _hitInfo; }
-    }
-
-    /// <summary>
-    /// events fired when object pointer is gazing 
-    /// </summary>
-    public class GazeEvent : UnityEvent<GameObject>{}
-    private GazeEvent _onHoverEvent;
-    public GazeEvent OnHoverEvent
-    {
-        get {
-            if (_onHoverEvent == null)
-                _onHoverEvent = new GazeEvent();
-            return _onHoverEvent;
-        }
-    }
-
-    private void Start()
-    {
-        CheckRay();
-    }
-
-    // Update is called once per frame
-    void Update () {
-        // use default ray with no dir if there's no HasRay object
-        Ray ray;
-        if (Ray == null)
+        /// <summary>
+        /// line renderer to show ray
+        /// </summary>
+        private LineRenderer _lr;
+        public LineRenderer LR
         {
-            ray = new Ray(Vector3.zero, Vector3.zero);
+            get
+            {
+                if (_lr == null)
+                    _lr = GetComponent<LineRenderer>();
+                return _lr;
+            }
         }
-        else
-            ray = Ray.GetRay();
 
-        // raycast to get hitInfo
-		if (Physics.Raycast(ray, out _hitInfo, Mathf.Infinity, Physics.DefaultRaycastLayers)) {
-            if (OnHoverEvent != null)
-                OnHoverEvent.Invoke(_hitInfo.collider.gameObject);
-        }
-        else
+        /// <summary>
+        /// show the ray or not
+        /// </summary>
+        [SerializeField]
+        private bool _rayVisible;
+        public bool RayVisible
         {
-            if (OnHoverEvent != null)
-                OnHoverEvent.Invoke(null);
+            get { return _rayVisible; }
+            set { _rayVisible = value; }
         }
 
-		// draw ray if there's a line renderer and ray is visible
-		if (LR != null) {
-            if (RayVisible) {
-                LR.SetPosition (0, ray.origin);
-				if(HitInfo.collider != null)
-					LR.SetPosition (1, HitInfo.point);
-				else
-					LR.SetPosition (1, ray.origin + ray.direction * 100f);
-			} else {
-				LR.enabled = false;
-			}
-		}
-	}
+        /// <summary>
+        /// check ray whenever we modify the ray field
+        /// </summary>
+        void OnValidate()
+        {
+            CheckRay();
+        }
+
+        /// <summary>
+        /// check whether we have a valid ray object 
+        /// </summary>
+        void CheckRay()
+        {
+            if (_ray != null)
+            {
+                _iray = _ray.GetComponent<IHasRay>();
+                if (_iray == null) _ray = null;
+            }
+        }
+
+        /// <summary>
+        /// the hit info
+        /// </summary>
+        private RaycastHit _hitInfo;
+        public RaycastHit HitInfo
+        {
+            get { return _hitInfo; }
+        }
+
+        /// <summary>
+        /// events fired when object pointer is gazing 
+        /// </summary>
+        public class GazeEvent : UnityEvent<GameObject> { }
+        private GazeEvent _onHoverEvent;
+        public GazeEvent OnHoverEvent
+        {
+            get
+            {
+                if (_onHoverEvent == null)
+                    _onHoverEvent = new GazeEvent();
+                return _onHoverEvent;
+            }
+        }
+
+        private void Start()
+        {
+            CheckRay();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            // use default ray with no dir if there's no HasRay object
+            Ray ray;
+            if (Ray == null)
+            {
+                ray = new Ray(Vector3.zero, Vector3.zero);
+            }
+            else
+                ray = Ray.GetRay();
+
+            // raycast to get hitInfo
+            if (Physics.Raycast(ray, out _hitInfo, Mathf.Infinity, Physics.DefaultRaycastLayers))
+            {
+                if (OnHoverEvent != null)
+                    OnHoverEvent.Invoke(_hitInfo.collider.gameObject);
+            }
+            else
+            {
+                if (OnHoverEvent != null)
+                    OnHoverEvent.Invoke(null);
+            }
+
+            // draw ray if there's a line renderer and ray is visible
+            if (LR != null)
+            {
+                if (RayVisible)
+                {
+                    LR.SetPosition(0, ray.origin);
+                    if (HitInfo.collider != null)
+                        LR.SetPosition(1, HitInfo.point);
+                    else
+                        LR.SetPosition(1, ray.origin + ray.direction * 100f);
+                }
+                else
+                {
+                    LR.enabled = false;
+                }
+            }
+        }
+    }
+
 }

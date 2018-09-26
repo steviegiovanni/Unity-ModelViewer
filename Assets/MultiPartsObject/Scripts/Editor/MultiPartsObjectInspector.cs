@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 namespace ModelViewer
 {
@@ -62,6 +64,9 @@ namespace ModelViewer
             GUILayout.Label("Tree");
             indentLevel = 0;
             DisplayNodeInfo(obj.Root);
+
+            if (GUI.changed)
+                EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
         }
 
         int indentLevel;
@@ -149,7 +154,7 @@ namespace ModelViewer
                     // allows to change the game object of the node
                     GUILayout.BeginHorizontal();
                     GUILayout.Label("GO", GUILayout.Width(100));
-                    node.GameObject = (GameObject)EditorGUILayout.ObjectField(node.GameObject, typeof(Transform), true);
+                    node.GameObject = (GameObject)EditorGUILayout.ObjectField(node.GameObject, typeof(GameObject), true);
                     GUILayout.EndHorizontal();
 
                     // go name
